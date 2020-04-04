@@ -1,0 +1,16 @@
+#!/bin/sh
+ROOT_PATH="$(dirname $0)/../"
+SOURCE_PATH="$ROOT_PATH/Sources/Looping"
+DOCUMENTATION_PATH="$ROOT_PATH/Documentation"
+
+brew list swift-doc &>/dev/null || brew install swiftdocorg/formulae/swift-doc
+
+for format in "commonmark" "html"
+do
+    rm -fr "$DOCUMENTATION_PATH/$format"
+    swift-doc generate $SOURCE_PATH --module-name Looping --output "$DOCUMENTATION_PATH/$format" --format $format
+done
+
+swift-doc coverage $SOURCE_PATH --output "$DOCUMENTATION_PATH/coverage.json"
+
+cat "$DOCUMENTATION_PATH/coverage.json" | jq ".data.symbols[] | select(.documented == false)"
