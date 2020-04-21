@@ -255,6 +255,8 @@ private extension WebPImageView {
         imageLayer.delegateCallback = { [weak self] event in
             self?.forward(event)
         }
+
+        backgroundColor = .clear
     }
 
     private func forward(_ event: WebPImageLayer.DelegateEvent) {
