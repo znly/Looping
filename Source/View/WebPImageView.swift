@@ -253,7 +253,7 @@ private extension WebPImageView {
         )
 
         imageLayer.delegateCallback = { [weak self] event in
-                self?.forward(event)
+            self?.forward(event)
         }
     }
 

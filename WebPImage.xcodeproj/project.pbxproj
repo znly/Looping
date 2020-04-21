@@ -46,12 +46,13 @@
 		7791EDF6243F3699002C669B /* WebPImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* WebPImage.framework */; };
 		7791EDF7243F3699002C669B /* WebPImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* WebPImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		779AE1B42442F22600702C06 /* WebPImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AE1B32442F22600702C06 /* WebPImageRenderer.swift */; };
+		77AFA098244F0F9800BE31BB /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFA097244F0F9800BE31BB /* WebP.framework */; };
+		77AFA099244F0F9800BE31BB /* WebP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFA097244F0F9800BE31BB /* WebP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77AFA09A244F103B00BE31BB /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFA097244F0F9800BE31BB /* WebP.framework */; };
 		77B226D324459C2100E513BC /* WebPImage+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B226D224459C2100E513BC /* WebPImage+Context.swift */; };
 		77B226DA2445C36D00E513BC /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B226D82445C36900E513BC /* OptionsViewController.swift */; };
 		77CB968B2443CC9800EC0B40 /* WebPImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CB968A2443CC9800EC0B40 /* WebPImageCache.swift */; };
 		77E59C522440E17E00B5B057 /* tux@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 77E59C512440E17E00B5B057 /* tux@2x.webp */; };
-		77E59C5724412AAA00B5B057 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E59C5624412AAA00B5B057 /* WebP.framework */; };
-		77E59C5824412AAA00B5B057 /* WebP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E59C5624412AAA00B5B057 /* WebP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77E59C5B24412F4D00B5B057 /* WebPImageViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E59C5A24412F4D00B5B057 /* WebPImageViewDelegate.swift */; };
 		77E59CA92441D16500B5B057 /* WebPImageViewActivityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E59CA82441D16500B5B057 /* WebPImageViewActivityDelegate.swift */; };
 		77E7E15F2438D828000E7528 /* WebPImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1582438D828000E7528 /* WebPImageError.swift */; };
@@ -80,18 +81,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				77AFA099244F0F9800BE31BB /* WebP.framework in Embed Frameworks */,
 				7791EDF7243F3699002C669B /* WebPImage.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		77E59C5924412AAA00B5B057 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				77E59C5824412AAA00B5B057 /* WebP.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +128,8 @@
 		7791EDCB243F3413002C669B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7791EDCD243F3414002C669B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		779AE1B32442F22600702C06 /* WebPImageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageRenderer.swift; sourceTree = "<group>"; };
+		77AFA097244F0F9800BE31BB /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = Carthage/Build/iOS/WebP.framework; sourceTree = "<group>"; };
+		77AFA09D244F111200BE31BB /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		77B226D224459C2100E513BC /* WebPImage+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebPImage+Context.swift"; sourceTree = "<group>"; };
 		77B226D82445C36900E513BC /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		77CB968A2443CC9800EC0B40 /* WebPImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageCache.swift; sourceTree = "<group>"; };
@@ -162,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77AFA098244F0F9800BE31BB /* WebP.framework in Frameworks */,
 				7791EDF6243F3699002C669B /* WebPImage.framework in Frameworks */,
 				7791EDEF243F3549002C669B /* GDPerformanceView-Swift in Frameworks */,
 			);
@@ -171,7 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77E59C5724412AAA00B5B057 /* WebP.framework in Frameworks */,
+				77AFA09A244F103B00BE31BB /* WebP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +267,11 @@
 		77CB96872443CAB600EC0B40 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7759E149243D3A1100EBE477 /* UIImage+WebPImage.swift */,
+				7759E140243D2F5100EBE477 /* WebPImage+UIImage.swift */,
+				77E7E15B2438D828000E7528 /* WebPImageView.swift */,
 				77E59CA82441D16500B5B057 /* WebPImageViewActivityDelegate.swift */,
 				77E59C5A24412F4D00B5B057 /* WebPImageViewDelegate.swift */,
-				77EDFB73244C4D8A005AD6F0 /* UIKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +304,7 @@
 		77E7E1372438CB4D000E7528 = {
 			isa = PBXGroup;
 			children = (
+				77AFA09D244F111200BE31BB /* Cartfile */,
 				7759E123243C9F9B00EBE477 /* README.md */,
 				7759E167243E56F200EBE477 /* Package.swift */,
 				7791EDBE243F3413002C669B /* Example */,
@@ -341,19 +338,10 @@
 		77E7E14E2438CDDB000E7528 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77AFA097244F0F9800BE31BB /* WebP.framework */,
 				77E59C5624412AAA00B5B057 /* WebP.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		77EDFB73244C4D8A005AD6F0 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				7759E149243D3A1100EBE477 /* UIImage+WebPImage.swift */,
-				7759E140243D2F5100EBE477 /* WebPImage+UIImage.swift */,
-				77E7E15B2438D828000E7528 /* WebPImageView.swift */,
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 		77EDFB75244C5112005AD6F0 /* UIKit */ = {
@@ -412,7 +400,6 @@
 				77E7E13D2438CB4D000E7528 /* Sources */,
 				77E7E13E2438CB4D000E7528 /* Frameworks */,
 				77E7E13F2438CB4D000E7528 /* Resources */,
-				77E59C5924412AAA00B5B057 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -455,7 +442,6 @@
 			mainGroup = 77E7E1372438CB4D000E7528;
 			packageReferences = (
 				7759E1A6243E692500EBE477 /* XCRemoteSwiftPackageReference "GDPerformanceView-Swift" */,
-				77E59C4E2440E03600B5B057 /* XCRemoteSwiftPackageReference "WebP" */,
 			);
 			productRefGroup = 77E7E1422438CB4D000E7528 /* Products */;
 			projectDirPath = "";
@@ -584,6 +570,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Example/UIKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -605,6 +592,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Example/UIKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -754,7 +742,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Source/Info.plist;
@@ -790,7 +778,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Source/Info.plist;
@@ -851,14 +839,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.4;
-			};
-		};
-		77E59C4E2440E03600B5B057 /* XCRemoteSwiftPackageReference "WebP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/znly/WebP.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

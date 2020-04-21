@@ -9,15 +9,6 @@
           "revision": "faeffb5717d36f9764f093d2f207b05921de5459",
           "version": "2.0.4"
         }
-      },
-      {
-        "package": "WebP",
-        "repositoryURL": "https://github.com/znly/WebP.git",
-        "state": {
-          "branch": null,
-          "revision": "37c02ba0d9c3f666a9578015ce9e1040c6f16243",
-          "version": "1.1.0"
-        }
       }
     ]
   },
