@@ -12,18 +12,19 @@ public protocol WebPImageViewActivityDelegate: class
 
 ## Requirements
 
-## imageView(\_:didRenderFrameAtIndex:)
+## imageView(\_:didRenderFrameAtIndex:fromCache:)
 
 Called by the image view when it renders a frame.
 
 ``` swift
-func imageView(_ imageView: WebPImageView, didRenderFrameAtIndex index: Int)
+func imageView(_ imageView: WebPImageView, didRenderFrameAtIndex index: Int, fromCache didUseCache: Bool)
 ```
 
 ### Parameters
 
   - imageView: The image view rendering the image.
   - index: The index of the frame.
+  - fromCache: A flag indicating if the frame was rendered from cache.
 
 ## imageView(\_:didDisplay:)
 

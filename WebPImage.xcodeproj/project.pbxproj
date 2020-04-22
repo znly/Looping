@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		772046762452018A0087D616 /* WebP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772046752452018A0087D616 /* WebP.swift */; };
 		7726EF15243918CA0030026B /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726EF14243918CA0030026B /* DisplayLink.swift */; };
 		7759E141243D2F5100EBE477 /* WebPImage+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E140243D2F5100EBE477 /* WebPImage+UIImage.swift */; };
 		7759E143243D2F7A00EBE477 /* WebPImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E142243D2F7A00EBE477 /* WebPImage+String.swift */; };
@@ -42,7 +43,6 @@
 		7791EDEB243F3480002C669B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726EED82439115E0030026B /* RootViewController.swift */; };
 		7791EDEC243F3486002C669B /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E106243A407100EBE477 /* Loop.swift */; };
 		7791EDED243F3486002C669B /* WebPImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E102243A3FEA00EBE477 /* WebPImageAsset.swift */; };
-		7791EDEF243F3549002C669B /* GDPerformanceView-Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 7791EDEE243F3549002C669B /* GDPerformanceView-Swift */; };
 		7791EDF6243F3699002C669B /* WebPImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* WebPImage.framework */; };
 		7791EDF7243F3699002C669B /* WebPImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* WebPImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		779AE1B42442F22600702C06 /* WebPImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AE1B32442F22600702C06 /* WebPImageRenderer.swift */; };
@@ -51,6 +51,35 @@
 		77AFA09A244F103B00BE31BB /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFA097244F0F9800BE31BB /* WebP.framework */; };
 		77B226D324459C2100E513BC /* WebPImage+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B226D224459C2100E513BC /* WebPImage+Context.swift */; };
 		77B226DA2445C36D00E513BC /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B226D82445C36900E513BC /* OptionsViewController.swift */; };
+		77B92D5F24504BAC005CE16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B92D5E24504BAC005CE16C /* AppDelegate.swift */; };
+		77B92D6124504BAC005CE16C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B92D6024504BAC005CE16C /* SceneDelegate.swift */; };
+		77B92D6324504BAC005CE16C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B92D6224504BAC005CE16C /* ContentView.swift */; };
+		77B92D6824504BAE005CE16C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B92D6724504BAE005CE16C /* Preview Assets.xcassets */; };
+		77B92D7224504C1A005CE16C /* WebPImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E102243A3FEA00EBE477 /* WebPImageAsset.swift */; };
+		77B92D7324504C27005CE16C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7791EDC8243F3413002C669B /* Assets.xcassets */; };
+		77B92D7424504C2C005CE16C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7791EDCA243F3413002C669B /* LaunchScreen.storyboard */; };
+		77B92D7524504C39005CE16C /* banana@3x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 776416A22449E9F2007D3461 /* banana@3x.webp */; };
+		77B92D7624504C39005CE16C /* bladerunner@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E159243E162600EBE477 /* bladerunner@2x.webp */; };
+		77B92D7724504C39005CE16C /* contact@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E15C243E162600EBE477 /* contact@2x.webp */; };
+		77B92D7824504C39005CE16C /* genevadrive.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E15A243E162600EBE477 /* genevadrive.webp */; };
+		77B92D7924504C39005CE16C /* niancat@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 77E7E1862438DE09000E7528 /* niancat@2x.webp */; };
+		77B92D7A24504C39005CE16C /* rubixcube.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E163243E190A00EBE477 /* rubixcube.webp */; };
+		77B92D7B24504C39005CE16C /* steamengine.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E15B243E162600EBE477 /* steamengine.webp */; };
+		77B92D7C24504C39005CE16C /* worldcup@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 77E7E1842438DE09000E7528 /* worldcup@2x.webp */; };
+		77B92D7D24504C3F005CE16C /* canyon@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E12F243D088400EBE477 /* canyon@2x.webp */; };
+		77B92D7E24504C3F005CE16C /* colors@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E151243E14B600EBE477 /* colors@2x.webp */; };
+		77B92D7F24504C3F005CE16C /* dices@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E152243E14B600EBE477 /* dices@2x.webp */; };
+		77B92D8024504C3F005CE16C /* flamethrower@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E130243D088500EBE477 /* flamethrower@2x.webp */; };
+		77B92D8124504C3F005CE16C /* flower@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E161243E16E500EBE477 /* flower@2x.webp */; };
+		77B92D8224504C3F005CE16C /* google@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E153243E14B600EBE477 /* google@2x.webp */; };
+		77B92D8324504C3F005CE16C /* rapids@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E131243D088500EBE477 /* rapids@2x.webp */; };
+		77B92D8424504C3F005CE16C /* riverbank@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E133243D088500EBE477 /* riverbank@2x.webp */; };
+		77B92D8524504C3F005CE16C /* tux@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 77E59C512440E17E00B5B057 /* tux@2x.webp */; };
+		77B92D8624504C3F005CE16C /* tree@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 7759E132243D088500EBE477 /* tree@2x.webp */; };
+		77B92D8724504CE9005CE16C /* WebPImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* WebPImage.framework */; };
+		77B92D8824504CE9005CE16C /* WebPImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* WebPImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77B92D8C24504CF6005CE16C /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFA097244F0F9800BE31BB /* WebP.framework */; };
+		77B92D8D24504CF6005CE16C /* WebP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77AFA097244F0F9800BE31BB /* WebP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77CB968B2443CC9800EC0B40 /* WebPImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CB968A2443CC9800EC0B40 /* WebPImageCache.swift */; };
 		77E59C522440E17E00B5B057 /* tux@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 77E59C512440E17E00B5B057 /* tux@2x.webp */; };
 		77E59C5B24412F4D00B5B057 /* WebPImageViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E59C5A24412F4D00B5B057 /* WebPImageViewDelegate.swift */; };
@@ -72,6 +101,13 @@
 			remoteGlobalIDString = 77E7E1402438CB4D000E7528;
 			remoteInfo = WebPImage;
 		};
+		77B92D8924504CE9005CE16C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77E7E1382438CB4D000E7528 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77E7E1402438CB4D000E7528;
+			remoteInfo = WebPImage;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,9 +123,22 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77B92D8B24504CE9005CE16C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				77B92D8D24504CF6005CE16C /* WebP.framework in Embed Frameworks */,
+				77B92D8824504CE9005CE16C /* WebPImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		772046752452018A0087D616 /* WebP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebP.swift; sourceTree = "<group>"; };
 		7726EED82439115E0030026B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		7726EF14243918CA0030026B /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		7759E102243A3FEA00EBE477 /* WebPImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageAsset.swift; sourceTree = "<group>"; };
@@ -120,7 +169,7 @@
 		7759E163243E190A00EBE477 /* rubixcube.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = rubixcube.webp; sourceTree = "<group>"; };
 		7759E167243E56F200EBE477 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		776416A22449E9F2007D3461 /* banana@3x.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "banana@3x.webp"; sourceTree = "<group>"; };
-		7791EDBD243F3413002C669B /* WebPExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebPExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7791EDBD243F3413002C669B /* WebPUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebPUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7791EDBF243F3413002C669B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7791EDC1243F3413002C669B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7791EDC6243F3413002C669B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,9 +181,14 @@
 		77AFA09D244F111200BE31BB /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		77B226D224459C2100E513BC /* WebPImage+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebPImage+Context.swift"; sourceTree = "<group>"; };
 		77B226D82445C36900E513BC /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		77B92D5C24504BAC005CE16C /* WebPSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebPSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77B92D5E24504BAC005CE16C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		77B92D6024504BAC005CE16C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		77B92D6224504BAC005CE16C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		77B92D6724504BAE005CE16C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		77B92D6C24504BAE005CE16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CB968A2443CC9800EC0B40 /* WebPImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageCache.swift; sourceTree = "<group>"; };
 		77E59C512440E17E00B5B057 /* tux@2x.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "tux@2x.webp"; sourceTree = "<group>"; };
-		77E59C5624412AAA00B5B057 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = Carthage/Build/iOS/Static/WebP.framework; sourceTree = "<group>"; };
 		77E59C5A24412F4D00B5B057 /* WebPImageViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageViewDelegate.swift; sourceTree = "<group>"; };
 		77E59CA82441D16500B5B057 /* WebPImageViewActivityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageViewActivityDelegate.swift; sourceTree = "<group>"; };
 		77E7E1412438CB4D000E7528 /* WebPImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebPImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,7 +211,15 @@
 			files = (
 				77AFA098244F0F9800BE31BB /* WebP.framework in Frameworks */,
 				7791EDF6243F3699002C669B /* WebPImage.framework in Frameworks */,
-				7791EDEF243F3549002C669B /* GDPerformanceView-Swift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77B92D5924504BAC005CE16C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77B92D8C24504CF6005CE16C /* WebP.framework in Frameworks */,
+				77B92D8724504CE9005CE16C /* WebPImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +234,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77204673245065690087D616 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				7759E149243D3A1100EBE477 /* UIImage+WebPImage.swift */,
+				7759E140243D2F5100EBE477 /* WebPImage+UIImage.swift */,
+				77E7E15C2438D828000E7528 /* WebPImageLayer.swift */,
+				77E7E15B2438D828000E7528 /* WebPImageView.swift */,
+				77E59CA82441D16500B5B057 /* WebPImageViewActivityDelegate.swift */,
+				77E59C5A24412F4D00B5B057 /* WebPImageViewDelegate.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		77204674245065710087D616 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				772046752452018A0087D616 /* WebP.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		7759E10F243B144F00EBE477 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +331,7 @@
 			children = (
 				7791EDD1243F3423002C669B /* Assets */,
 				7759E115243B35F400EBE477 /* Models */,
+				77B92D7124504BD4005CE16C /* SwiftUI */,
 				77EDFB75244C5112005AD6F0 /* UIKit */,
 			);
 			path = Example;
@@ -264,14 +348,31 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		77B92D6624504BAE005CE16C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				77B92D6724504BAE005CE16C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		77B92D7124504BD4005CE16C /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				77B92D6C24504BAE005CE16C /* Info.plist */,
+				77B92D5E24504BAC005CE16C /* AppDelegate.swift */,
+				77B92D6224504BAC005CE16C /* ContentView.swift */,
+				77B92D6024504BAC005CE16C /* SceneDelegate.swift */,
+				77B92D6624504BAE005CE16C /* Preview Content */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		77CB96872443CAB600EC0B40 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7759E149243D3A1100EBE477 /* UIImage+WebPImage.swift */,
-				7759E140243D2F5100EBE477 /* WebPImage+UIImage.swift */,
-				77E7E15B2438D828000E7528 /* WebPImageView.swift */,
-				77E59CA82441D16500B5B057 /* WebPImageViewActivityDelegate.swift */,
-				77E59C5A24412F4D00B5B057 /* WebPImageViewDelegate.swift */,
+				77204674245065710087D616 /* SwiftUI */,
+				77204673245065690087D616 /* UIKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,7 +396,6 @@
 				77CB968A2443CC9800EC0B40 /* WebPImageCache.swift */,
 				77E7E1592438D828000E7528 /* WebPImageFrame.swift */,
 				7759E144243D2FAA00EBE477 /* WebPImageFrame+String.swift */,
-				77E7E15C2438D828000E7528 /* WebPImageLayer.swift */,
 				779AE1B32442F22600702C06 /* WebPImageRenderer.swift */,
 			);
 			path = Rendering;
@@ -318,7 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				77E7E1412438CB4D000E7528 /* WebPImage.framework */,
-				7791EDBD243F3413002C669B /* WebPExample.app */,
+				7791EDBD243F3413002C669B /* WebPUIKit.app */,
+				77B92D5C24504BAC005CE16C /* WebPSwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				77AFA097244F0F9800BE31BB /* WebP.framework */,
-				77E59C5624412AAA00B5B057 /* WebP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,9 +470,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7791EDBC243F3413002C669B /* WebPExample */ = {
+		7791EDBC243F3413002C669B /* WebPUIKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7791EDCE243F3414002C669B /* Build configuration list for PBXNativeTarget "WebPExample" */;
+			buildConfigurationList = 7791EDCE243F3414002C669B /* Build configuration list for PBXNativeTarget "WebPUIKit" */;
 			buildPhases = (
 				7791EDB9243F3413002C669B /* Sources */,
 				7791EDBA243F3413002C669B /* Frameworks */,
@@ -384,12 +484,30 @@
 			dependencies = (
 				7791EDF9243F3699002C669B /* PBXTargetDependency */,
 			);
-			name = WebPExample;
+			name = WebPUIKit;
 			packageProductDependencies = (
-				7791EDEE243F3549002C669B /* GDPerformanceView-Swift */,
 			);
 			productName = Example;
-			productReference = 7791EDBD243F3413002C669B /* WebPExample.app */;
+			productReference = 7791EDBD243F3413002C669B /* WebPUIKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		77B92D5B24504BAC005CE16C /* WebPSwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77B92D6D24504BAE005CE16C /* Build configuration list for PBXNativeTarget "WebPSwiftUI" */;
+			buildPhases = (
+				77B92D5824504BAC005CE16C /* Sources */,
+				77B92D5924504BAC005CE16C /* Frameworks */,
+				77B92D5A24504BAC005CE16C /* Resources */,
+				77B92D8B24504CE9005CE16C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77B92D8A24504CE9005CE16C /* PBXTargetDependency */,
+			);
+			name = WebPSwiftUI;
+			productName = WebPSwiftUI;
+			productReference = 77B92D5C24504BAC005CE16C /* WebPSwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 		77E7E1402438CB4D000E7528 /* WebPImage */ = {
@@ -425,6 +543,9 @@
 					7791EDBC243F3413002C669B = {
 						CreatedOnToolsVersion = 11.4;
 					};
+					77B92D5B24504BAC005CE16C = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					77E7E1402438CB4D000E7528 = {
 						CreatedOnToolsVersion = 11.4;
 						LastSwiftMigration = 1140;
@@ -441,14 +562,14 @@
 			);
 			mainGroup = 77E7E1372438CB4D000E7528;
 			packageReferences = (
-				7759E1A6243E692500EBE477 /* XCRemoteSwiftPackageReference "GDPerformanceView-Swift" */,
 			);
 			productRefGroup = 77E7E1422438CB4D000E7528 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				77E7E1402438CB4D000E7528 /* WebPImage */,
-				7791EDBC243F3413002C669B /* WebPExample */,
+				7791EDBC243F3413002C669B /* WebPUIKit */,
+				77B92D5B24504BAC005CE16C /* WebPSwiftUI */,
 			);
 		};
 /* End PBXProject section */
@@ -482,6 +603,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77B92D5A24504BAC005CE16C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77B92D8024504C3F005CE16C /* flamethrower@2x.webp in Resources */,
+				77B92D7824504C39005CE16C /* genevadrive.webp in Resources */,
+				77B92D8524504C3F005CE16C /* tux@2x.webp in Resources */,
+				77B92D7E24504C3F005CE16C /* colors@2x.webp in Resources */,
+				77B92D8324504C3F005CE16C /* rapids@2x.webp in Resources */,
+				77B92D8124504C3F005CE16C /* flower@2x.webp in Resources */,
+				77B92D7424504C2C005CE16C /* LaunchScreen.storyboard in Resources */,
+				77B92D7B24504C39005CE16C /* steamengine.webp in Resources */,
+				77B92D7A24504C39005CE16C /* rubixcube.webp in Resources */,
+				77B92D7324504C27005CE16C /* Assets.xcassets in Resources */,
+				77B92D7924504C39005CE16C /* niancat@2x.webp in Resources */,
+				77B92D7F24504C3F005CE16C /* dices@2x.webp in Resources */,
+				77B92D7C24504C39005CE16C /* worldcup@2x.webp in Resources */,
+				77B92D7524504C39005CE16C /* banana@3x.webp in Resources */,
+				77B92D7D24504C3F005CE16C /* canyon@2x.webp in Resources */,
+				77B92D8624504C3F005CE16C /* tree@2x.webp in Resources */,
+				77B92D7724504C39005CE16C /* contact@2x.webp in Resources */,
+				77B92D6824504BAE005CE16C /* Preview Assets.xcassets in Resources */,
+				77B92D7624504C39005CE16C /* bladerunner@2x.webp in Resources */,
+				77B92D8424504C3F005CE16C /* riverbank@2x.webp in Resources */,
+				77B92D8224504C3F005CE16C /* google@2x.webp in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77E7E13F2438CB4D000E7528 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +659,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77B92D5824504BAC005CE16C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77B92D7224504C1A005CE16C /* WebPImageAsset.swift in Sources */,
+				77B92D5F24504BAC005CE16C /* AppDelegate.swift in Sources */,
+				77B92D6124504BAC005CE16C /* SceneDelegate.swift in Sources */,
+				77B92D6324504BAC005CE16C /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77E7E13D2438CB4D000E7528 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,6 +679,7 @@
 				77E59CA92441D16500B5B057 /* WebPImageViewActivityDelegate.swift in Sources */,
 				77B226D324459C2100E513BC /* WebPImage+Context.swift in Sources */,
 				7726EF15243918CA0030026B /* DisplayLink.swift in Sources */,
+				772046762452018A0087D616 /* WebP.swift in Sources */,
 				77E7E15F2438D828000E7528 /* WebPImageError.swift in Sources */,
 				7759E143243D2F7A00EBE477 /* WebPImage+String.swift in Sources */,
 				77E7E1612438D828000E7528 /* WebPDecoder.swift in Sources */,
@@ -540,6 +701,11 @@
 			isa = PBXTargetDependency;
 			target = 77E7E1402438CB4D000E7528 /* WebPImage */;
 			targetProxy = 7791EDF8243F3699002C669B /* PBXContainerItemProxy */;
+		};
+		77B92D8A24504CE9005CE16C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77E7E1402438CB4D000E7528 /* WebPImage */;
+			targetProxy = 77B92D8924504CE9005CE16C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -569,16 +735,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2000;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/UIKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.znly.Example;
-				PRODUCT_NAME = WebPExample;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebPUIKit;
+				PRODUCT_NAME = WebPUIKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -591,17 +762,74 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2000;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/UIKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.znly.Example;
-				PRODUCT_NAME = WebPExample;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebPUIKit;
+				PRODUCT_NAME = WebPUIKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		77B92D6E24504BAE005CE16C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2000;
+				DEVELOPMENT_ASSET_PATHS = "\"Example/SwiftUI/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Example/SwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebPSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		77B92D6F24504BAE005CE16C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2000;
+				DEVELOPMENT_ASSET_PATHS = "\"Example/SwiftUI/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Example/SwiftUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebPSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -735,6 +963,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2000;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -747,18 +976,17 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebPImageView;
 				PRODUCT_NAME = WebPImage;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -771,6 +999,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2000;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -783,13 +1012,13 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebPImageView;
 				PRODUCT_NAME = WebPImage;
 				SKIP_INSTALL = YES;
@@ -803,11 +1032,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7791EDCE243F3414002C669B /* Build configuration list for PBXNativeTarget "WebPExample" */ = {
+		7791EDCE243F3414002C669B /* Build configuration list for PBXNativeTarget "WebPUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7791EDCF243F3414002C669B /* Debug */,
 				7791EDD0243F3414002C669B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77B92D6D24504BAE005CE16C /* Build configuration list for PBXNativeTarget "WebPSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B92D6E24504BAE005CE16C /* Debug */,
+				77B92D6F24504BAE005CE16C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -831,25 +1069,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7759E1A6243E692500EBE477 /* XCRemoteSwiftPackageReference "GDPerformanceView-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dani-gavrilov/GDPerformanceView-Swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7791EDEE243F3549002C669B /* GDPerformanceView-Swift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7759E1A6243E692500EBE477 /* XCRemoteSwiftPackageReference "GDPerformanceView-Swift" */;
-			productName = "GDPerformanceView-Swift";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 77E7E1382438CB4D000E7528 /* Project object */;
 }

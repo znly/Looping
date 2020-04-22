@@ -130,9 +130,9 @@ public struct WebPImage {
         try self.init(data: try Data(contentsOf: url), scale: scale)
     }
 
-    /// Returns an image initialized with the specified webp url.
+    /// Returns an image initialized with the specified webp image name and bundle.
     /// - Parameters:
-    ///   - name: The name of the webp image asset.
+    ///   - named: The name of the webp image asset.
     ///   - bundle: The bundle in which the image is contained.
     /// - Throws: WebPDecodingError
     public init(named name: String, bundle: Bundle = Bundle.main) throws {

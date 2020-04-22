@@ -4,32 +4,31 @@
 [![SwiftPM Support](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![Carthage Support](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
 
-A simple and lightweight framework to decode and display any static or animated WebP image using UIKit and SwiftUI.
+A simple and lightweight framework to decode and display any static or animated WebP image using native UIKit and SwiftUI.
 
 ### Next steps
 - Implement `BackgroundBehavior` (restart, stop, resume)
-- Add progressive decoding option
-- Add native support on macOS
+- Introduce unit tests
+- Implement progressive decoding option
+- Add native support on macOS, watchOS, tvOS
 
 ## Minimum deployment targets
 
-+ iOS 8
++ iOS 11
 + macOS 10.15
 
 ## Dependencies
 
 + [WebP](https://github.com/znly/WebP)
 
-In the example app we also make use of:
-+ [GDPerformanceView-Swift](https://github.com/dani-gavrilov/GDPerformanceView-Swift)
-
 ## Project requirements
 
-+ Xcode 11
++ Xcode 11 (swift 5.1)
++ Carthage 0.34.0
 
 ## Installation
 
-### SwiftPM (Xcode 11+)
+### SwiftPM
 
 [Swift Package Manager (SwiftPM)](https://swift.org/package-manager/) is dependency manager as well as a distribution tool.
 
@@ -61,22 +60,44 @@ The prefered method is to use `init(data:, scale:)`. Default scale is 1.0.
 ```swift
 import WebPImage
 
-let wpImageData: Data
-let wpImage = try? WebPImage(data: wpImageData)
+let imageData: Data
+let image = try? WebPImage(data: imageData)
 ```
 
 Additional convenience initializers are available: `init(url:)` and  `init(named:)`.
 Note: If the file name contains a scale factor (eg: @{1,2,3}x) it will be applied to the image.
 
-### ② Displaying a `WebPImage` using a `WebPImageView`
+### ② Displaying a `WebPImage`
 
 Rendering happens on a background thread. 
+
+#### Using a `WebPImageView` (UIKit)
 
 ```swift
 import WebPImage
 
-let wpImageData: WebPImage
-let wpImageView = WebPImageView(image: webPImage)
+let image: WebPImage
+let imageView = WebPImageView(image: image)
+
+imaveView.contentMode = .scaleAspectFit
+imageView.loopMode = .once
+```
+
+#### Using a `WebPImageView` (SwifUI)
+
+```swift
+import WebPImage
+
+let image: WebPImage
+
+struct ContentView: View {
+    var body: some View {
+        WebP(image)
+            .loopMode(.once)
+            .resizable()
+            .scaledToFit()
+    }
+}
 ```
 
 ### ③ Converting a `WebPImage` frame into a `UIImage` or `CGImage`

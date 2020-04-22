@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7791EDBC243F3413002C669B"
-               BuildableName = "WebPExample.app"
-               BlueprintName = "WebPExample"
+               BuildableName = "WebPUIKit.app"
+               BlueprintName = "WebPUIKit"
                ReferencedContainer = "container:WebPImage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7791EDBC243F3413002C669B"
-            BuildableName = "WebPExample.app"
-            BlueprintName = "WebPExample"
+            BuildableName = "WebPUIKit.app"
+            BlueprintName = "WebPUIKit"
             ReferencedContainer = "container:WebPImage.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7791EDBC243F3413002C669B"
-            BuildableName = "WebPExample.app"
-            BlueprintName = "WebPExample"
+            BuildableName = "WebPUIKit.app"
+            BlueprintName = "WebPUIKit"
             ReferencedContainer = "container:WebPImage.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -15,7 +15,7 @@ final class OptionsViewController: UIViewController {
             displayScaleStackView,
             thumbnailStackView,
             interpolationStackView,
-            playbackSpeedStackView,
+            playBackSpeedRateStackView,
             autoPlayStackView,
             useCacheStackView
         ]
@@ -29,8 +29,33 @@ final class OptionsViewController: UIViewController {
     private let loopLabel = UILabel()..{
         $0.text = "OVERRIDE LOOP"
     }
+
     private lazy var loopSelection = UISegmentedControl(items: loops.map { $0.description })..{
-        $0.selectedSegmentIndex = 0
+        guard let loopMode = imageView.loopMode else {
+            $0.selectedSegmentIndex = 0
+            return
+        }
+
+        switch loopMode {
+        case .once:
+            $0.selectedSegmentIndex = 2
+        case let .repeat(amount):
+            switch amount {
+            case 1:
+                $0.selectedSegmentIndex = 2
+            case 2:
+                $0.selectedSegmentIndex = 3
+            case 5:
+                $0.selectedSegmentIndex = 4
+            case 10:
+                $0.selectedSegmentIndex = 5
+            default:
+                $0.selectedSegmentIndex = 1
+            }
+        case .infinite:
+            $0.selectedSegmentIndex = 1
+        }
+
     }
 
     private lazy var thumbnailStackView = UIStackView(arrangedSubviews: [thumbnailLabel, thumbnailSwitch])
@@ -62,18 +87,18 @@ final class OptionsViewController: UIViewController {
         $0.value = Float(imageView.displayScale)
     }
 
-    private lazy var playbackSpeedStackView = UIStackView(
-        arrangedSubviews: [playbackSpeedLabel, playbackSpeedSelection]
+    private lazy var playBackSpeedRateStackView = UIStackView(
+        arrangedSubviews: [playBackSpeedRateLabel, playBackSpeedRateSelection]
         )..{
             $0.axis = .horizontal
             $0.distribution = .fillEqually
     }
-    private let playbackSpeedLabel = UILabel()
+    private let playBackSpeedRateLabel = UILabel()
 
-    private lazy var playbackSpeedSelection = UISlider()..{
+    private lazy var playBackSpeedRateSelection = UISlider()..{
         $0.minimumValue = .zero
         $0.maximumValue = 10
-        $0.value = Float(imageView.playbackSpeed)
+        $0.value = Float(imageView.playBackSpeedRate)
     }
 
     private lazy var autoPlayStackView = UIStackView(arrangedSubviews: [autoPlayLabel, autoPlaySwitch])
@@ -123,14 +148,13 @@ final class OptionsViewController: UIViewController {
         displayScaleSelection.addTarget(self, action: #selector(displayScaleChanged), for: .valueChanged)
         thumbnailSwitch.addTarget(self, action: #selector(thumbnailChanged), for: .valueChanged)
         interpolationSelection.addTarget(self, action: #selector(interpolationChanged), for: .valueChanged)
-        playbackSpeedSelection.addTarget(self, action: #selector(playbackSpeedChanged), for: .valueChanged)
+        playBackSpeedRateSelection.addTarget(self, action: #selector(playBackSpeedRateChanged), for: .valueChanged)
         autoPlaySwitch.addTarget(self, action: #selector(autoPlayChanged), for: .valueChanged)
         useCacheSwitch.addTarget(self, action: #selector(useCacheChanged), for: .valueChanged)
 
-        loopChanged()
         displayScaleChanged()
         thumbnailChanged()
-        playbackSpeedChanged()
+        playBackSpeedRateChanged()
     }
 
 
@@ -152,10 +176,10 @@ final class OptionsViewController: UIViewController {
         imageView.interpolationQuality = interpolations[interpolationSelection.selectedSegmentIndex]
     }
 
-    @objc func playbackSpeedChanged() {
-        let value = playbackSpeedSelection.value.rounded(nearest: 0.1)
-        playbackSpeedLabel.text = "PLAYBACK SPEED \(value)"
-        imageView.playbackSpeed = Double(value)
+    @objc func playBackSpeedRateChanged() {
+        let value = playBackSpeedRateSelection.value.rounded(nearest: 0.1)
+        playBackSpeedRateLabel.text = "PLAYBACK SPEED \(value)"
+        imageView.playBackSpeedRate = Double(value)
     }
 
     @objc func autoPlayChanged() {

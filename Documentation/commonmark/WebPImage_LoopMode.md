@@ -85,7 +85,7 @@ WebPDecodingError
 
 ## init(named:bundle:)
 
-Returns an image initialized with the specified webp url.
+Returns an image initialized with the specified webp image name and bundle.
 
 ``` swift
 public init(named name: String, bundle: Bundle = Bundle.main) throws
@@ -93,7 +93,7 @@ public init(named name: String, bundle: Bundle = Bundle.main) throws
 
 ### Parameters
 
-  - name: The name of the webp image asset.
+  - named: The name of the webp image asset.
   - bundle: The bundle in which the image is contained.
 
 ### Throws

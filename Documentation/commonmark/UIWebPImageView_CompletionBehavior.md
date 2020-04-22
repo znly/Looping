@@ -1,4 +1,4 @@
-# WebPImageView.CompletionBehavior
+# UIWebPImageView.CompletionBehavior
 
 A list of behavior following the completion of the play cycle.
 
@@ -124,12 +124,12 @@ A flag to determine if the frames generated should be cached.
 var useCache: Bool
 ```
 
-## playBackSpeedRate
+## playbackSpeed
 
 The speed factor at which the animation should be played (limited by the display refresh rate).
 
 ``` swift
-var playBackSpeedRate: Double
+var playbackSpeed: Double
 ```
 
 > Important: Non-negative.
@@ -147,7 +147,7 @@ var loopMode: WebPImage.LoopMode?
 The behavior following the completion of the play cycle.
 
 ``` swift
-var completionBehavior: CompletionBehavior = .stop
+var completionBehavior: CompletionBehavior = .pause
 ```
 
 ## isPlaying

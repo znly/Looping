@@ -1,6 +1,8 @@
 <details>
 <summary>Types</summary>
 
+  - [WebP](/WebP)
+  - [WebP.CompletionBehavior](/WebP_CompletionBehavior)
   - [WebPImage](/WebPImage)
   - [WebPImage.LoopMode](/WebPImage_LoopMode)
   - [WebPImageView](/WebPImageView)
