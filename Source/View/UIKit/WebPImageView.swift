@@ -89,11 +89,11 @@ import UIKit
 
     /// The speed factor at which the animation should be played (limited by the display refresh rate).
     /// - Important: Non-negative.
-    @IBInspectable open var playbackSpeed: Double {
+    @IBInspectable open var playBackSpeedRate: Double {
         set {
-            imageLayer.playbackSpeed = newValue
+            imageLayer.playBackSpeedRate = newValue
         } get {
-            return imageLayer.playbackSpeed
+            return imageLayer.playBackSpeedRate
         }
     }
 
@@ -108,7 +108,7 @@ import UIKit
     }
 
     /// The behavior following the completion of the play cycle.
-    open var completionBehavior: CompletionBehavior = .pause
+    open var completionBehavior: CompletionBehavior = .stop
 
     /// Returns true if the image animation is playing.
     open var isPlaying: Bool {
@@ -278,14 +278,13 @@ private extension WebPImageView {
             completion?(true)
             completion = nil
 
-            switch completionBehavior {
-            case .pause:
-                pause()
-            case .stop:
+            if image.isAnimation && completionBehavior == .stop {
                 stop()
+            } else {
+                pause()
             }
-        case let .didRenderFrame(index):
-            activityDelegate?.imageView(self, didRenderFrameAtIndex: index)
+        case let .didRenderFrame(index, fromCache):
+            activityDelegate?.imageView(self, didRenderFrameAtIndex: index, fromCache: fromCache)
         case let .didDisplayImage(image):
             activityDelegate?.imageView(self, didDisplay: image)
         }

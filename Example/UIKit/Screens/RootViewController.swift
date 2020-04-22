@@ -2,8 +2,6 @@ import UIKit
 
 import WebPImage
 
-import GDPerformanceView_Swift
-
 final class RootViewController: UIViewController {
 
     private let imageTypes = ["Animated", "Static"]
@@ -19,7 +17,6 @@ final class RootViewController: UIViewController {
 
     private lazy var stackView = UIStackView(
         arrangedSubviews: [
-            performanceStackView,
             imageView,
             imageStackView,
             contentModeSelection,
@@ -29,19 +26,6 @@ final class RootViewController: UIViewController {
             $0.axis = .vertical
             $0.distribution = .fill
             $0.spacing = 12
-    }
-
-    private lazy var performanceStackView = UIStackView(
-        arrangedSubviews: [cpuLabel, fpsLabel, memoryLabel]
-        )..{
-            $0.distribution = .fillEqually
-    }
-    private let cpuLabel = UILabel()
-    private let fpsLabel = UILabel()..{
-        $0.textAlignment = .center
-    }
-    private let memoryLabel = UILabel()..{
-        $0.textAlignment = .right
     }
 
     private lazy var imageView = WebPImageView()..{
@@ -119,11 +103,6 @@ final class RootViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemGray6
-
-        let performanceMonitor = PerformanceMonitor.shared()
-        performanceMonitor.delegate = self
-        performanceMonitor.start()
-
         view.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -200,8 +179,8 @@ extension RootViewController: WebPImageViewDelegate {
 
 extension RootViewController: WebPImageViewActivityDelegate {
 
-    func imageView(_ imageView: WebPImageView, didRenderFrameAtIndex index: Int) {
-        print("[WebPImageViewActivityDelegate] did render image at index \(index)")
+    func imageView(_ imageView: WebPImageView, didRenderFrameAtIndex index: Int, fromCache didUseCache: Bool) {
+        print("[WebPImageViewActivityDelegate] did render image at index \(index)", didUseCache ? "from cache" : "from context")
     }
 
     func imageView(_ imageView: WebPImageView, didDisplay image: CGImage?) {
@@ -249,19 +228,5 @@ extension RootViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             ? animatedImages[row]
             : staticImages[row]
         load(asset: asset)
-    }
-}
-
-extension RootViewController: PerformanceMonitorDelegate {
-
-    func performanceMonitor(didReport performanceReport: PerformanceReport) {
-        cpuLabel.text = "CPU \(Int(performanceReport.cpuUsage))%"
-        fpsLabel.text = "\(performanceReport.fps) FPS"
-
-        let formatter = ByteCountFormatter()
-        formatter.countStyle = .memory
-        formatter.zeroPadsFractionDigits = true
-
-        memoryLabel.text = "MEM \(formatter.string(fromByteCount: Int64(performanceReport.memoryUsage.used)))"
     }
 }

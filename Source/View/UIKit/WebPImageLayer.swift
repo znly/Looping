@@ -45,10 +45,11 @@ final class WebPImageLayer: CALayer {
     private let displayQueue = DispatchQueue(label: "webPImageLayer:display", qos: .userInteractive)
     private let canvasLayer = CALayer()
     private var imageRenderer: WebPImageRenderer?
+    private var imageRendered: CGImage?
 
     enum DelegateEvent {
         case didStartPlaying, didPausePlaying, didStopPlaying, didCompletePlaying(WebPImage.LoopMode)
-        case didRenderFrame(Int), didDisplayImage(CGImage?)
+        case didRenderFrame(Int, Bool), didDisplayImage(CGImage?)
     }
 
     var delegateCallback: ((DelegateEvent) -> Void)?
@@ -71,7 +72,7 @@ final class WebPImageLayer: CALayer {
         }
     }
 
-    var interpolationQuality: CGInterpolationQuality = .medium {
+    var interpolationQuality: CGInterpolationQuality = .default {
         didSet {
             guard thumbnailSize != nil, interpolationQuality != oldValue else { return }
             setNeedsDisplay()
@@ -84,9 +85,9 @@ final class WebPImageLayer: CALayer {
         }
     }
 
-    var playbackSpeed: Double = 1 {
+    var playBackSpeedRate: Double = 1 {
         didSet {
-            imageRenderer?.playbackSpeed = playbackSpeed
+            imageRenderer?.playBackSpeedRate = playBackSpeedRate
         }
     }
 
@@ -121,7 +122,7 @@ final class WebPImageLayer: CALayer {
     override init(layer: Any) {
         if let layer = layer as? WebPImageLayer {
             thumbnailSize = layer.thumbnailSize
-            playbackSpeed = layer.playbackSpeed
+            playBackSpeedRate = layer.playBackSpeedRate
             image = layer.image
             imageRenderer = layer.imageRenderer
         }
@@ -167,9 +168,8 @@ final class WebPImageLayer: CALayer {
 private extension WebPImageLayer {
 
     func displayCanvas(thumbnailSize: CGSize?, interpolationQuality: CGInterpolationQuality) {
-        var image = imageRenderer?.renderedImage
-
         displayQueue.async { [weak self] in
+            var image = self?.imageRendered
             if let originalImage = image, let thumbnailSize = thumbnailSize {
                 image = originalImage.scaled(to: thumbnailSize, interpolationQuality: interpolationQuality) ?? originalImage
             }
@@ -194,8 +194,8 @@ private extension WebPImageLayer {
             delegateCallback?(.didStopPlaying)
         case let .didCompletePlaying(loopMode):
             delegateCallback?(.didCompletePlaying(loopMode))
-        case let .didRenderFrame(index):
-            delegateCallback?(.didRenderFrame(index))
+        case let .didRenderFrame(index, didUseCache):
+            delegateCallback?(.didRenderFrame(index, didUseCache))
         }
     }
 
@@ -209,9 +209,12 @@ private extension WebPImageLayer {
             imageRenderer = WebPImageRenderer(
                 image: image,
                 useCache: useCache,
-                playbackSpeed: playbackSpeed,
+                playBackSpeedRate: playBackSpeedRate,
                 viewLoopMode: viewLoopMode,
-                displayCallback: { [weak self] in
+                displayCallback: { [weak self] image in
+                    self?.displayQueue.sync(flags: .barrier) {
+                        self?.imageRendered = image
+                    }
                     self?.setNeedsDisplay()
                 }
             )

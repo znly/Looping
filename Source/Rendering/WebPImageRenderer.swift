@@ -5,7 +5,7 @@ import class CoreGraphics.CGImage
 
 final class WebPImageRenderer {
     private let image: WebPImage
-    private let displayCallback: () -> Void
+    private let displayCallback: (CGImage?) -> Void
 
     private lazy var cache = WebPImageFrameCache(image: image)
     private lazy var renderQueue = DispatchQueue(label: "webPRenderer:render:\(image.uuid)", qos: .userInteractive)
@@ -17,12 +17,12 @@ final class WebPImageRenderer {
 
     enum DelegateEvent {
         case didStartPlaying, didPausePlaying, didStopPlaying, didCompletePlaying(WebPImage.LoopMode)
-        case didRenderFrame(Int)
+        case didRenderFrame(Int, Bool)
     }
 
     var delegateCallback: ((DelegateEvent) -> Void)?
 
-    var playbackSpeed: Double
+    var playBackSpeedRate: Double
     var viewLoopMode: WebPImage.LoopMode?
     var useCache: Bool {
         set {
@@ -50,10 +50,6 @@ final class WebPImageRenderer {
 
     private lazy var displayLink = DisplayLink() { [weak self] elapsedTime in
         self?.renderFrameIfNeeded(elapsedTime: elapsedTime)
-    }
-
-    var renderedImage: CGImage? {
-        return renderQueue.sync { return imageRendered }
     }
 
     var isRendering: Bool {
@@ -101,11 +97,11 @@ final class WebPImageRenderer {
 
     init(image: WebPImage,
          useCache: Bool,
-         playbackSpeed: Double,
+         playBackSpeedRate: Double,
          viewLoopMode: WebPImage.LoopMode?,
-         displayCallback: @escaping () -> Void) {
+         displayCallback: @escaping (CGImage?) -> Void) {
         self.image = image
-        self.playbackSpeed = playbackSpeed
+        self.playBackSpeedRate = playBackSpeedRate
         self.viewLoopMode = viewLoopMode
         self.displayCallback = displayCallback
         safeUseCache = useCache
@@ -137,7 +133,7 @@ extension WebPImageRenderer {
 
     private func frameIndexToRender(elapsedTime: TimeInterval) -> Int? {
         // Check if we should be iterating over frames
-        guard isIteratingOverFrames, playbackSpeed > 0 else {
+        guard isIteratingOverFrames, playBackSpeedRate > 0 else {
             return nil
         }
 
@@ -147,11 +143,11 @@ extension WebPImageRenderer {
             return nil
         }
 
-        // Check if can move to the next frame
+        // Check if we can move to the next frame
         waitTime += elapsedTime
 
         if image.isAnimation, let frameIndex = frameIndex, frameIndex != 0 {
-            let frameDuration = image.frameDurations[frameIndex % image.frameCount] / playbackSpeed
+            let frameDuration = image.frameDurations[frameIndex % image.frameCount] / playBackSpeedRate
 
             // Check if we can move to the next frame
             guard waitTime >= frameDuration else {
@@ -176,11 +172,15 @@ extension WebPImageRenderer {
         }
 
         let key = frame.cacheKey
+        let didUseCache: Bool
+        var cgImage: CGImage?
 
         if safeUseCache, let canvasImage = cache.frame(forKey: key) {
-            imageRendered = canvasImage
+            didUseCache = true
+            cgImage = canvasImage
             canvasContext = image.createCanvasContext(from: canvasImage)
         } else {
+            didUseCache = false
             if canvasContext == nil {
                 canvasContext = image.createCanvasContext()
             }
@@ -191,18 +191,19 @@ extension WebPImageRenderer {
 
             try? frame.render(in: canvasContext, colorspace: image.colorspace, previousFrame: frameRendered)
 
-            imageRendered = canvasContext.makeImage()
+            cgImage = canvasContext.makeImage()
 
-            if safeUseCache, let imageRendered = imageRendered {
+            if safeUseCache, let imageRendered = cgImage {
                 cache.set(frame: imageRendered, forKey: key)
             }
         }
 
+        imageRendered = cgImage
         frameRendered = frame
 
         DispatchQueue.main.async { [weak self] in
-            self?.displayCallback()
-            self?.delegateCallback?(.didRenderFrame(index))
+            self?.delegateCallback?(.didRenderFrame(index, didUseCache))
+            self?.displayCallback(cgImage)
         }
     }
 
@@ -226,7 +227,7 @@ extension WebPImageRenderer {
             self?.imageRendered = nil
 
             DispatchQueue.main.async {
-                self?.displayCallback()
+                self?.displayCallback(nil)
             }
         }
     }

@@ -9,7 +9,8 @@ public protocol WebPImageViewActivityDelegate: class {
     /// - Parameters:
     ///   - imageView: The image view rendering the image.
     ///   - index: The index of the frame.
-    func imageView(_ imageView: WebPImageView, didRenderFrameAtIndex index: Int)
+    ///   - fromCache: A flag indicating if the frame was rendered from cache.
+    func imageView(_ imageView: WebPImageView, didRenderFrameAtIndex index: Int, fromCache didUseCache: Bool)
 
     /// Called by the image view when it displays a frame.
     /// - Parameters:
