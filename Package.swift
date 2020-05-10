@@ -2,19 +2,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "WebPImage",
+    name: "Looping",
     platforms: [
-        .iOS(.v8),
+        .iOS(.v11),
         .macOS(.v10_15)
     ],
     products: [
-        .library(name: "WebPImage", targets: ["WebPImage"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/znly/WebP.git", .exact("1.1.0"))
+        .library(name: "Looping", targets: ["Looping"]),
+        .library(name: "LoopingWebP", targets: ["LoopingWebP"])
     ],
     targets: [
-        .target(name: "WebPImage", dependencies: ["WebP"], path: "Source")
-//        .testTarget(name: "WebPImageTests", dependencies: ["WebPImage"])
+        .target(name: "Looping", dependencies: [], path: "Sources/Looping"),
+        .target(name: "LoopingWebP", dependencies: ["Looping", "WebP"], path: "Sources/LoopingWebP"),
+        .target(
+            name: "WebP",
+            path: "Sources/WebP/libwebp/",
+            sources: ["src"],
+            publicHeadersPath: "src/webp",
+            cSettings: [.headerSearchPath(".")]
+        )
     ]
 )

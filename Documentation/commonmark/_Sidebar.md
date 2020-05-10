@@ -1,19 +1,23 @@
 <details>
 <summary>Types</summary>
 
-  - [WebP](/WebP)
-  - [WebP.CompletionBehavior](/WebP_CompletionBehavior)
-  - [WebPImage](/WebPImage)
-  - [WebPImage.LoopMode](/WebPImage_LoopMode)
-  - [WebPImageView](/WebPImageView)
-  - [WebPImageView.CompletionBehavior](/WebPImageView_CompletionBehavior)
+  - [Asset](/Asset)
+  - [Asset.LoopMode](/Asset_LoopMode)
+  - [ChronoImage](/ChronoImage)
+  - [ChronoImage.LoopMode](/ChronoImage_LoopMode)
+  - [Loop](/Loop)
+  - [Loop.CompletionBehavior](/Loop_CompletionBehavior)
+  - [LoopImage](/LoopImage)
+  - [LoopImage.LoopMode](/LoopImage_LoopMode)
+  - [LoopView](/LoopView)
+  - [LoopView.CompletionBehavior](/LoopView_CompletionBehavior)
 
 </details>
 
 <details>
 <summary>Protocols</summary>
 
-  - [WebPImageViewActivityDelegate](/WebPImageViewActivityDelegate)
-  - [WebPImageViewDelegate](/WebPImageViewDelegate)
+  - [LoopViewActivityDelegate](/LoopViewActivityDelegate)
+  - [LoopViewDelegate](/LoopViewDelegate)
 
 </details>

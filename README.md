@@ -1,27 +1,42 @@
-# WebPImage
+# ➰Looping
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![SwiftPM Support](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![Carthage Support](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
 
-A simple and lightweight framework to decode and display any static or animated WebP image using native UIKit and SwiftUI.
+## What is Looping?
+
+A simple and lightweight framework to display looping images using native UIKit and SwiftUI.
+
+### Supported formats
+
+Out of the box, Looping supports 3 formats of __animated__ and __still__ images: **GIF**, **APNG** and **HEIC**.
+
+To add WebP support, include **LoopingWebP**, and enable it once:
+
+```
+import LoopingWebP
+
+LoopingWebP.enable()
+```
+
+### Dependencies
+
+LoopingWebP denpends on [Google's libwebp](https://github.com/webmproject/libwebp/releases/tag/v1.1.0).
 
 ### Next steps
-- Implement `BackgroundBehavior` (restart, stop, resume)
-- Introduce unit tests
-- Implement progressive decoding option
-- Add native support on macOS, watchOS, tvOS
 
-## Minimum deployment targets
++ Add unit tests coverage.
++ Implement `BackgroundBehavior` (restart, stop, resume).
++ Implement a progressive decoding option.
++ Add native support on macOS, watchOS, tvOS.
+
+### Minimum deployment targets
 
 + iOS 11
 + macOS 10.15
 
-## Dependencies
-
-+ [WebP](https://github.com/znly/WebP)
-
-## Project requirements
+### Project requirements
 
 + Xcode 11 (swift 5.1)
 + Carthage 0.34.0
@@ -32,14 +47,12 @@ A simple and lightweight framework to decode and display any static or animated 
 
 [Swift Package Manager (SwiftPM)](https://swift.org/package-manager/) is dependency manager as well as a distribution tool.
 
-
 From Xcode 11 onward, SwiftPM is natively integrated with Xcode. In `File -> Swift Packages -> Add Package Dependency`, search for WebPImage's repo URL.
-
 
 If you're a framework author, you can add following the dependency to your `Package.swift`:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/znly/WebPImage.git", .from("0.1.0"))
+    .package(url: "https://github.com/znly/Looping.git", .from("0.3.0"))
 ]
 ```
 
@@ -47,52 +60,52 @@ dependencies: [
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
-To integrate WebPImage into your Xcode project using Carthage, specify it in your Cartfile:
+To integrate Looping into your Xcode project using Carthage, specify it in your Cartfile:
 ```
-github "znly/WebPImage" ~> 0.1.0
+github "znly/Looping" ~> 0.3.0
 ```
 
 ## Usage
 
-### ① Creating a `WebPImage`
+### ① Creating a `LoopImage`
 
 The prefered method is to use `init(data:, scale:)`. Default scale is 1.0.
 ```swift
-import WebPImage
+import Looping
 
 let imageData: Data
-let image = try? WebPImage(data: imageData)
+let image = try? LoopImage(data: imageData)
 ```
 
 Additional convenience initializers are available: `init(url:)` and  `init(named:)`.
 Note: If the file name contains a scale factor (eg: @{1,2,3}x) it will be applied to the image.
 
-### ② Displaying a `WebPImage`
+### ② Displaying a `LoopImage`
 
 Rendering happens on a background thread. 
 
-#### Using a `WebPImageView` (UIKit)
+#### Using `LoopView` (UIKit)
 
 ```swift
-import WebPImage
+import Looping
 
-let image: WebPImage
-let imageView = WebPImageView(image: image)
+let image: LoopImage
+let imageView = LoopView(image: image)
 
-imaveView.contentMode = .scaleAspectFit
-imageView.loopMode = .once
+loopView.contentMode = .scaleAspectFit
+loopView.loopMode = .once
 ```
 
-#### Using a `WebPImageView` (SwifUI)
+#### Using `Loop` (SwifUI)
 
 ```swift
-import WebPImage
+import Looping
 
-let image: WebPImage
+let image: LoopImage
 
 struct ContentView: View {
     var body: some View {
-        WebP(image)
+        Loop(image)
             .loopMode(.once)
             .resizable()
             .scaledToFit()
@@ -100,18 +113,18 @@ struct ContentView: View {
 }
 ```
 
-### ③ Converting a `WebPImage` frame into a `UIImage` or `CGImage`
+### ③ Converting a `LoopImage` frame into a `UIImage` or `CGImage`
 
-Using the methods `WebPImage.cgImage(atFrame:)` or  `WebPImage.image(atFrame:)`.
+Using the methods `LoopImage.cgImage(atFrame:)` or  `LoopImage.image(atFrame:)`.
 
-Since retrieving the image of a WebP image at a specific frame requires to go over every intermediary frame to reconstruct the final image, it is recommended to call these methods outside of the main thread. 
+ For WebP images, since retrieving the image of at a specific frame requires to go over every intermediary frame to reconstruct the final image, it is recommended to call these methods outside of the main thread. 
 
 ```swift
-import WebPImage
+import Looping
 
-let wpImage: WebPImage
-let cgImage: CGImage = wpImage.cgImage()
-let image: UIImage = wpImage.image() // alternatively you can use UIImage(wpImage: wpImage)
+let loopImage: LoopImage
+let cgImage: CGImage = loopImage.cgImage()
+let image: UIImage = loopImage.image() // alternatively you can use UIImage(loopImage: loopImage)
 ```
 
 ## Documentation
@@ -124,9 +137,12 @@ See [AUTHORS](./AUTHORS) for the list of contributors.
 ## Credits
 Assets used in the example app are taken from:
 - https://developers.google.com/speed/webp/gallery
-- https://mathiasbynens.be/demo/animated-webp
 - http://littlesvr.ca/apng/gif_apng_webp.html
+- http://littlesvr.ca/apng/samples.html
+- https://apng.onevcat.com/demo
+- https://mathiasbynens.be/demo/animated-webp
 - https://github.com/iSparta/iSparta
+- https://nokiatech.github.io/heif/comparison.html
 
 Documentation was generated using:
 - https://github.com/SwiftDocOrg/swift-doc
