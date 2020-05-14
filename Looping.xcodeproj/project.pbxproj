@@ -2039,7 +2039,7 @@
 				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.1.0;
 				MODULEMAP_FILE = Sources/WebP/module.modulemap;
-				PRODUCT_BUNDLE_IDENTIFIER = co.znly.libwebp;
+				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebP;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -2071,7 +2071,7 @@
 				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.1.0;
 				MODULEMAP_FILE = Sources/WebP/module.modulemap;
-				PRODUCT_BUNDLE_IDENTIFIER = co.znly.libwebp;
+				PRODUCT_BUNDLE_IDENTIFIER = co.znly.WebP;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
