@@ -12,9 +12,9 @@ A simple and lightweight framework to display looping images using native UIKit 
 
 Out of the box, Looping supports 3 formats of __animated__ and __still__ images: **GIF**, **APNG** and **HEIC**.
 
-To add WebP support, include **LoopingWebP**, and enable it once:
+To add WebP support, include the framework **LoopingWebP**, and enable it once:
 
-```
+```swift
 import LoopingWebP
 
 LoopingWebP.enable()
@@ -22,7 +22,8 @@ LoopingWebP.enable()
 
 ### Dependencies
 
-LoopingWebP denpends on [Google's libwebp](https://github.com/webmproject/libwebp/releases/tag/v1.1.0).
++ **Looping** has no external dependency.
++ **LoopingWebP** depends on [Google's libwebp](https://github.com/webmproject/libwebp/releases/tag/v1.1.0).
 
 ### Next steps
 
@@ -52,7 +53,7 @@ From Xcode 11 onward, SwiftPM is natively integrated with Xcode. In `File -> Swi
 If you're a framework author, you can add following the dependency to your `Package.swift`:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/znly/Looping.git", .from("0.3.0"))
+    .package(url: "https://github.com/znly/Looping.git", .from("0.1.0"))
 ]
 ```
 
@@ -62,7 +63,7 @@ dependencies: [
 
 To integrate Looping into your Xcode project using Carthage, specify it in your Cartfile:
 ```
-github "znly/Looping" ~> 0.3.0
+github "znly/Looping" ~> 0.1.0
 ```
 
 ## Usage
@@ -136,16 +137,16 @@ See [AUTHORS](./AUTHORS) for the list of contributors.
 
 ## Credits
 Assets used in the example app are taken from:
-- https://developers.google.com/speed/webp/gallery
-- http://littlesvr.ca/apng/gif_apng_webp.html
-- http://littlesvr.ca/apng/samples.html
-- https://apng.onevcat.com/demo
-- https://mathiasbynens.be/demo/animated-webp
-- https://github.com/iSparta/iSparta
-- https://nokiatech.github.io/heif/comparison.html
++ https://developers.google.com/speed/webp/gallery
++ http://littlesvr.ca/apng/gif_apng_webp.html
++ http://littlesvr.ca/apng/samples.html
++ https://apng.onevcat.com/demo
++ https://mathiasbynens.be/demo/animated-webp
++ https://github.com/iSparta/iSparta
++ https://nokiatech.github.io/heif/comparison.html
 
 Documentation was generated using:
-- https://github.com/SwiftDocOrg/swift-doc
++ https://github.com/SwiftDocOrg/swift-doc
 
 ## License
 The Apache License version 2.0 (Apache2) - see [LICENSE](./LICENSE) for more details.
