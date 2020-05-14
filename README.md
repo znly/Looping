@@ -40,7 +40,6 @@ LoopingWebP.enable()
 ### Project requirements
 
 + Xcode 11 (swift 5.1)
-+ Carthage 0.34.0
 
 ## Installation
 
@@ -97,7 +96,7 @@ loopView.contentMode = .scaleAspectFit
 loopView.loopMode = .once
 ```
 
-#### Using `Loop` (SwifUI)
+#### Using `Loop` (SwiftUI)
 
 ```swift
 import Looping
