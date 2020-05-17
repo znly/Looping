@@ -11,6 +11,7 @@ import Looping
 import WebP
 
 final class WebPCodec: Codec {
+
     private enum DataHeader {
         static let length = 12
         static let prefix = "RIFF"
@@ -67,7 +68,7 @@ final class WebPCodec: Codec {
         let index = index % frameCount + 1
 
         guard index > 0 else {
-            throw DecodingError.invalidFrameIndex(index)
+            throw CodecError.frameIndexOutOfBounds(index)
         }
 
         var iterator = WebPIterator()
@@ -76,11 +77,11 @@ final class WebPCodec: Codec {
         }
 
         guard WebPDemuxGetFrame(demuxer, CInt(index), &iterator) != .zero else {
-            throw DecodingError.invalidFrameIndex(index)
+            throw CodecError.frameIndexOutOfBounds(index)
         }
 
         guard iterator.complete == 1 else {
-            throw DecodingError.incompleteFrame
+            throw WebPCodecError.incompleteFrame
         }
 
         var config = WebPDecoderConfig()
@@ -103,7 +104,7 @@ final class WebPCodec: Codec {
         let index = index % frameCount + 1
 
         guard index > 0 else {
-            throw DecodingError.invalidFrameIndex(index)
+            throw CodecError.frameIndexOutOfBounds(index)
         }
 
         var iterator = WebPIterator()
@@ -112,13 +113,13 @@ final class WebPCodec: Codec {
         }
 
         guard WebPDemuxGetFrame(demuxer, CInt(index), &iterator) != .zero else {
-            throw DecodingError.invalidFrameIndex(index)
+            throw CodecError.frameIndexOutOfBounds(index)
         }
 
         var config = WebPDecoderConfig()
 
         guard WebPInitDecoderConfig(&config) != .zero else {
-            throw DecodingError.configurationFailed
+            throw WebPCodecError.codecVersionMismatch
         }
 
         let data = iterator.fragment.bytes
@@ -126,7 +127,7 @@ final class WebPCodec: Codec {
 
         let featuresCode = WebPGetFeatures(data, dataSize, &config.input)
         guard featuresCode == VP8_STATUS_OK else {
-            throw DecodingError.featuresRetrievalFailed(errorString(for: featuresCode))
+            throw WebPCodecError.featuresRetrievalFailed(errorString(for: featuresCode))
         }
 
         config.options.no_fancy_upsampling = 1
@@ -135,7 +136,7 @@ final class WebPCodec: Codec {
 
         let decodeCode = WebPDecode(data, dataSize, &config)
         guard [VP8_STATUS_OK, VP8_STATUS_NOT_ENOUGH_DATA].contains(decodeCode) else {
-            throw DecodingError.decodeFailed(errorString(for: decodeCode))
+            throw WebPCodecError.decodingFailed(errorString(for: decodeCode))
         }
 
         guard let provider = CGDataProvider(
@@ -145,7 +146,7 @@ final class WebPCodec: Codec {
             releaseData: { (info: UnsafeMutableRawPointer?, data: UnsafeRawPointer, size: Int) -> Void in
                 free(UnsafeMutableRawPointer(mutating: data))
         }) else {
-            throw DecodingError.invalidData
+            throw CodecError.invalidData
         }
 
         let bitmapInfo: CGBitmapInfo = config.input.has_alpha == 1
@@ -187,7 +188,7 @@ private extension WebPCodec {
 
         // Save the data in the heap and create the WebPDemuxer
         guard let demuxer = WebPDemux(&webPData) else {
-            throw DecodingError.invalidData
+            throw CodecError.invalidData
         }
 
         return demuxer
@@ -206,22 +207,12 @@ private extension WebPCodec {
     }
 
     static func getFrameCount(demuxer: OpaquePointer?) throws -> Int {
-        let frameCount = Int(WebPDemuxGetI(demuxer, WEBP_FF_FRAME_COUNT))
-
-        guard frameCount > 0 else {
-            throw DecodingError.noFramesFound
-        }
-
-        return frameCount
+        return Int(WebPDemuxGetI(demuxer, WEBP_FF_FRAME_COUNT))
     }
 
     static func getCanvasSize(demuxer: OpaquePointer?) throws -> (Int, Int) {
         let canvasWidth = Int(WebPDemuxGetI(demuxer, WEBP_FF_CANVAS_WIDTH))
         let canvasHeight = Int(WebPDemuxGetI(demuxer, WEBP_FF_CANVAS_HEIGHT))
-
-        guard canvasWidth > 0, canvasHeight > 0 else {
-            throw DecodingError.invalidCanvas
-        }
 
         return (canvasWidth, canvasHeight)
     }

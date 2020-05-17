@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Looping - DecodingError</title>
+    <title>Looping - CodecError</title>
     <style type="text/css">
     :root {
     --system-red: rgb(255, 59, 48);
@@ -1197,7 +1197,7 @@ nav li[class] {
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#enumeration cases">Enumeration Cases</a><ul><li class="case"><a href="#decodingerror.invalidasset">invalid​Asset</a></li><li class="case"><a href="#decodingerror.invaliddata">invalid​Data</a></li><li class="case"><a href="#decodingerror.invalidfileformat">invalid​File​Format</a></li><li class="case"><a href="#decodingerror.invalidscale">invalid​Scale</a></li><li class="case"><a href="#decodingerror.noframesfound">no​Frames​Found</a></li><li class="case"><a href="#decodingerror.invalidcanvas">invalid​Canvas</a></li><li class="case"><a href="#decodingerror.invalidframeindex">invalid​Frame​Index</a></li><li class="case"><a href="#decodingerror.incompleteframe">incomplete​Frame</a></li><li class="case"><a href="#decodingerror.configurationfailed">configuration​Failed</a></li><li class="case"><a href="#decodingerror.featuresretrievalfailed">features​Retrieval​Failed</a></li><li class="case"><a href="#decodingerror.decodefailed">decode​Failed</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#enumeration cases">Enumeration Cases</a><ul><li class="case"><a href="#codecerror.invaliddata">invalid​Data</a></li><li class="case"><a href="#codecerror.frameindexoutofbounds">frame​Index​Out​OfBounds</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -1205,10 +1205,10 @@ nav li[class] {
         <article>
             <h1>
     <small>Enumeration</small>
-    <code class="name">Decoding​Error</code>
+    <code class="name">Codec​Error</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">DecodingError</span></code></pre></body></html>
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">CodecError</span></code></pre></body></html>
 <section id="relationships">
     <h2 hidden>Relationships</h2>
     <figure>
@@ -1223,12 +1223,12 @@ nav li[class] {
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>%3</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-112 868,-112 868,4 -4,4"/>
-<!-- DecodingError -->
+<!-- CodecError -->
 <g id="node1" class="node enumeration current">
-<title>DecodingError</title>
-<g id="a_node1"><a xlink:href="/DecodingError" xlink:title="DecodingError">
+<title>CodecError</title>
+<g id="a_node1"><a xlink:href="/CodecError" xlink:title="CodecError">
 <path fill="none" stroke="black" stroke-width="3" d="M528,-108C528,-108 336,-108 336,-108 330,-108 324,-102 324,-96 324,-96 324,-84 324,-84 324,-78 330,-72 336,-72 336,-72 528,-72 528,-72 534,-72 540,-78 540,-84 540,-84 540,-96 540,-96 540,-102 534,-108 528,-108"/>
-<text text-anchor="middle" x="432" y="-86.95" font-family="Menlo" font-size="14.00">DecodingError</text>
+<text text-anchor="middle" x="432" y="-86.95" font-family="Menlo" font-size="14.00">CodecError</text>
 </a>
 </g>
 </g>
@@ -1238,9 +1238,9 @@ nav li[class] {
 <path fill="none" stroke="black" d="M528,-36C528,-36 336,-36 336,-36 330,-36 324,-30 324,-24 324,-24 324,-12 324,-12 324,-6 330,0 336,0 336,0 528,0 528,0 534,0 540,-6 540,-12 540,-12 540,-24 540,-24 540,-30 534,-36 528,-36"/>
 <text text-anchor="middle" x="432" y="-14.95" font-family="Menlo" font-size="14.00">Error</text>
 </g>
-<!-- DecodingError&#45;&gt;Error -->
+<!-- CodecError&#45;&gt;Error -->
 <g id="edge1" class="edge conformsTo">
-<title>DecodingError&#45;&gt;Error</title>
+<title>CodecError&#45;&gt;Error</title>
 <path fill="none" stroke="black" d="M432,-71.7C432,-63.98 432,-54.71 432,-46.11"/>
 <polygon fill="black" stroke="black" points="435.5,-46.1 432,-36.1 428.5,-46.1 435.5,-46.1"/>
 </g>
@@ -1248,7 +1248,7 @@ nav li[class] {
 </svg>
 
 
-        <figcaption hidden>Inheritance graph for DecodingError.</figcaption>
+        <figcaption hidden>Inheritance graph for CodecError.</figcaption>
     </figure>
         <h3>Conforms To</h3>
 <dl>
@@ -1258,71 +1258,17 @@ nav li[class] {
     <section id="enumeration cases">
         <h2>Enumeration Cases</h2>
 
-        <div role="article" class="enumeration" id="decodingerror.invalidasset">
-    <h3>
-        <code>invalid​Asset</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidAsset</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.invaliddata">
+        <div role="article" class="enumeration" id="codecerror.invaliddata">
     <h3>
         <code>invalid​Data</code>
     </h3>
     <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidData</span></code></pre></body></html>
 </div>
-<div role="article" class="enumeration" id="decodingerror.invalidfileformat">
+<div role="article" class="enumeration" id="codecerror.frameindexoutofbounds">
     <h3>
-        <code>invalid​File​Format</code>
+        <code>frame​Index​Out​OfBounds</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidFileFormat</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.invalidscale">
-    <h3>
-        <code>invalid​Scale</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidScale</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.noframesfound">
-    <h3>
-        <code>no​Frames​Found</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">noFramesFound</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.invalidcanvas">
-    <h3>
-        <code>invalid​Canvas</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidCanvas</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.invalidframeindex">
-    <h3>
-        <code>invalid​Frame​Index</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidFrameIndex</span>(: <span class="type">Int</span>)</code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.incompleteframe">
-    <h3>
-        <code>incomplete​Frame</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">incompleteFrame</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.configurationfailed">
-    <h3>
-        <code>configuration​Failed</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">configurationFailed</span></code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.featuresretrievalfailed">
-    <h3>
-        <code>features​Retrieval​Failed</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">featuresRetrievalFailed</span>(: <span class="type">String</span>)</code></pre></body></html>
-</div>
-<div role="article" class="enumeration" id="decodingerror.decodefailed">
-    <h3>
-        <code>decode​Failed</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">decodeFailed</span>(: <span class="type">String</span>)</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">frameIndexOutOfBounds</span>(: <span class="type">Int</span>)</code></pre></body></html>
 </div>
     </section>
 
@@ -1333,7 +1279,7 @@ nav li[class] {
 
     <footer>
         <p>
-    Generated on <time datetime="2020-05-13T23:58:48+0200">May 13, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a>.
+    Generated on <time datetime="2020-05-17T07:53:28+0200">May 17, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a>.
 </p>
     </footer>
 </body>

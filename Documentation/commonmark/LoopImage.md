@@ -29,7 +29,7 @@ Returns an image initialized from an asset catalog.
 
 ### Throws
 
-DecodingError
+LoopImageError, CodecError
 
 ## Properties
 

@@ -105,17 +105,15 @@ public struct LoopImage {
     /// - Parameters:
     ///   - data: The data of from an image.
     ///   - scale: The scale factor of the image.
-    /// - Throws: DecodingError
+    /// - Throws: LoopImageError, CodecError, WebPCodecError
     public init(data: Data, scale: CGFloat = defaultScale) throws {
-        guard scale > 0 else {
-            throw DecodingError.invalidScale
-        }
-        uuid = UUID().uuidString
-
         guard let codecType = data.codec() else {
-            throw DecodingError.invalidFileFormat
+            throw LoopImageError.noMatchingCodec
         }
 
+        let scale = scale > 0 ? scale : 1
+
+        uuid = UUID().uuidString
         codec = try codecType.init(data: data)
         self.scale = scale
         size = CGSize(width: CGFloat(codec.canvasWidth) / scale, height: CGFloat(codec.canvasHeight) / scale)

@@ -15,9 +15,10 @@ Out of the box, Looping supports 3 formats of __animated__ and __still__ images:
 To add WebP support, include the framework **LoopingWebP**, and enable it once:
 
 ```swift
+import Looping
 import LoopingWebP
 
-LoopingWebP.enable()
+LoopImage.enableWebP()
 ```
 
 ### Dependencies
@@ -27,10 +28,11 @@ LoopingWebP.enable()
 
 ### Next steps
 
-+ Add unit tests coverage.
-+ Implement `BackgroundBehavior` (restart, stop, resume).
-+ Implement a progressive decoding option.
-+ Add native support on macOS, watchOS, tvOS.
++ CocoaPod support.
++ Unit tests coverage.
++ `BackgroundBehavior` (restart, stop, resume).
++ Progressive decoding option.
++ Native support on macOS, watchOS, tvOS.
 
 ### Minimum deployment targets
 

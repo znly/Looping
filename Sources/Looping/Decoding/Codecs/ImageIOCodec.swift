@@ -53,7 +53,7 @@ final class ImageIOCodec<CodecProperties: ImageIOCodecProperties>: Codec {
         let index = index % frameCount
 
         guard index >= 0 else {
-            throw DecodingError.invalidFrameIndex(index)
+            throw CodecError.frameIndexOutOfBounds(index)
         }
 
         return Frame(
@@ -73,7 +73,7 @@ final class ImageIOCodec<CodecProperties: ImageIOCodecProperties>: Codec {
         let index = index % frameCount
 
         guard index >= 0 else {
-            throw DecodingError.invalidFrameIndex(index)
+            throw CodecError.frameIndexOutOfBounds(index)
         }
 
         return CGImageSourceCreateImageAtIndex(source, index, nil)
@@ -84,7 +84,7 @@ private extension ImageIOCodec {
 
     static func generateSource(data: Data) throws -> CGImageSource {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
-            throw DecodingError.invalidData
+            throw CodecError.invalidData
         }
 
         return source
@@ -103,7 +103,7 @@ private extension ImageIOCodec {
         guard let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil).map({ NSDictionary(dictionary: $0) }),
             let width = (properties[kCGImagePropertyPixelWidth] as? NSNumber)?.intValue,
             let height = (properties[kCGImagePropertyPixelHeight] as? NSNumber)?.intValue else {
-                throw DecodingError.invalidData
+                throw CodecError.invalidData
         }
 
         return (width, height)

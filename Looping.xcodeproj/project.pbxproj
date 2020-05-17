@@ -15,6 +15,9 @@
 		772563B2246C6D5900517DC0 /* LoopingWebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D7DCEB246C699F006EA16B /* LoopingWebP.framework */; };
 		772563B3246C6D5900517DC0 /* LoopingWebP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77D7DCEB246C699F006EA16B /* LoopingWebP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7726EF15243918CA0030026B /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7726EF14243918CA0030026B /* DisplayLink.swift */; };
+		773A1AA724710061005B03F6 /* LoopImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A1AA624710061005B03F6 /* LoopImageError.swift */; };
+		773A1AAB24710310005B03F6 /* WebPCodecError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A1AA824710306005B03F6 /* WebPCodecError.swift */; };
+		773A1AAD2471057D005B03F6 /* LoopImage+WebP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A1AAC2471057D005B03F6 /* LoopImage+WebP.swift */; };
 		7759E141243D2F5100EBE477 /* LoopImage+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E140243D2F5100EBE477 /* LoopImage+UIImage.swift */; };
 		7759E143243D2F7A00EBE477 /* LoopImage+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E142243D2F7A00EBE477 /* LoopImage+String.swift */; };
 		7759E145243D2FAA00EBE477 /* Frame+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E144243D2FAA00EBE477 /* Frame+String.swift */; };
@@ -301,12 +304,11 @@
 		77D7DCE0246C64DA006EA16B /* WebP.h in Headers */ = {isa = PBXBuildFile; fileRef = 77D7DCDD246C64D4006EA16B /* WebP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77D7DCF3246C6A7D006EA16B /* LoopingWebP.h in Headers */ = {isa = PBXBuildFile; fileRef = 77D7DCD5246C64AB006EA16B /* LoopingWebP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77D7DCF4246C6A9E006EA16B /* Looping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* Looping.framework */; };
-		77D7DCFE246C6BCB006EA16B /* LoopingWebP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7DCD6246C64AB006EA16B /* LoopingWebP.swift */; };
 		77D7DCFF246C6CA5006EA16B /* WebPCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7DCD4246C64AB006EA16B /* WebPCodec.swift */; };
 		77E59C522440E17E00B5B057 /* tux@2x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 77E59C512440E17E00B5B057 /* tux@2x.webp */; };
 		77E59C5B24412F4D00B5B057 /* LoopViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E59C5A24412F4D00B5B057 /* LoopViewDelegate.swift */; };
 		77E59CA92441D16500B5B057 /* LoopViewActivityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E59CA82441D16500B5B057 /* LoopViewActivityDelegate.swift */; };
-		77E7E15F2438D828000E7528 /* DecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1582438D828000E7528 /* DecodingError.swift */; };
+		77E7E15F2438D828000E7528 /* CodecError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1582438D828000E7528 /* CodecError.swift */; };
 		77E7E1602438D828000E7528 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1592438D828000E7528 /* Frame.swift */; };
 		77E7E1622438D828000E7528 /* LoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E15B2438D828000E7528 /* LoopView.swift */; };
 		77E7E1632438D828000E7528 /* LoopLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E15C2438D828000E7528 /* LoopLayer.swift */; };
@@ -401,6 +403,9 @@
 		772046752452018A0087D616 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
 		7726EED82439115E0030026B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		7726EF14243918CA0030026B /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
+		773A1AA624710061005B03F6 /* LoopImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopImageError.swift; sourceTree = "<group>"; };
+		773A1AA824710306005B03F6 /* WebPCodecError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPCodecError.swift; sourceTree = "<group>"; };
+		773A1AAC2471057D005B03F6 /* LoopImage+WebP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoopImage+WebP.swift"; sourceTree = "<group>"; };
 		7759E102243A3FEA00EBE477 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		7759E104243A405500EBE477 /* UIViewContentMode+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContentMode+String.swift"; sourceTree = "<group>"; };
 		7759E106243A407100EBE477 /* LoopMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopMode.swift; sourceTree = "<group>"; };
@@ -642,7 +647,6 @@
 		77D7DC26246C6291006EA16B /* WebP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77D7DCD4246C64AB006EA16B /* WebPCodec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPCodec.swift; sourceTree = "<group>"; };
 		77D7DCD5246C64AB006EA16B /* LoopingWebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopingWebP.h; sourceTree = "<group>"; };
-		77D7DCD6246C64AB006EA16B /* LoopingWebP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopingWebP.swift; sourceTree = "<group>"; };
 		77D7DCD7246C64AB006EA16B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77D7DCDC246C64D4006EA16B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77D7DCDD246C64D4006EA16B /* WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebP.h; sourceTree = "<group>"; };
@@ -652,7 +656,7 @@
 		77E59C5A24412F4D00B5B057 /* LoopViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopViewDelegate.swift; sourceTree = "<group>"; };
 		77E59CA82441D16500B5B057 /* LoopViewActivityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopViewActivityDelegate.swift; sourceTree = "<group>"; };
 		77E7E1412438CB4D000E7528 /* Looping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Looping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77E7E1582438D828000E7528 /* DecodingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingError.swift; sourceTree = "<group>"; };
+		77E7E1582438D828000E7528 /* CodecError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodecError.swift; sourceTree = "<group>"; };
 		77E7E1592438D828000E7528 /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		77E7E15B2438D828000E7528 /* LoopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopView.swift; sourceTree = "<group>"; };
 		77E7E15C2438D828000E7528 /* LoopLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopLayer.swift; sourceTree = "<group>"; };
@@ -805,9 +809,9 @@
 			isa = PBXGroup;
 			children = (
 				7780074C2467F46700FFBF32 /* Codec.swift */,
+				77E7E1582438D828000E7528 /* CodecError.swift */,
 				77D7D94D246976CC006EA16B /* CodecRegistry.swift */,
 				77D7D91B24682E25006EA16B /* Data+Codec.swift */,
-				77E7E1582438D828000E7528 /* DecodingError.swift */,
 				77D7D99C246BE784006EA16B /* Codecs */,
 			);
 			path = Decoding;
@@ -876,6 +880,7 @@
 				77E7E1652438D866000E7528 /* LoopImage.swift */,
 				77B226D224459C2100E513BC /* LoopImage+Context.swift */,
 				7759E142243D2F7A00EBE477 /* LoopImage+String.swift */,
+				773A1AA624710061005B03F6 /* LoopImageError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1253,8 +1258,9 @@
 			children = (
 				77D7DCD5246C64AB006EA16B /* LoopingWebP.h */,
 				77D7DCD7246C64AB006EA16B /* Info.plist */,
-				77D7DCD6246C64AB006EA16B /* LoopingWebP.swift */,
+				773A1AAC2471057D005B03F6 /* LoopImage+WebP.swift */,
 				77D7DCD4246C64AB006EA16B /* WebPCodec.swift */,
+				773A1AA824710306005B03F6 /* WebPCodecError.swift */,
 			);
 			path = LoopingWebP;
 			sourceTree = "<group>";
@@ -1824,8 +1830,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				773A1AAD2471057D005B03F6 /* LoopImage+WebP.swift in Sources */,
+				773A1AAB24710310005B03F6 /* WebPCodecError.swift in Sources */,
 				77D7DCFF246C6CA5006EA16B /* WebPCodec.swift in Sources */,
-				77D7DCFE246C6BCB006EA16B /* LoopingWebP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1842,7 +1849,7 @@
 				772046762452018A0087D616 /* Loop.swift in Sources */,
 				77D7D94E246976CC006EA16B /* CodecRegistry.swift in Sources */,
 				77D7D91C24682E25006EA16B /* Data+Codec.swift in Sources */,
-				77E7E15F2438D828000E7528 /* DecodingError.swift in Sources */,
+				77E7E15F2438D828000E7528 /* CodecError.swift in Sources */,
 				7759E143243D2F7A00EBE477 /* LoopImage+String.swift in Sources */,
 				77D7D92D24689F46006EA16B /* Frame+DrawRect.swift in Sources */,
 				7759E14A243D3A1100EBE477 /* UIImage+LoopImage.swift in Sources */,
@@ -1851,6 +1858,7 @@
 				779AE1B42442F22600702C06 /* ImageRenderer.swift in Sources */,
 				77D7D99B246BC7DC006EA16B /* HEICCodec.swift in Sources */,
 				77E7E1632438D828000E7528 /* LoopLayer.swift in Sources */,
+				773A1AA724710061005B03F6 /* LoopImageError.swift in Sources */,
 				77E7E1662438D866000E7528 /* LoopImage.swift in Sources */,
 				77E7E1602438D828000E7528 /* Frame.swift in Sources */,
 				7780074D2467F46700FFBF32 /* Codec.swift in Sources */,

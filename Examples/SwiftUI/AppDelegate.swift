@@ -1,11 +1,13 @@
 import UIKit
+
+import Looping
 import LoopingWebP
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        LoopingWebPCodec.register()
+        LoopImage.enableWebP()
         return true
     }
 

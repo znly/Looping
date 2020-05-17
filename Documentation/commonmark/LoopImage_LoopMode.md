@@ -65,7 +65,7 @@ public init(data: Data, scale: CGFloat = defaultScale) throws
 
 ### Throws
 
-DecodingError
+LoopImageError, CodecError, WebPCodecError
 
 ## init(url:)
 
