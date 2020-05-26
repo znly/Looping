@@ -55,6 +55,8 @@ import UIKit
     }
 
     /// A flag to determine if the view should start playing images automatically.
+    ///
+    /// This property is set to `true` by default.
     @IBInspectable open var autoPlay = true {
         didSet {
             toggleAnimationIfNeeded()
