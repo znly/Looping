@@ -10,7 +10,7 @@ A simple and lightweight framework to display looping images using native UIKit 
 
 ### Supported formats
 
-Out of the box, Looping supports 3 formats of __animated__ and __still__ images: **GIF**, **APNG** and **HEIC**.
+Out of the box, Looping supports 3 formats of __animated__ and __still__ images: **GIF** and **APNG**.
 
 To add WebP support, include the framework **LoopingWebP**, and enable it once:
 

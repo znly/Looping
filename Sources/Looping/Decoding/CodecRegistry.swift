@@ -8,9 +8,6 @@ final class CodecRegistry {
             GIFCodec.self,
             APNGCodec.self
         ]
-        if #available(iOS 13, *) {
-            codecs.append(HEICCodec.self)
-        }
         return codecs
     }()
 

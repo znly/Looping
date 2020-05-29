@@ -7,8 +7,6 @@ protocol ImageIOCodecProperties {
     static var loopCountKey: CFString { get }
     static var unclampedDelayTimeKey: CFString { get }
     static var delayTimeKey: CFString { get }
-    @available(iOS 13, *) static var widthKey: CFString { get }
-    @available(iOS 13, *) static var heightKey: CFString { get }
 
     static func canDecode(data: Data) -> Bool
 }
@@ -36,17 +34,17 @@ final class ImageIOCodec<CodecProperties: ImageIOCodecProperties>: Codec {
     init(data: Data) throws {
         self.data = data
 
-        source = try Self.generateSource(data: data)
-        frameCount = Self.getFrameCount(source: source)
+        source = try ImageIOCodec.generateSource(data: data)
+        frameCount = ImageIOCodec.getFrameCount(source: source)
         isAnimation = frameCount > 1
-        framesHasAlpha = Self.getFramesAlpha(source: source, frameCount: frameCount)
+        framesHasAlpha = ImageIOCodec.getFramesAlpha(source: source, frameCount: frameCount)
         hasAlpha = framesHasAlpha.firstIndex(of: true) != nil
-        framesDuration = Self.getFramesDuration(source: source, frameCount: frameCount)
+        framesDuration = ImageIOCodec.getFramesDuration(source: source, frameCount: frameCount)
         animationDuration = framesDuration.reduce(0, +)
 
-        let properties = Self.getProperties(source: source)
-        (canvasWidth, canvasHeight) = try Self.getCanvasSize(properties: properties, source: source)
-        loopCount = Self.getLoopCount(properties: properties)
+        let properties = ImageIOCodec.getProperties(source: source)
+        (canvasWidth, canvasHeight) = try ImageIOCodec.getCanvasSize(properties: properties, source: source)
+        loopCount = ImageIOCodec.getLoopCount(properties: properties)
     }
 
     func frame(at index: Int) throws -> Frame {
@@ -111,13 +109,6 @@ private extension ImageIOCodec {
 
     static func getCanvasSize(properties: NSDictionary?, source: CGImageSource) throws -> (Int, Int) {
         if let properties = properties {
-            if #available(iOS 13, *) {
-                if let width = (properties[CodecProperties.widthKey] as? NSNumber)?.intValue,
-                    let height = (properties[CodecProperties.heightKey] as? NSNumber)?.intValue {
-                    return (width, height)
-                }
-            }
-
             if let width = (properties[kCGImagePropertyPixelWidth] as? NSNumber)?.intValue,
                 let height = (properties[kCGImagePropertyPixelHeight] as? NSNumber)?.intValue {
 
@@ -139,15 +130,15 @@ private extension ImageIOCodec {
     private static func getFrameDuration(source: CGImageSource, at index: Int) -> TimeInterval {
         guard let imageProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil).map({ NSDictionary(dictionary: $0) }),
             let properties = imageProperties[CodecProperties.dictionaryKey] as? NSDictionary else {
-                return Self.defaultFrameDuration
+                return ImageIOCodec.defaultFrameDuration
         }
 
         let frameDuration = (properties[CodecProperties.unclampedDelayTimeKey] as? NSNumber)?.doubleValue
             ?? (properties[CodecProperties.delayTimeKey] as? NSNumber)?.doubleValue
-            ?? Self.defaultFrameDuration
+            ?? ImageIOCodec.defaultFrameDuration
 
         if frameDuration < 0.011 {
-            return Self.defaultFrameDuration
+            return ImageIOCodec.defaultFrameDuration
         }
 
         return frameDuration

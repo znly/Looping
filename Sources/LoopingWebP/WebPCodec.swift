@@ -46,17 +46,17 @@ final class WebPCodec: Codec {
 
     init(data: Data) throws {
         self.data = data
-        self.demuxer = try Self.generateDemuxer(data: data)
+        self.demuxer = try WebPCodec.generateDemuxer(data: data)
 
-        let flags = Self.getConfigurationFlags(demuxer: demuxer)
+        let flags = WebPCodec.getConfigurationFlags(demuxer: demuxer)
 
-        isAnimation = try Self.getIsAnimation(flags: flags)
-        hasAlpha = Self.getAlphaConfiguration(flags: flags)
-        loopCount =  Self.getLoopCount(demuxer: demuxer)
-        frameCount = try Self.getFrameCount(demuxer: demuxer)
-        (canvasWidth, canvasHeight) = try Self.getCanvasSize(demuxer: demuxer)
-        colorspace = Self.getColorspace(demuxer: demuxer, flags: flags)
-        framesDuration = Self.getframesDuration(demuxer: demuxer)
+        isAnimation = try WebPCodec.getIsAnimation(flags: flags)
+        hasAlpha = WebPCodec.getAlphaConfiguration(flags: flags)
+        loopCount =  WebPCodec.getLoopCount(demuxer: demuxer)
+        frameCount = try WebPCodec.getFrameCount(demuxer: demuxer)
+        (canvasWidth, canvasHeight) = try WebPCodec.getCanvasSize(demuxer: demuxer)
+        colorspace = WebPCodec.getColorspace(demuxer: demuxer, flags: flags)
+        framesDuration = WebPCodec.getframesDuration(demuxer: demuxer)
         animationDuration = framesDuration.reduce(0, +)
     }
 
@@ -257,7 +257,7 @@ private extension WebPCodec {
         if WebPDemuxGetFrame(demuxer, 1, &iterator) != .zero {
             repeat {
                 let duration = iterator.duration == .zero
-                    ? Self.defaultFrameDuration
+                    ? WebPCodec.defaultFrameDuration
                     : TimeInterval(iterator.duration) / 1000
                 framesDuration.append(duration)
             } while (WebPDemuxNextFrame(&iterator) != .zero)
