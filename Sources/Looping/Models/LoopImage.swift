@@ -176,6 +176,40 @@ public struct LoopImage {
         return context.makeImage()
     }
 
+    /// Creates and returns CGImages from the image corresponding to a specific frame range.
+    /// - Parameter frameRange: The frame at which the image should be generated.
+    /// - Returns: An array of optional CGImage objects that contains a snapshot of the image at the given frame range.
+    public func cgImages(atRange frameRange: ClosedRange<Int>? = nil) -> [CGImage?] {
+        guard frameCount > .zero else { return [] }
+        let maxRange = 0...(frameCount - 1)
+        let frameRange = frameRange?.clamped(to: maxRange) ?? maxRange
+
+        if codec.areFramesIndependent {
+            return frameRange.map { cgImage(atFrame: $0) }
+        }
+
+        guard let context = createCanvasContext() else {
+            return []
+        }
+
+        var images: [CGImage?] = []
+        images.reserveCapacity(frameRange.count)
+
+        var previousFrame: Frame?
+        for intermediaryIndex in 0...frameRange.upperBound {
+            if let frame = try? codec.frame(at: intermediaryIndex) {
+                render(frame: frame, in: context, withPreviousFrame: previousFrame)
+                previousFrame = frame
+                if intermediaryIndex >= frameRange.lowerBound {
+                    images.append(context.makeImage())
+                }
+            }
+        }
+
+        return images
+    }
+
+
     func frame(at index: Int) throws -> Frame {
         return try codec.frame(at: index)
     }
