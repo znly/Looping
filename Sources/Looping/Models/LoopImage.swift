@@ -71,7 +71,7 @@ public struct LoopImage {
     }
 
     var preferredFramesPerSecond: Int {
-        guard let shortestDelayTime = framesDuration.min() else {
+        guard let shortestDelayTime = framesDuration.min(), shortestDelayTime != .zero else {
             return 0
         }
         return Int(ceil(1 / shortestDelayTime))
@@ -153,6 +153,8 @@ public struct LoopImage {
     /// - Parameter frameIndex: The frame at which the image should be generated.
     /// - Returns: A CGImage object that contains a snapshot of the image at the given frame or NULL if the image is not created.
     public func cgImage(atFrame frameIndex: Int = 0) -> CGImage? {
+        guard frameCount > .zero else { return nil }
+
         if codec.areFramesIndependent {
             return try? codec.decode(at: frameIndex)
         }
