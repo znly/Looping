@@ -12,9 +12,6 @@ final class OptionsViewController: UIViewController {
     private lazy var stackView = UIStackView(
         arrangedSubviews: [
             loopStackView,
-            displayScaleStackView,
-            thumbnailStackView,
-            interpolationStackView,
             playBackSpeedRateStackView,
             autoPlayStackView,
             useCacheStackView
@@ -56,35 +53,6 @@ final class OptionsViewController: UIViewController {
             $0.selectedSegmentIndex = 1
         }
 
-    }
-
-    private lazy var thumbnailStackView = UIStackView(arrangedSubviews: [thumbnailLabel, thumbnailSwitch])
-    private let thumbnailLabel = UILabel()..{
-        $0.text = "GENERATE THUMBNAIL"
-    }
-    private lazy var thumbnailSwitch = UISwitch()..{
-        $0.isOn = loopView.generateThumbnail
-    }
-
-    private lazy var interpolationStackView = UIStackView(arrangedSubviews: [interpolationLabel, interpolationSelection])
-    private let interpolationLabel = UILabel()..{
-        $0.text = "↳ INTERPOLATION"
-    }
-    private lazy var interpolationSelection = UISegmentedControl(items: interpolations.map { $0.description })..{
-        $0.selectedSegmentIndex = interpolations.firstIndex(of: loopView.interpolationQuality) ?? 0
-    }
-
-    private lazy var displayScaleStackView = UIStackView(
-        arrangedSubviews: [displayScaleLabel, displayScaleSelection]
-        )..{
-            $0.axis = .horizontal
-            $0.distribution = .fillEqually
-    }
-    private let displayScaleLabel = UILabel()
-    private lazy var displayScaleSelection = UISlider()..{
-        $0.minimumValue = 0.25
-        $0.maximumValue = 4
-        $0.value = Float(loopView.displayScale)
     }
 
     private lazy var playBackSpeedRateStackView = UIStackView(
@@ -145,35 +113,15 @@ final class OptionsViewController: UIViewController {
         )
 
         loopSelection.addTarget(self, action: #selector(loopChanged), for: .valueChanged)
-        displayScaleSelection.addTarget(self, action: #selector(displayScaleChanged), for: .valueChanged)
-        thumbnailSwitch.addTarget(self, action: #selector(thumbnailChanged), for: .valueChanged)
-        interpolationSelection.addTarget(self, action: #selector(interpolationChanged), for: .valueChanged)
         playBackSpeedRateSelection.addTarget(self, action: #selector(playBackSpeedRateChanged), for: .valueChanged)
         autoPlaySwitch.addTarget(self, action: #selector(autoPlayChanged), for: .valueChanged)
         useCacheSwitch.addTarget(self, action: #selector(useCacheChanged), for: .valueChanged)
 
-        displayScaleChanged()
-        thumbnailChanged()
         playBackSpeedRateChanged()
     }
 
-
     @objc func loopChanged() {
         loopView.loopMode = loops[loopSelection.selectedSegmentIndex].value
-    }
-
-    @objc func displayScaleChanged() {
-        let value = displayScaleSelection.value.rounded(nearest: 0.25)
-        displayScaleLabel.text = "DISPLAY SCALE \(value)"
-        loopView.displayScale = CGFloat(value)
-    }
-
-    @objc func thumbnailChanged() {
-        loopView.generateThumbnail = thumbnailSwitch.isOn
-    }
-
-    @objc func interpolationChanged() {
-        loopView.interpolationQuality = interpolations[interpolationSelection.selectedSegmentIndex]
     }
 
     @objc func playBackSpeedRateChanged() {

@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#loopview.completioncallback">Completion​Callback</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#loopview.init(image:)">init(image:​)</a></li><li class="initializer"><a href="#loopview.init(frame:)">init(frame:​)</a></li><li class="initializer"><a href="#loopview.init?(coder:)">init?(coder:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="property"><a href="#loopview.completion">completion</a></li><li class="property"><a href="#loopview.delegate">delegate</a></li><li class="property"><a href="#loopview.activitydelegate">activity​Delegate</a></li><li class="property"><a href="#loopview.image">image</a></li><li class="property"><a href="#loopview.displayscale">display​Scale</a></li><li class="property"><a href="#loopview.contentmode">content​Mode</a></li><li class="property"><a href="#loopview.autoplay">auto​Play</a></li><li class="property"><a href="#loopview.generatethumbnail">generate​Thumbnail</a></li><li class="property"><a href="#loopview.interpolationquality">interpolation​Quality</a></li><li class="property"><a href="#loopview.usecache">use​Cache</a></li><li class="property"><a href="#loopview.playbackspeedrate">play​Back​Speed​Rate</a></li><li class="property"><a href="#loopview.loopmode">loop​Mode</a></li><li class="property"><a href="#loopview.completionbehavior">completion​Behavior</a></li><li class="property"><a href="#loopview.isplaying">is​Playing</a></li><li class="property"><a href="#loopview.looplayer">loop​Layer</a></li><li class="property"><a href="#loopview.layerclass">layer​Class</a></li><li class="property"><a href="#loopview.intrinsiccontentsize">intrinsic​Content​Size</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="method"><a href="#loopview.play(loopmode:usecache:completion:)">play(loop​Mode:​use​Cache:​completion:​)</a></li><li class="method"><a href="#loopview.playonce(completion:)">play​Once(completion:​)</a></li><li class="method"><a href="#loopview.playrepeat(amount:completion:)">play​Repeat(amount:​completion:​)</a></li><li class="method"><a href="#loopview.playindefinitely(completion:)">play​Indefinitely(completion:​)</a></li><li class="method"><a href="#loopview.pause()">pause()</a></li><li class="method"><a href="#loopview.stop()">stop()</a></li><li class="method"><a href="#loopview.layoutsubviews()">layout​Subviews()</a></li><li class="method"><a href="#loopview.didmovetowindow()">did​Move​ToWindow()</a></li><li class="method"><a href="#loopview.didmovetosuperview()">did​Move​ToSuperview()</a></li><li class="method"><a href="#loopview.configure()">configure()</a></li><li class="method"><a href="#loopview.forward(_:)">forward(_:​)</a></li><li class="method"><a href="#loopview.toggleanimationifneeded()">toggle​Animation​IfNeeded()</a></li><li class="method"><a href="#loopview.computecanvassize(image:)">compute​Canvas​Size(image:​)</a></li><li class="method"><a href="#loopview.computecanvasorigin(image:size:)">compute​Canvas​Origin(image:​size:​)</a></li><li class="method"><a href="#loopview.computecanvasframe()">compute​Canvas​Frame()</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#loopview.completioncallback">Completion​Callback</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#loopview.init(loopimage:)">init(loop​Image:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#loopview.delegate">delegate</a></li><li class="variable"><a href="#loopview.activitydelegate">activity​Delegate</a></li><li class="variable"><a href="#loopview.loopimage">loop​Image</a></li><li class="variable"><a href="#loopview.autoplay">auto​Play</a></li><li class="variable"><a href="#loopview.usecache">use​Cache</a></li><li class="variable"><a href="#loopview.playbackspeedrate">play​Back​Speed​Rate</a></li><li class="variable"><a href="#loopview.loopmode">loop​Mode</a></li><li class="variable"><a href="#loopview.completionbehavior">completion​Behavior</a></li><li class="variable"><a href="#loopview.isplaying">is​Playing</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#loopview.play(loopmode:usecache:completion:)">play(loop​Mode:​use​Cache:​completion:​)</a></li><li class="function"><a href="#loopview.playonce(completion:)">play​Once(completion:​)</a></li><li class="function"><a href="#loopview.playrepeat(amount:completion:)">play​Repeat(amount:​completion:​)</a></li><li class="function"><a href="#loopview.playindefinitely(completion:)">play​Indefinitely(completion:​)</a></li><li class="function"><a href="#loopview.pause()">pause()</a></li><li class="function"><a href="#loopview.stop()">stop()</a></li><li class="function"><a href="#loopview.didmovetowindow()">did​Move​ToWindow()</a></li><li class="function"><a href="#loopview.didmovetosuperview()">did​Move​ToSuperview()</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -37,7 +37,7 @@
     <code class="name">Loop​View</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">IBDesignable</span> <span class="attribute">open</span> <span class="keyword">class</span> <span class="type">LoopView</span>: <span class="type">UIView</span></code></pre></body></html>
+<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">IBDesignable</span> <span class="attribute">open</span> <span class="keyword">class</span> <span class="type">LoopView</span>: <span class="type">UIImageView</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>An object that displays a static or an animated image in your interface.</p>
 
@@ -48,7 +48,7 @@
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.44.0 (20200408.0750)
+<!-- Generated by graphviz version 2.44.1 (20200629.0846)
  -->
 <!-- Pages: 1 -->
 <svg width="872pt" height="116pt"
@@ -64,15 +64,18 @@
 </a>
 </g>
 </g>
-<!-- UIView -->
+<!-- UIImageView -->
 <g id="node2" class="node unknown">
-<title>UIView</title>
+<title>UIImageView</title>
+<g id="a_node2"><a xlink:href="/Looping/UIImageView" xlink:title="UIImageView">
 <path fill="none" stroke="black" d="M528,-36C528,-36 336,-36 336,-36 330,-36 324,-30 324,-24 324,-24 324,-12 324,-12 324,-6 330,0 336,0 336,0 528,0 528,0 534,0 540,-6 540,-12 540,-12 540,-24 540,-24 540,-30 534,-36 528,-36"/>
-<text text-anchor="middle" x="432" y="-14.3" font-family="Menlo" font-size="14.00">UIView</text>
+<text text-anchor="middle" x="432" y="-14.3" font-family="Menlo" font-size="14.00">UIImageView</text>
+</a>
 </g>
-<!-- LoopView&#45;&gt;UIView -->
+</g>
+<!-- LoopView&#45;&gt;UIImageView -->
 <g id="edge1" class="edge conformsTo">
-<title>LoopView&#45;&gt;UIView</title>
+<title>LoopView&#45;&gt;UIImageView</title>
 <path fill="none" stroke="black" d="M432,-71.7C432,-63.98 432,-54.71 432,-46.11"/>
 <polygon fill="black" stroke="black" points="435.5,-46.1 432,-36.1 428.5,-46.1 435.5,-46.1"/>
 </g>
@@ -90,7 +93,7 @@
 </dl>
 <h3>Conforms To</h3>
 <dl>
-    <dt class="unknown"><code>UIView</code></dt>
+    <dt class="unknown"><code>UIImageView</code></dt>
 </dl>
 </section>
     <section id="nested type aliases">
@@ -110,11 +113,11 @@
     <section id="initializers">
         <h2>Initializers</h2>
 
-        <div role="article" class="initializer" id="loopview.init(image:)">
+        <div role="article" class="initializer" id="loopview.init(loopimage:)">
     <h3>
-        <code>init(image:​)</code>
+        <code>init(loop​Image:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>(<span class="variable">image</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?)</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>(<span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?)</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Returns an loop view initialized with the specified image.</p>
 
@@ -132,72 +135,8 @@
   <tbody>
     <tr>
     <th>image</th>
-    <td><code class="type">Loop​Image?</code></td></td>
-    <td><ul>
-<li>image: The initial image to display in the loop view.</li>
-</ul>
-</td>
-</tr>
-  </tbody>
-</table>
-</div>
-<div role="article" class="initializer" id="loopview.init(frame:)">
-    <h3>
-        <code>init(frame:​)</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">override</span> <span class="keyword">init</span>(<span class="variable">frame</span>: <span class="type">CGRect</span>)</code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>Initializes and returns a newly allocated view object with the specified frame rectangle.</p>
-
-</div>
-<h4>Parameters</h4>
-
-<table class="parameters">
-  <thead hidden>
-  <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <th>frame</th>
-    <td><code class="type">CGRect</code></td></td>
-    <td><ul>
-<li>frame: The frame rectangle for the view, measured in points. The origin of the frame is relative to the superview in which you plan to add it. This method uses the frame rectangle to set the center and bounds properties accordingly.</li>
-</ul>
-</td>
-</tr>
-  </tbody>
-</table>
-</div>
-<div role="article" class="initializer" id="loopview.init?(coder:)">
-    <h3>
-        <code>init?(coder:​)</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">required</span> <span class="keyword">init</span>?(<span class="variable">coder</span>: <span class="type">NSCoder</span>)</code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>Initializes and returns a newly allocated view object with the specified coder.</p>
-
-</div>
-<h4>Parameters</h4>
-
-<table class="parameters">
-  <thead hidden>
-  <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <th>coder</th>
-    <td><code class="type">NSCoder</code></td></td>
-    <td><ul>
-<li>coder: The coder for the view.</li>
-</ul>
+    <td></td>
+    <td><p>The initial image to display in the loop view.</p>
 </td>
 </tr>
   </tbody>
@@ -207,13 +146,7 @@
     <section id="properties">
         <h2>Properties</h2>
 
-        <div role="article" class="variable" id="loopview.completion">
-    <h3>
-        <code>completion</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">completion</span>: <span class="type">CompletionCallback</span>?</code></pre></body></html>
-</div>
-<div role="article" class="variable" id="loopview.delegate">
+        <div role="article" class="variable" id="loopview.delegate">
     <h3>
         <code>delegate</code>
     </h3>
@@ -233,39 +166,13 @@
 
 </div>
 </div>
-<div role="article" class="variable" id="loopview.image">
+<div role="article" class="variable" id="loopview.loopimage">
     <h3>
-        <code>image</code>
+        <code>loop​Image</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">image</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>The webp image being displayed.</p>
-
-</div>
-</div>
-<div role="article" class="variable" id="loopview.displayscale">
-    <h3>
-        <code>display​Scale</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">displayScale</span>: <span class="type">CGFloat</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>The scale factor of the display.</p>
-
-</div>
-<div class="discussion">
-    <aside class="important">
-    <p>Strictly positive.</p>
-
-</aside>
-</div>
-</div>
-<div role="article" class="variable" id="loopview.contentmode">
-    <h3>
-        <code>content​Mode</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">contentMode</span>: <span class="type">ContentMode</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>A flag used to determine how a view lays out its content when its bounds change.</p>
 
 </div>
 </div>
@@ -273,7 +180,7 @@
     <h3>
         <code>auto​Play</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">autoPlay</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">autoPlay</span> = <span class="keyword">true</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A flag to determine if the view should start playing images automatically.</p>
 
@@ -283,37 +190,11 @@
 
 </div>
 </div>
-<div role="article" class="variable" id="loopview.generatethumbnail">
-    <h3>
-        <code>generate​Thumbnail</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">generateThumbnail</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>A flag to determine if the view generate a thumbnail image fitted to the frame size.</p>
-
-</div>
-<div class="discussion">
-    <aside class="important">
-    <p>Can be CPU intensive.</p>
-
-</aside>
-</div>
-</div>
-<div role="article" class="variable" id="loopview.interpolationquality">
-    <h3>
-        <code>interpolation​Quality</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">interpolationQuality</span>: <span class="type">CGInterpolationQuality</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>Levels of interpolation quality for rendering the thumbnail image.</p>
-
-</div>
-</div>
 <div role="article" class="variable" id="loopview.usecache">
     <h3>
         <code>use​Cache</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">useCache</span>: <span class="type">Bool</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">useCache</span>: <span class="type">Bool</span> = <span class="keyword">true</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>A flag to determine if the frames generated should be cached.</p>
 
@@ -323,7 +204,7 @@
     <h3>
         <code>play​Back​Speed​Rate</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">playBackSpeedRate</span>: <span class="type">Double</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">playBackSpeedRate</span>: <span class="type">Double</span> = <span class="number literal">1</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>The speed factor at which the animation should be played (limited by the display refresh rate).</p>
 
@@ -349,7 +230,7 @@
     <h3>
         <code>completion​Behavior</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">completionBehavior</span>: <span class="type">CompletionBehavior</span></code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">completionBehavior</span>: <span class="type">CompletionBehavior</span> = .<span class="variable">stop</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>The behavior following the completion of the play cycle.</p>
 
@@ -362,32 +243,6 @@
     <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">isPlaying</span>: <span class="type">Bool</span></code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Returns true if the image animation is playing.</p>
-
-</div>
-</div>
-<div role="article" class="variable" id="loopview.looplayer">
-    <h3>
-        <code>loop​Layer</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopLayer</span>: <a href="/Looping/LoopLayer"><span class="type">LoopLayer</span></a></code></pre></body></html>
-</div>
-<div role="article" class="variable" id="loopview.layerclass">
-    <h3>
-        <code>layer​Class</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">layerClass</span>: <span class="type">AnyClass</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>Returns the class used to create the layer for instances of this class.</p>
-
-</div>
-</div>
-<div role="article" class="variable" id="loopview.intrinsiccontentsize">
-    <h3>
-        <code>intrinsic​Content​Size</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">intrinsicContentSize</span>: <span class="type">CGSize</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>The natural size for the receiving view, considering only properties of the view itself.</p>
 
 </div>
 </div>
@@ -417,26 +272,20 @@
   <tbody>
     <tr>
     <th>loop​Mode</th>
-    <td><code class="type">Loop​Image.​Loop​Mode?</code></td></td>
-    <td><ul>
-<li>loopMode: The amount of time the animation should play or left to nil to keep current behavior.</li>
-</ul>
+    <td><code class="type">Loop​Image.​Loop​Mode?</code></td>
+    <td><p>The amount of time the animation should play or left to nil to keep current behavior.</p>
 </td>
 </tr>
 <tr>
     <th>use​Cache</th>
-    <td><code class="type">Bool?</code></td></td>
-    <td><ul>
-<li>useCache: A flag to determine if the frames generated should be cached or left to nil to keep current behavior.</li>
-</ul>
+    <td><code class="type">Bool?</code></td>
+    <td><p>A flag to determine if the frames generated should be cached or left to nil to keep current behavior.</p>
 </td>
 </tr>
 <tr>
     <th>completion</th>
-    <td><code class="type">Completion​Callback?</code></td></td>
-    <td><ul>
-<li>completion: The callback handler called at the completion play cycle.</li>
-</ul>
+    <td><code class="type">Completion​Callback?</code></td>
+    <td><p>The callback handler called at the completion play cycle.</p>
 </td>
 </tr>
   </tbody>
@@ -464,10 +313,8 @@
   <tbody>
     <tr>
     <th>completion</th>
-    <td><code class="type">Completion​Callback?</code></td></td>
-    <td><ul>
-<li>completion: The callback handler called at the completion play cycle.</li>
-</ul>
+    <td><code class="type">Completion​Callback?</code></td>
+    <td><p>The callback handler called at the completion play cycle.</p>
 </td>
 </tr>
   </tbody>
@@ -495,18 +342,14 @@
   <tbody>
     <tr>
     <th>amount</th>
-    <td><code class="type">Int</code></td></td>
-    <td><ul>
-<li>amount: The amount of animation repetitions.</li>
-</ul>
+    <td><code class="type">Int</code></td>
+    <td><p>The amount of animation repetitions.</p>
 </td>
 </tr>
 <tr>
     <th>image</th>
-    <td></td></td>
-    <td><ul>
-<li>image: The callback handler called at the completion play cycle.</li>
-</ul>
+    <td></td>
+    <td><p>The callback handler called at the completion play cycle.</p>
 </td>
 </tr>
   </tbody>
@@ -534,10 +377,8 @@
   <tbody>
     <tr>
     <th>image</th>
-    <td></td></td>
-    <td><ul>
-<li>image: The callback handler called at the completion play cycle.</li>
-</ul>
+    <td></td>
+    <td><p>The callback handler called at the completion play cycle.</p>
 </td>
 </tr>
   </tbody>
@@ -563,16 +404,6 @@
 
 </div>
 </div>
-<div role="article" class="function" id="loopview.layoutsubviews()">
-    <h3>
-        <code>layout​Subviews()</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">override</span> <span class="attribute">open</span> <span class="keyword">func</span> <span class="function">layoutSubviews</span>()</code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>Lays out subviews.</p>
-
-</div>
-</div>
 <div role="article" class="function" id="loopview.didmovetowindow()">
     <h3>
         <code>did​Move​ToWindow()</code>
@@ -593,42 +424,6 @@
 
 </div>
 </div>
-<div role="article" class="function" id="loopview.configure()">
-    <h3>
-        <code>configure()</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">configure</span>()</code></pre></body></html>
-</div>
-<div role="article" class="function" id="loopview.forward(_:)">
-    <h3>
-        <code>forward(_:​)</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">private</span> <span class="keyword">func</span> <span class="function">forward</span>(<span class="keyword">_</span> <span class="variable">event</span>: <a href="/Looping/LoopLayer"><span class="type">LoopLayer</span></a>.<span class="type">DelegateEvent</span>)</code></pre></body></html>
-</div>
-<div role="article" class="function" id="loopview.toggleanimationifneeded()">
-    <h3>
-        <code>toggle​Animation​IfNeeded()</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">toggleAnimationIfNeeded</span>()</code></pre></body></html>
-</div>
-<div role="article" class="function" id="loopview.computecanvassize(image:)">
-    <h3>
-        <code>compute​Canvas​Size(image:​)</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">private</span> <span class="keyword">func</span> <span class="function">computeCanvasSize</span>(<span class="variable">image</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>) -&gt; <span class="type">CGSize</span></code></pre></body></html>
-</div>
-<div role="article" class="function" id="loopview.computecanvasorigin(image:size:)">
-    <h3>
-        <code>compute​Canvas​Origin(image:​size:​)</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">private</span> <span class="keyword">func</span> <span class="function">computeCanvasOrigin</span>(<span class="variable">image</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>, <span class="variable">size</span>: <span class="type">CGSize</span>) -&gt; <span class="type">CGPoint</span></code></pre></body></html>
-</div>
-<div role="article" class="function" id="loopview.computecanvasframe()">
-    <h3>
-        <code>compute​Canvas​Frame()</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">computeCanvasFrame</span>() -&gt; <span class="type">CGRect</span></code></pre></body></html>
-</div>
     </section>
 
 
@@ -638,7 +433,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-05-29T09:07:33+0200">May 29, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-09-04T11:16:29+0200">September 4, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
 </p>
     </footer>
 </body>

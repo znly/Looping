@@ -1,6 +1,6 @@
 import Foundation
 
-import class CoreGraphics.CGImage
+import class UIKit.UIImage
 
 /// Respond to messages from the LoopView class to operations related to display and render.
 public protocol LoopViewActivityDelegate: class {
@@ -16,5 +16,5 @@ public protocol LoopViewActivityDelegate: class {
     /// - Parameters:
     ///   - loopView: The loop view displaying the image.
     ///   - image: The (thumbnail) image of the canvas.
-    func loopView(_ loopView: LoopView, didDisplay image: CGImage?)
+    func loopView(_ loopView: LoopView, didDisplay image: UIImage?)
 }

@@ -55,7 +55,7 @@
 		7791EDED243F3486002C669B /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759E102243A3FEA00EBE477 /* ImageAsset.swift */; };
 		7791EDF6243F3699002C669B /* Looping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* Looping.framework */; };
 		7791EDF7243F3699002C669B /* Looping.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* Looping.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		779AE1B42442F22600702C06 /* ImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AE1B32442F22600702C06 /* ImageRenderer.swift */; };
+		779AE1B42442F22600702C06 /* LoopRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AE1B32442F22600702C06 /* LoopRenderer.swift */; };
 		77B226D324459C2100E513BC /* LoopImage+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B226D224459C2100E513BC /* LoopImage+Context.swift */; };
 		77B226DA2445C36D00E513BC /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B226D82445C36900E513BC /* OptionsViewController.swift */; };
 		77B92D5F24504BAC005CE16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B92D5E24504BAC005CE16C /* AppDelegate.swift */; };
@@ -311,7 +311,6 @@
 		77E7E15F2438D828000E7528 /* CodecError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1582438D828000E7528 /* CodecError.swift */; };
 		77E7E1602438D828000E7528 /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1592438D828000E7528 /* Frame.swift */; };
 		77E7E1622438D828000E7528 /* LoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E15B2438D828000E7528 /* LoopView.swift */; };
-		77E7E1632438D828000E7528 /* LoopLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E15C2438D828000E7528 /* LoopLayer.swift */; };
 		77E7E1662438D866000E7528 /* LoopImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E7E1652438D866000E7528 /* LoopImage.swift */; };
 		77F796AD243F0AAD00D48CFE /* Looping.h in Headers */ = {isa = PBXBuildFile; fileRef = 77F796AC243F0AAD00D48CFE /* Looping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -442,7 +441,7 @@
 		7791EDC8243F3413002C669B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7791EDCB243F3413002C669B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7791EDCD243F3414002C669B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		779AE1B32442F22600702C06 /* ImageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderer.swift; sourceTree = "<group>"; };
+		779AE1B32442F22600702C06 /* LoopRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopRenderer.swift; sourceTree = "<group>"; };
 		77AFA097244F0F9800BE31BB /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = Carthage/Build/iOS/WebP.framework; sourceTree = "<group>"; };
 		77B226D224459C2100E513BC /* LoopImage+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoopImage+Context.swift"; sourceTree = "<group>"; };
 		77B226D82445C36900E513BC /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
@@ -659,7 +658,6 @@
 		77E7E1582438D828000E7528 /* CodecError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodecError.swift; sourceTree = "<group>"; };
 		77E7E1592438D828000E7528 /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 		77E7E15B2438D828000E7528 /* LoopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopView.swift; sourceTree = "<group>"; };
-		77E7E15C2438D828000E7528 /* LoopLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopLayer.swift; sourceTree = "<group>"; };
 		77E7E1652438D866000E7528 /* LoopImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopImage.swift; sourceTree = "<group>"; };
 		77E7E1842438DE09000E7528 /* worldcup@2x.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "worldcup@2x.webp"; sourceTree = "<group>"; };
 		77E7E1862438DE09000E7528 /* niancat@2x.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "niancat@2x.webp"; sourceTree = "<group>"; };
@@ -717,7 +715,6 @@
 			children = (
 				77D7D94124693A84006EA16B /* LoopImage+NSDataAsset.swift */,
 				7759E140243D2F5100EBE477 /* LoopImage+UIImage.swift */,
-				77E7E15C2438D828000E7528 /* LoopLayer.swift */,
 				77E7E15B2438D828000E7528 /* LoopView.swift */,
 				77E59CA82441D16500B5B057 /* LoopViewActivityDelegate.swift */,
 				77E59C5A24412F4D00B5B057 /* LoopViewDelegate.swift */,
@@ -889,7 +886,7 @@
 			isa = PBXGroup;
 			children = (
 				7726EF14243918CA0030026B /* DisplayLink.swift */,
-				779AE1B32442F22600702C06 /* ImageRenderer.swift */,
+				779AE1B32442F22600702C06 /* LoopRenderer.swift */,
 			);
 			path = Rendering;
 			sourceTree = "<group>";
@@ -1855,9 +1852,8 @@
 				7759E14A243D3A1100EBE477 /* UIImage+LoopImage.swift in Sources */,
 				77CB968B2443CC9800EC0B40 /* FrameCache.swift in Sources */,
 				77D7D9242468363E006EA16B /* APNGCodec.swift in Sources */,
-				779AE1B42442F22600702C06 /* ImageRenderer.swift in Sources */,
+				779AE1B42442F22600702C06 /* LoopRenderer.swift in Sources */,
 				77D7D99B246BC7DC006EA16B /* HEICCodec.swift in Sources */,
-				77E7E1632438D828000E7528 /* LoopLayer.swift in Sources */,
 				773A1AA724710061005B03F6 /* LoopImageError.swift in Sources */,
 				77E7E1662438D866000E7528 /* LoopImage.swift in Sources */,
 				77E7E1602438D828000E7528 /* Frame.swift in Sources */,

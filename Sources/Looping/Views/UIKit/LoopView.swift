@@ -1,7 +1,8 @@
 import UIKit
 
 /// An object that displays a static or an animated image in your interface.
-@IBDesignable open class LoopView: UIView {
+@IBDesignable open class LoopView: UIImageView {
+    private var loopRenderer: LoopRenderer?
 
     /// A callback handler called at the completion play cycle.
     public typealias CompletionCallback = (Bool) -> Void
@@ -25,32 +26,12 @@ import UIKit
     }
 
     /// The webp image being displayed.
-    open var image: LoopImage? {
-        set {
+    open var loopImage: LoopImage? {
+        willSet {
             stop()
-            loopLayer.image = newValue
+        } didSet {
+            resetImage()
             toggleAnimationIfNeeded()
-            invalidateIntrinsicContentSize()
-            frame.size = intrinsicContentSize
-            setNeedsLayout()
-        } get {
-            return loopLayer.image
-        }
-    }
-
-    /// The scale factor of the display.
-    /// - Important: Strictly positive.
-    @IBInspectable open var displayScale: CGFloat = UIScreen.main.scale {
-        didSet {
-            invalidateIntrinsicContentSize()
-            setNeedsLayout()
-        }
-    }
-
-    /// A flag used to determine how a view lays out its content when its bounds change.
-    @IBInspectable open override var contentMode: ContentMode {
-        didSet {
-            setNeedsLayout()
         }
     }
 
@@ -63,49 +44,26 @@ import UIKit
         }
     }
 
-    /// A flag to determine if the view generate a thumbnail image fitted to the frame size.
-    /// - Important: Can be CPU intensive.
-    @IBInspectable open var generateThumbnail = false {
-        didSet {
-            setNeedsLayout()
-        }
-    }
-
-    /// Levels of interpolation quality for rendering the thumbnail image.
-    @IBInspectable open var interpolationQuality: CGInterpolationQuality {
-        set {
-            loopLayer.interpolationQuality = newValue
-        } get {
-            return loopLayer.interpolationQuality
-        }
-    }
-
     /// A flag to determine if the frames generated should be cached.
-    @IBInspectable open var useCache: Bool {
-        set {
-            loopLayer.useCache = newValue
-        } get {
-            return loopLayer.useCache
+    @IBInspectable open var useCache: Bool = true {
+        didSet {
+            loopRenderer?.useCache = useCache
         }
     }
 
     /// The speed factor at which the animation should be played (limited by the display refresh rate).
     /// - Important: Non-negative.
-    @IBInspectable open var playBackSpeedRate: Double {
-        set {
-            loopLayer.playBackSpeedRate = newValue
-        } get {
-            return loopLayer.playBackSpeedRate
+    @IBInspectable open var playBackSpeedRate: Double = 1 {
+        didSet {
+            loopRenderer?.playBackSpeedRate = playBackSpeedRate
         }
     }
 
     /// The amount of time the animation should play, overriding the amount set in the image.
     open var loopMode: LoopImage.LoopMode? {
-        set {
-            loopLayer.viewLoopMode = newValue
+        didSet {
+            loopRenderer?.viewLoopMode = loopMode
             toggleAnimationIfNeeded()
-        } get {
-            return loopLayer.viewLoopMode
         }
     }
 
@@ -114,52 +72,34 @@ import UIKit
 
     /// Returns true if the image animation is playing.
     open var isPlaying: Bool {
-        return loopLayer.isPlaying
-    }
-
-    private var loopLayer: LoopLayer {
-        return layer as! LoopLayer
-    }
-
-    /// Returns the class used to create the layer for instances of this class.
-    override public static var layerClass: AnyClass {
-        return LoopLayer.self
-    }
-
-    /// The natural size for the receiving view, considering only properties of the view itself.
-    override open var intrinsicContentSize: CGSize {
-        guard let image = image else {
-            return .zero
-        }
-
-        return image.size
+        return loopRenderer?.isRendering == true
     }
 
     /// Returns an loop view initialized with the specified image.
     /// - Parameter image: The initial image to display in the loop view.
-    public convenience init(image: LoopImage?) {
+    public convenience init(loopImage: LoopImage?) {
         self.init()
 
-        self.image = image
-    }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(clearCache),
+            name: UIApplication.didReceiveMemoryWarningNotification,
+            object: nil
+        )
 
-    /// Initializes and returns a newly allocated view object with the specified frame rectangle.
-    /// - Parameter frame: The frame rectangle for the view, measured in points. The origin of the frame is relative to the superview in which you plan to add it. This method uses the frame rectangle to set the center and bounds properties accordingly.
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-    }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(clearCache),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil
+        )
 
-    /// Initializes and returns a newly allocated view object with the specified coder.
-    /// - Parameter coder: The coder for the view.
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configure()
+        self.loopImage = loopImage
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(loopLayer, name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
-        NotificationCenter.default.removeObserver(loopLayer, name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     /// Plays the animation of the image.
@@ -180,7 +120,7 @@ import UIKit
             self.completion = completion
         }
 
-        loopLayer.play()
+        loopRenderer?.start()
     }
 
     /// Plays the animation of the image.
@@ -204,24 +144,12 @@ import UIKit
 
     /// Pauses the animation of the image.
     open func pause() {
-        loopLayer.pause()
+        loopRenderer?.pause()
     }
 
     /// Stops the animation of the image.
     open func stop() {
-        loopLayer.stop()
-    }
-
-    /// Lays out subviews.
-    override open func layoutSubviews() {
-        super.layoutSubviews()
-
-        let canvasFrame = computeCanvasFrame()
-
-        loopLayer.canvasFrame = canvasFrame
-        loopLayer.thumbnailSize = generateThumbnail
-            ? CGSize(width: canvasFrame.width * displayScale, height: canvasFrame.height * displayScale)
-            : nil
+        loopRenderer?.stop()
     }
 
     /// Tells the view that its window object changed.
@@ -239,56 +167,65 @@ import UIKit
 
 private extension LoopView {
 
-    func configure() {
-        NotificationCenter.default.addObserver(
-            loopLayer,
-            selector: #selector(LoopLayer.clearCache),
-            name: UIApplication.didReceiveMemoryWarningNotification,
-            object: nil
-        )
-
-        NotificationCenter.default.addObserver(
-            loopLayer,
-            selector: #selector(LoopLayer.clearCache),
-            name: UIApplication.didEnterBackgroundNotification,
-            object: nil
-        )
-
-        loopLayer.delegateCallback = { [weak self] event in
-            self?.forward(event)
-        }
-
-        backgroundColor = .clear
+    @objc func clearCache() {
+        loopRenderer?.clearCache()
     }
 
-    private func forward(_ event: LoopLayer.DelegateEvent) {
-        guard let image = image else {
+    func resetImage() {
+        image = nil
+
+        guard let loopImage = loopImage else {
+            loopRenderer = nil
+            return
+        }
+
+        loopRenderer = LoopRenderer(
+            image: loopImage,
+            useCache: useCache,
+            playBackSpeedRate: playBackSpeedRate,
+            viewLoopMode: loopMode,
+            displayCallback: { [weak self] cgImage in
+                guard let self = self, let loopImage = self.loopImage else {return }
+                // Apply thumbnails and interpolation
+                let image = cgImage.map { UIImage(cgImage: $0, scale: loopImage.scale, orientation: .up) }
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+                self.activityDelegate?.loopView(self, didDisplay: image)
+            }
+        )
+
+        loopRenderer?.delegateCallback = { [weak self] event in
+            self?.forward(event)
+        }
+    }
+
+    private func forward(_ event: LoopRenderer.DelegateEvent) {
+        guard let loopImage = loopImage else {
             return
         }
 
         switch event {
         case .didStartPlaying:
-            delegate?.loopView(self, didStartPlayingImage: image)
+            delegate?.loopView(self, didStartPlayingImage: loopImage)
         case .didPausePlaying:
-            delegate?.loopView(self, didPausePlayingImage: image)
+            delegate?.loopView(self, didPausePlayingImage: loopImage)
         case .didStopPlaying:
-            delegate?.loopView(self, didStopPlayingImage: image)
+            delegate?.loopView(self, didStopPlayingImage: loopImage)
             completion?(false)
             completion = nil
         case let .didCompletePlaying(loopMode):
-            delegate?.loopView(self, didFinishPlayingImage: image, loopMode: loopMode)
+            delegate?.loopView(self, didFinishPlayingImage: loopImage, loopMode: loopMode)
             completion?(true)
             completion = nil
 
-            if image.isAnimation && completionBehavior == .stop {
+            if loopImage.isAnimation && completionBehavior == .stop {
                 stop()
             } else {
                 pause()
             }
         case let .didRenderFrame(index, fromCache):
             activityDelegate?.loopView(self, didRenderFrameAtIndex: index, fromCache: fromCache)
-        case let .didDisplayImage(image):
-            activityDelegate?.loopView(self, didDisplay: image)
         }
     }
 
@@ -301,71 +238,5 @@ private extension LoopView {
         if autoPlay {
             play()
         }
-    }
-
-    private func computeCanvasSize(image: LoopImage) -> CGSize {
-        guard image.size != .zero else {
-            return .zero
-        }
-
-        let widthRatio = bounds.width / image.size.width
-        let heightRatio = bounds.height / image.size.height
-
-        switch contentMode {
-        case .scaleAspectFit:
-            let minRatio = min(widthRatio, heightRatio)
-            return CGSize(width: minRatio * image.size.width, height: minRatio * image.size.height)
-        case .scaleAspectFill:
-            let maxRatio = max(widthRatio, heightRatio)
-            return CGSize(width: maxRatio * image.size.width, height: maxRatio * image.size.height)
-        case .scaleToFill:
-            return bounds.size
-        default:
-            return image.size
-        }
-    }
-
-    private func computeCanvasOrigin(image: LoopImage, size: CGSize) -> CGPoint {
-        let top: CGFloat = .zero
-        let left: CGFloat = .zero
-        let right = bounds.width - CGFloat(size.width)
-        let centerX = right * 0.5
-        let bottom = bounds.height - CGFloat(size.height)
-        let centerY = bottom * 0.5
-
-        switch contentMode {
-        case .topLeft:
-            return .zero
-        case .top:
-            return CGPoint(x: centerX, y: top)
-        case .topRight:
-            return CGPoint(x: right, y: top)
-        case .left:
-            return CGPoint(x: left, y: centerY)
-        case .right:
-            return CGPoint(x: right, y: centerY)
-        case .bottomLeft:
-            return CGPoint(x: left, y: bottom)
-        case .bottom:
-            return CGPoint(x: centerX, y: bottom)
-        case .bottomRight:
-            return CGPoint(x: right, y: bottom)
-        default:
-            return CGPoint(x: centerX, y: centerY)
-        }
-    }
-
-    func computeCanvasFrame() -> CGRect {
-        guard let image = image else {
-            return .zero
-        }
-
-        let size = computeCanvasSize(image: image)
-        let origin = computeCanvasOrigin(image: image, size: size)
-
-        return CGRect(
-            origin: origin,
-            size: size
-        ).integral
     }
 }

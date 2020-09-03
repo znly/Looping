@@ -115,7 +115,7 @@ final class RootViewController: UIViewController {
 
     private func load(asset: ImageAsset) {
         do {
-            loopView.image = try asset.filename.map {
+            loopView.loopImage = try asset.filename.map {
                 try LoopImage(named: $0)
             }
 
@@ -124,7 +124,7 @@ final class RootViewController: UIViewController {
             })
 
             cachedFrames = []
-            timelineViews = (0..<(loopView.image?.frameCount ?? 1))
+            timelineViews = (0..<(loopView.loopImage?.frameCount ?? 1))
                 .map { _ in
                     UIView()..{
                         $0.layer.borderWidth = 1
@@ -170,7 +170,7 @@ final class RootViewController: UIViewController {
     @objc func imageDetailsTapped() {
         present(
             DetailsTableViewController(style: .grouped)..{
-                $0.image = loopView.image
+                $0.image = loopView.loopImage
             },
             animated: true
         )
@@ -221,7 +221,7 @@ extension RootViewController: LoopViewActivityDelegate {
     func loopView(_ loopView: LoopView, didRenderFrameAtIndex index: Int, fromCache didUseCache: Bool) {
         os_log("[LoopViewActivityDelegate] did render image at index %{PUBLIC}d %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, index, didUseCache ? "from cache" : "from context")
 
-        let frameCount = loopView.image?.frameCount ?? 1
+        let frameCount = loopView.loopImage?.frameCount ?? 1
         let frameIndex = index % frameCount
 
         if didUseCache || loopView.useCache {
@@ -242,9 +242,8 @@ extension RootViewController: LoopViewActivityDelegate {
         }
     }
 
-    func loopView(_ loopView: LoopView, didDisplay image: CGImage?) {
-        let imageDescription = image.map { CGSize(width: $0.width, height: $0.height) } ?? .zero
-        os_log("[LoopViewActivityDelegate] did display image %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, imageDescription.debugDescription)
+    func loopView(_ loopView: LoopView, didDisplay image: UIImage?) {
+        os_log("[LoopViewActivityDelegate] did display image %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, image.debugDescription)
     }
 }
 
