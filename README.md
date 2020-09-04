@@ -92,7 +92,7 @@ Rendering happens on a background thread.
 import Looping
 
 let image: LoopImage
-let imageView = LoopView(image: image)
+let imageView = LoopView(loopImage: image)
 
 loopView.contentMode = .scaleAspectFit
 loopView.loopMode = .once
