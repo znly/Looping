@@ -117,7 +117,7 @@ struct ContentView: View {
 
 ### ③ Converting a `LoopImage` frame into a `UIImage` or `CGImage`
 
-Using the methods `LoopImage.cgImage(atFrame:)` or  `LoopImage.image(atFrame:)`.
+Using either the methods for a single frame `LoopImage.cgImage(atFrame:)` and  `LoopImage.image(atFrame:)`, or for a range of frames `LoopImage.cgImages(atRange:)`.
 
  For WebP images, since retrieving the image of at a specific frame requires to go over every intermediary frame to reconstruct the final image, it is recommended to call these methods outside of the main thread. 
 
