@@ -30,7 +30,7 @@ import UIKit
         willSet {
             stop()
         } didSet {
-            resetImage()
+            configureRenderer()
             toggleAnimationIfNeeded()
         }
     }
@@ -95,6 +95,8 @@ import UIKit
         )
 
         self.loopImage = loopImage
+
+        configureRenderer()
     }
 
     deinit {
@@ -171,7 +173,7 @@ private extension LoopView {
         loopRenderer?.clearCache()
     }
 
-    func resetImage() {
+    func configureRenderer() {
         image = nil
 
         guard let loopImage = loopImage else {
