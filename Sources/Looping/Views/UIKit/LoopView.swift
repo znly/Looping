@@ -2,7 +2,16 @@ import UIKit
 
 /// An object that displays a static or an animated image in your interface.
 @IBDesignable open class LoopView: UIImageView {
-    private var loopRenderer: LoopRenderer?
+    private var memoryWarningObserver: AnyObject?
+    private var loopRenderer: LoopRenderer? {
+        didSet {
+            if loopRenderer != nil {
+                startObservingMemoryWarnings()
+            } else {
+                stopObservingMemoryWarnings()
+            }
+        }
+    }
 
     /// A callback handler called at the completion play cycle.
     public typealias CompletionCallback = (Bool) -> Void
@@ -79,29 +88,12 @@ import UIKit
     /// - Parameter image: The initial image to display in the loop view.
     public convenience init(loopImage: LoopImage?) {
         self.init()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(clearCache),
-            name: UIApplication.didReceiveMemoryWarningNotification,
-            object: nil
-        )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(clearCache),
-            name: UIApplication.didEnterBackgroundNotification,
-            object: nil
-        )
-
         self.loopImage = loopImage
-
         configureRenderer()
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
+        stopObservingMemoryWarnings()
     }
 
     /// Plays the animation of the image.
@@ -153,23 +145,27 @@ import UIKit
     open func stop() {
         loopRenderer?.stop()
     }
-
-    /// Tells the view that its window object changed.
-    override open func didMoveToWindow() {
-        super.didMoveToWindow()
-        toggleAnimationIfNeeded()
-    }
-
-    /// Tells the view that its superview changed.
-    override open func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        toggleAnimationIfNeeded()
-    }
 }
 
 private extension LoopView {
 
-    @objc func clearCache() {
+    func startObservingMemoryWarnings() {
+        stopObservingMemoryWarnings()
+        memoryWarningObserver = NotificationCenter.default.addObserver(
+            forName: UIApplication.didReceiveMemoryWarningNotification,
+            object: nil, queue: nil) { [weak self] _ in
+                self?.clearCache()
+        }
+    }
+
+    func stopObservingMemoryWarnings() {
+        if let memoryWarningObserver = memoryWarningObserver {
+            NotificationCenter.default.removeObserver(memoryWarningObserver)
+            self.memoryWarningObserver = nil
+        }
+    }
+
+    func clearCache() {
         loopRenderer?.clearCache()
     }
 
@@ -232,7 +228,7 @@ private extension LoopView {
     }
 
     func toggleAnimationIfNeeded() {
-        guard image != nil, superview != nil, window != nil else {
+        guard image != nil else {
             stop()
             return
         }
