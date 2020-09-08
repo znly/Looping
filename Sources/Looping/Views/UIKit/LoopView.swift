@@ -40,7 +40,7 @@ import UIKit
             stop()
         } didSet {
             configureRenderer()
-            toggleAnimationIfNeeded()
+            autoplayAnimationIfNeeded()
         }
     }
 
@@ -49,7 +49,7 @@ import UIKit
     /// This property is set to `true` by default.
     @IBInspectable open var autoPlay = true {
         didSet {
-            toggleAnimationIfNeeded()
+            autoplayAnimationIfNeeded()
         }
     }
 
@@ -72,7 +72,7 @@ import UIKit
     open var loopMode: LoopImage.LoopMode? {
         didSet {
             loopRenderer?.viewLoopMode = loopMode
-            toggleAnimationIfNeeded()
+            autoplayAnimationIfNeeded()
         }
     }
 
@@ -144,6 +144,18 @@ import UIKit
     /// Stops the animation of the image.
     open func stop() {
         loopRenderer?.stop()
+    }
+
+    /// Tells the view that its window object changed.
+    override open func didMoveToWindow() {
+        super.didMoveToWindow()
+        autoplayAnimationIfNeeded()
+    }
+
+    /// Tells the view that its superview changed.
+    override open func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        autoplayAnimationIfNeeded()
     }
 }
 
@@ -227,14 +239,11 @@ private extension LoopView {
         }
     }
 
-    func toggleAnimationIfNeeded() {
-        guard image != nil else {
-            stop()
+    func autoplayAnimationIfNeeded() {
+        guard autoPlay, image != nil, superview != nil, window != nil else {
             return
         }
 
-        if autoPlay {
-            play()
-        }
+        play()
     }
 }
