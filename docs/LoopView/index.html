@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#loopview.completioncallback">Completion​Callback</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#loopview.init(loopimage:)">init(loop​Image:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#loopview.delegate">delegate</a></li><li class="variable"><a href="#loopview.activitydelegate">activity​Delegate</a></li><li class="variable"><a href="#loopview.loopimage">loop​Image</a></li><li class="variable"><a href="#loopview.autoplay">auto​Play</a></li><li class="variable"><a href="#loopview.usecache">use​Cache</a></li><li class="variable"><a href="#loopview.playbackspeedrate">play​Back​Speed​Rate</a></li><li class="variable"><a href="#loopview.loopmode">loop​Mode</a></li><li class="variable"><a href="#loopview.completionbehavior">completion​Behavior</a></li><li class="variable"><a href="#loopview.isplaying">is​Playing</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#loopview.play(loopmode:usecache:completion:)">play(loop​Mode:​use​Cache:​completion:​)</a></li><li class="function"><a href="#loopview.playonce(completion:)">play​Once(completion:​)</a></li><li class="function"><a href="#loopview.playrepeat(amount:completion:)">play​Repeat(amount:​completion:​)</a></li><li class="function"><a href="#loopview.playindefinitely(completion:)">play​Indefinitely(completion:​)</a></li><li class="function"><a href="#loopview.pause()">pause()</a></li><li class="function"><a href="#loopview.stop()">stop()</a></li><li class="function"><a href="#loopview.didmovetowindow()">did​Move​ToWindow()</a></li><li class="function"><a href="#loopview.didmovetosuperview()">did​Move​ToSuperview()</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#loopview.completioncallback">Completion​Callback</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#loopview.init(loopimage:placeholderimage:)">init(loop​Image:​placeholder​Image:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#loopview.delegate">delegate</a></li><li class="variable"><a href="#loopview.activitydelegate">activity​Delegate</a></li><li class="variable"><a href="#loopview.loopimage">loop​Image</a></li><li class="variable"><a href="#loopview.placeholderimage">placeholder​Image</a></li><li class="variable"><a href="#loopview.autoplay">auto​Play</a></li><li class="variable"><a href="#loopview.usecache">use​Cache</a></li><li class="variable"><a href="#loopview.playbackspeedrate">play​Back​Speed​Rate</a></li><li class="variable"><a href="#loopview.loopmode">loop​Mode</a></li><li class="variable"><a href="#loopview.completionbehavior">completion​Behavior</a></li><li class="variable"><a href="#loopview.isplaying">is​Playing</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#loopview.play(loopmode:usecache:completion:)">play(loop​Mode:​use​Cache:​completion:​)</a></li><li class="function"><a href="#loopview.playonce(completion:)">play​Once(completion:​)</a></li><li class="function"><a href="#loopview.playrepeat(amount:completion:)">play​Repeat(amount:​completion:​)</a></li><li class="function"><a href="#loopview.playindefinitely(completion:)">play​Indefinitely(completion:​)</a></li><li class="function"><a href="#loopview.pause()">pause()</a></li><li class="function"><a href="#loopview.stop()">stop()</a></li><li class="function"><a href="#loopview.didmovetowindow()">did​Move​ToWindow()</a></li><li class="function"><a href="#loopview.didmovetosuperview()">did​Move​ToSuperview()</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -113,11 +113,11 @@
     <section id="initializers">
         <h2>Initializers</h2>
 
-        <div role="article" class="initializer" id="loopview.init(loopimage:)">
+        <div role="article" class="initializer" id="loopview.init(loopimage:placeholderimage:)">
     <h3>
-        <code>init(loop​Image:​)</code>
+        <code>init(loop​Image:​placeholder​Image:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>(<span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?)</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>(<span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?, <span class="variable">placeholderImage</span>: <span class="type">UIImage</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>Returns an loop view initialized with the specified image.</p>
 
@@ -134,9 +134,15 @@
   </thead>
   <tbody>
     <tr>
-    <th>image</th>
-    <td></td>
+    <th>loop​Image</th>
+    <td><code class="type">Loop​Image?</code></td>
     <td><p>The initial image to display in the loop view.</p>
+</td>
+</tr>
+<tr>
+    <th>placeholder​Image</th>
+    <td><code class="type">UIImage?</code></td>
+    <td><p>The placeholder image to display when the animation is stopped.</p>
 </td>
 </tr>
   </tbody>
@@ -173,6 +179,16 @@
     <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?</code></pre></body></html>
 <div class="summary" role="doc-abstract">
     <p>The webp image being displayed.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="loopview.placeholderimage">
+    <h3>
+        <code>placeholder​Image</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">placeholderImage</span>: <span class="type">UIImage</span>?</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>The placeholder image displayed when the animation is stopped.</p>
 
 </div>
 </div>
@@ -433,7 +449,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-04T11:16:29+0200">September 4, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-09-09T11:18:51+0200">September 9, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
 </p>
     </footer>
 </body>

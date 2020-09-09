@@ -44,6 +44,9 @@ import UIKit
         }
     }
 
+    /// The placeholder image displayed when the animation is stopped.
+    open var placeholderImage: UIImage?
+
     /// A flag to determine if the view should start playing images automatically.
     ///
     /// This property is set to `true` by default.
@@ -85,10 +88,12 @@ import UIKit
     }
 
     /// Returns an loop view initialized with the specified image.
-    /// - Parameter image: The initial image to display in the loop view.
-    public convenience init(loopImage: LoopImage?) {
+    /// - Parameter loopImage: The initial image to display in the loop view.
+    /// - Parameter placeholderImage: The placeholder image to display when the animation is stopped.
+    public convenience init(loopImage: LoopImage?, placeholderImage: UIImage? = nil) {
         self.init()
         self.loopImage = loopImage
+        self.placeholderImage = placeholderImage
         configureRenderer()
     }
 
@@ -182,7 +187,7 @@ private extension LoopView {
     }
 
     func configureRenderer() {
-        image = nil
+        image = placeholderImage
 
         guard let loopImage = loopImage else {
             loopRenderer = nil
