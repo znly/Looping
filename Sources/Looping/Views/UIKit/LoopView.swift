@@ -210,7 +210,7 @@ private extension LoopView {
                 // Apply thumbnails and interpolation
                 let image = cgImage.map { UIImage(cgImage: $0, scale: loopImage.scale, orientation: .up) }
                 DispatchQueue.main.async {
-                    self.image = image
+                    self.image = image ?? self.placeholderImage
                 }
                 self.activityDelegate?.loopView(self, didDisplay: image)
             }
