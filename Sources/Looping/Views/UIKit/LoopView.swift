@@ -45,7 +45,13 @@ import UIKit
     }
 
     /// The placeholder image displayed when the animation is stopped.
-    open var placeholderImage: UIImage?
+    open var placeholderImage: UIImage? {
+        didSet {
+            if !isPlaying {
+                image = placeholderImage
+            }
+        }
+    }
 
     /// A flag to determine if the view should start playing images automatically.
     ///
