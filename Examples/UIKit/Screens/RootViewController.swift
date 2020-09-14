@@ -14,9 +14,12 @@ final class RootViewController: UIViewController {
     private let imageTypes = ["Animated", "Static"]
     private let animatedImages = ImageAsset.animations
     private let staticImages = ImageAsset.stills
-    private var cachedFrames = Set<Int>()
+    private let frameIndicator = UIImageView(image: UIImage(systemName: "arrowtriangle.up.fill"))..{
+        $0.tintColor = UIColor.systemGreen
+    }
     private var timelineViews = [UIView]() {
         didSet {
+            frameIndicator.removeFromSuperview()
             timelineView.arrangedSubviews.forEach {
                 timelineView.removeArrangedSubview($0)
                 $0.removeFromSuperview()
@@ -24,6 +27,7 @@ final class RootViewController: UIViewController {
             timelineViews.forEach {
                 timelineView.addArrangedSubview($0)
             }
+            timelineView.addSubview(frameIndicator)
         }
     }
 
@@ -40,6 +44,7 @@ final class RootViewController: UIViewController {
             timelineView,
             imageStackView,
             contentModeSelection,
+            playBackSpeedRateStackView,
             actionButtonStackView
         ]
         )..{
@@ -49,6 +54,7 @@ final class RootViewController: UIViewController {
     }
 
     private lazy var loopView = LoopView()..{
+        $0.completionBehavior = .pause
         $0.delegate = self
         $0.activityDelegate = self
         $0.backgroundColor = UIColor(patternImage: UIImage(named: "TransparencyCheckerboard")!)
@@ -60,6 +66,7 @@ final class RootViewController: UIViewController {
         $0.axis = .horizontal
         $0.spacing = -1
         $0.distribution = .fillEqually
+        $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanTimeline)))
     }
 
     private lazy var imageStackView = UIStackView(arrangedSubviews: [imageSelection, imageActionsStackView])..{
@@ -95,21 +102,48 @@ final class RootViewController: UIViewController {
         $0.setContentCompressionResistancePriority(.required, for: .vertical)
     }
 
+    private lazy var playBackSpeedRateStackView = UIStackView(
+        arrangedSubviews: [playBackSpeedRateLabel, playBackSpeedRateSelection]
+    )..{
+        $0.axis = .horizontal
+        $0.distribution = .fillEqually
+    }
+    private let playBackSpeedRateLabel = UILabel()
+
+    private lazy var playBackSpeedRateSelection = UISlider()..{
+        $0.minimumValue = -10
+        $0.maximumValue = 10
+        $0.value = Float(loopView.playBackSpeedRate)
+    }
+
     private lazy var actionButtonStackView = UIStackView(
-        arrangedSubviews: [playButton, pauseButton, stopButton]
+        arrangedSubviews: [clearButton, preheatButton, playButton, pauseButton, stopButton]
         )..{
             $0.distribution = .fillEqually
     }
+    private lazy var clearButton = UIButton()..{
+        $0.setImage(UIImage(systemName: "clear", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        $0.tintColor = .white
+        $0.backgroundColor = .systemRed
+    }
+    private lazy var preheatButton = UIButton()..{
+        $0.setImage(UIImage(systemName: "flame", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        $0.tintColor = .white
+        $0.backgroundColor = .systemOrange
+    }
     private lazy var playButton = UIButton()..{
-        $0.setTitle("PLAY", for: .normal)
+        $0.setImage(UIImage(systemName: "play", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        $0.tintColor = .white
         $0.backgroundColor = .systemGreen
     }
     private lazy var pauseButton = UIButton()..{
-        $0.setTitle("PAUSE", for: .normal)
+        $0.setImage(UIImage(systemName: "pause", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        $0.tintColor = .white
         $0.backgroundColor = .systemTeal
     }
     private lazy var stopButton = UIButton()..{
-        $0.setTitle("STOP", for: .normal)
+        $0.setImage(UIImage(systemName: "stop", withConfiguration: UIImage.SymbolConfiguration(scale: .large)), for: .normal)
+        $0.tintColor = .white
         $0.backgroundColor = .systemPink
     }
 
@@ -123,7 +157,7 @@ final class RootViewController: UIViewController {
                 os_log("[LoopView] Play stopped %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, finished ? "by finishing" : "interrupted")
             })
 
-            cachedFrames = []
+            frameIndicator.isHidden = true
             timelineViews = (0..<(loopView.loopImage?.frameCount ?? 1))
                 .map { _ in
                     UIView()..{
@@ -160,11 +194,15 @@ final class RootViewController: UIViewController {
         imageOptionsButton.addTarget(self, action: #selector(imageOptionsTapped), for: .touchUpInside)
         imageDetailsButton.addTarget(self, action: #selector(imageDetailsTapped), for: .touchUpInside)
         contentModeSelection.addTarget(self, action: #selector(contentModeChanged), for: .valueChanged)
+        playBackSpeedRateSelection.addTarget(self, action: #selector(playBackSpeedRateChanged), for: .valueChanged)
+        clearButton.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+        preheatButton.addTarget(self, action: #selector(preheatTapped), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
         pauseButton.addTarget(self, action: #selector(pauseTapped), for: .touchUpInside)
         stopButton.addTarget(self, action: #selector(stopTapped), for: .touchUpInside)
 
         contentModeChanged()
+        playBackSpeedRateChanged()
     }
 
     @objc func imageDetailsTapped() {
@@ -184,6 +222,20 @@ final class RootViewController: UIViewController {
         loopView.contentMode = contentModes[contentModeSelection.selectedSegmentIndex]
     }
 
+    @objc func playBackSpeedRateChanged() {
+        let value = playBackSpeedRateSelection.value.rounded(nearest: 0.1)
+        playBackSpeedRateLabel.text = "PLAYBACK SPEED \(value)"
+        loopView.playBackSpeedRate = Double(value)
+    }
+
+    @objc func clearTapped() {
+        loopView.clearCache()
+    }
+
+    @objc func preheatTapped() {
+        loopView.preheatCache()
+    }
+
     @objc func playTapped() {
         loopView.play()
     }
@@ -194,6 +246,13 @@ final class RootViewController: UIViewController {
 
     @objc func stopTapped() {
         loopView.stop()
+    }
+
+    @objc func handlePanTimeline(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.location(in: stackView)
+        let seekProgress = Double(round(100 * translation.x / stackView.frame.width) / 100)
+        let adjustedProgress = loopView.playBackSpeedRate > 0 ? seekProgress : 1 - seekProgress
+        loopView.seek(progress: adjustedProgress, shouldResumePlaying: false)
     }
 }
 
@@ -221,29 +280,29 @@ extension RootViewController: LoopViewActivityDelegate {
     func loopView(_ loopView: LoopView, didRenderFrameAtIndex index: Int, fromCache didUseCache: Bool) {
         os_log("[LoopViewActivityDelegate] did render image at index %{PUBLIC}d %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, index, didUseCache ? "from cache" : "from context")
 
-        let frameCount = loopView.loopImage?.frameCount ?? 1
-        let frameIndex = index % frameCount
-
-        if didUseCache || loopView.useCache {
-            cachedFrames.insert(frameIndex)
-        } else {
-            cachedFrames.remove(frameIndex)
-        }
-
-        timelineViews.enumerated()
-            .forEach { (viewIndex, view) in
-                if viewIndex == frameIndex {
-                    view.backgroundColor = didUseCache ? UIColor.systemGreen : UIColor.systemBlue
-                } else if cachedFrames.contains(viewIndex) {
-                    view.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.3)
-                } else {
-                    view.backgroundColor = .clear
-                }
+        DispatchQueue.main.async {
+            if self.timelineViews.indices.contains(index) {
+                self.timelineViews[index].backgroundColor = didUseCache ? UIColor.systemGreen.withAlphaComponent(0.3) : UIColor.systemOrange.withAlphaComponent(0.3)
+            }
         }
     }
 
-    func loopView(_ loopView: LoopView, didDisplay image: UIImage?) {
-        os_log("[LoopViewActivityDelegate] did display image %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, image.debugDescription)
+    func loopView(_ loopView: LoopView, didDisplayImage image: UIImage?, forFrameAtIndex index: Int?) {
+        os_log("[LoopViewActivityDelegate] did display image at index %{PUBLIC}d %{PUBLIC}@", log: OSLog.viewCycle, type: .debug, index ?? -1, image.debugDescription)
+
+        if let index = index {
+            DispatchQueue.main.async {
+                if self.timelineViews.indices.contains(index) {
+                    let cellFrame = self.timelineViews[index].frame
+
+                    self.frameIndicator.isHidden = false
+                    self.frameIndicator.frame.origin = CGPoint(
+                        x: cellFrame.midX - self.frameIndicator.frame.width * 0.5,
+                        y: cellFrame.maxY
+                    )
+                }
+            }
+        }
     }
 }
 

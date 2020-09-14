@@ -62,13 +62,6 @@ import UIKit
         }
     }
 
-    /// A flag to determine if the frames generated should be cached.
-    @IBInspectable open var useCache: Bool = true {
-        didSet {
-            loopRenderer?.useCache = useCache
-        }
-    }
-
     /// The speed factor at which the animation should be played (limited by the display refresh rate).
     /// - Important: Non-negative.
     @IBInspectable open var playBackSpeedRate: Double = 1 {
@@ -112,13 +105,9 @@ import UIKit
     ///   - loopMode: The amount of time the animation should play or left to nil to keep current behavior.
     ///   - useCache: A flag to determine if the frames generated should be cached or left to nil to keep current behavior.
     ///   - completion: The callback handler called at the completion play cycle.
-    open func play(loopMode: LoopImage.LoopMode? = nil, useCache: Bool? = nil, completion: CompletionCallback? = nil) {
+    open func play(loopMode: LoopImage.LoopMode? = nil, completion: CompletionCallback? = nil) {
         if let loopMode = loopMode {
             self.loopMode = loopMode
-        }
-
-        if let useCache = useCache {
-            self.useCache = useCache
         }
 
         if let completion = completion {
@@ -128,23 +117,30 @@ import UIKit
         loopRenderer?.start()
     }
 
+    /// Seeks to a position in the animation.
+    /// - Parameter progress: The progress at which we want to seek into the animation.
+    /// - Parameter shouldResumePlaying: A flag to indicate if we want to resume playing the animation after seeking.
+    open func seek(progress: Double, shouldResumePlaying: Bool) {
+        loopRenderer?.seek(progress: progress, shouldResumePlaying: shouldResumePlaying)
+    }
+
     /// Plays the animation of the image.
     /// - Parameter completion: The callback handler called at the completion play cycle.
     open func playOnce(completion: CompletionCallback? = nil) {
-        play(loopMode: .once, useCache: false, completion: completion)
+        play(loopMode: .once, completion: completion)
     }
 
     /// Plays the animation of the image.
     /// - Parameter amount: The amount of animation repetitions.
     /// - Parameter image: The callback handler called at the completion play cycle.
     open func playRepeat(amount: Int, completion: CompletionCallback? = nil) {
-        play(loopMode: .repeat(amount: amount), useCache: true, completion: completion)
+        play(loopMode: .repeat(amount: amount), completion: completion)
     }
 
     /// Plays the animation of the image.
     /// - Parameter image: The callback handler called at the completion play cycle.
     open func playIndefinitely(completion: CompletionCallback? = nil) {
-        play(loopMode: .infinite, useCache: true, completion: completion)
+        play(loopMode: .infinite, completion: completion)
     }
 
     /// Pauses the animation of the image.
@@ -155,6 +151,16 @@ import UIKit
     /// Stops the animation of the image.
     open func stop() {
         loopRenderer?.stop()
+    }
+
+    /// Clears the cache from rendered animation frames.
+    open func clearCache() {
+        loopRenderer?.clearCache()
+    }
+
+    /// Preheats the cache for each animation frame.
+    open func preheatCache(completion: (() -> Void)? = nil) {
+        loopRenderer?.preheatCache(completion: completion)
     }
 
     /// Tells the view that its window object changed.
@@ -188,10 +194,6 @@ private extension LoopView {
         }
     }
 
-    func clearCache() {
-        loopRenderer?.clearCache()
-    }
-
     func configureRenderer() {
         image = placeholderImage
 
@@ -202,17 +204,15 @@ private extension LoopView {
 
         loopRenderer = LoopRenderer(
             image: loopImage,
-            useCache: useCache,
             playBackSpeedRate: playBackSpeedRate,
             viewLoopMode: loopMode,
-            displayCallback: { [weak self] cgImage in
+            displayCallback: { [weak self] (frameIndex, cgImage) in
                 guard let self = self, let loopImage = self.loopImage else {return }
-                // Apply thumbnails and interpolation
                 let image = cgImage.map { UIImage(cgImage: $0, scale: loopImage.scale, orientation: .up) }
                 DispatchQueue.main.async {
                     self.image = image ?? self.placeholderImage
                 }
-                self.activityDelegate?.loopView(self, didDisplay: image)
+                self.activityDelegate?.loopView(self, didDisplayImage: image, forFrameAtIndex: frameIndex)
             }
         )
 

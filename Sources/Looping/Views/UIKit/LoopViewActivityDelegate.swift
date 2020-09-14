@@ -16,5 +16,6 @@ public protocol LoopViewActivityDelegate: class {
     /// - Parameters:
     ///   - loopView: The loop view displaying the image.
     ///   - image: The (thumbnail) image of the canvas.
-    func loopView(_ loopView: LoopView, didDisplay image: UIImage?)
+    ///   - index: The index of the frame.
+    func loopView(_ loopView: LoopView, didDisplayImage image: UIImage?, forFrameAtIndex index: Int?)
 }

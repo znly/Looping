@@ -5,15 +5,12 @@ import class ImageIO.CGImage
 
 final class LoopRenderer {
     private let image: LoopImage
-    private let displayCallback: (CGImage?) -> Void
+    private let displayCallback: (Int?, CGImage?) -> Void
 
     private lazy var cache = FrameCache(image: image)
     private lazy var renderQueue = DispatchQueue(label: "looping.loopRenderer.\(image.uuid)", qos: .userInteractive)
-    private var canvasContext: CGContext?
-    private var frameIndex: Int?
-    private var waitTime: Double = .zero
-    private var frameRendered: Frame?
-    private var imageRendered: CGImage?
+    private var elapsedTimeRelativeToPlaybackSpeed: Double = .zero
+    private var lastFrameIndexDisplayed: Int?
 
     enum DelegateEvent {
         case didStartPlaying, didPausePlaying, didStopPlaying, didCompletePlaying(LoopImage.LoopMode)
@@ -22,6 +19,7 @@ final class LoopRenderer {
 
     var delegateCallback: ((DelegateEvent) -> Void)?
 
+    // Value can be negative if the animation is played in reverse.
     var playBackSpeedRate: Double {
         didSet {
             updateFrameRate()
@@ -30,32 +28,12 @@ final class LoopRenderer {
 
     var viewLoopMode: LoopImage.LoopMode?
 
-    var useCache: Bool {
-        set {
-            renderQueue.async(flags: .barrier) { [weak self] in
-                self?.safeUseCache = newValue
-            }
-        } get {
-            return renderQueue.sync {
-                return safeUseCache
-            }
-        }
-    }
-
-    private var safeUseCache: Bool {
-        didSet {
-            if !safeUseCache {
-                cache.clear()
-            }
-        }
-    }
-
     private var loopMode: LoopImage.LoopMode {
         return image.isAnimation ? (viewLoopMode ?? image.loopMode) : image.loopMode
     }
 
     private lazy var displayLink = DisplayLink() { [weak self] elapsedTime in
-        self?.renderFrameIfNeeded(elapsedTime: elapsedTime)
+        self?.displayFrameIfNeeded(elapsedTime: elapsedTime)
     }
 
     var isRendering: Bool {
@@ -67,6 +45,35 @@ final class LoopRenderer {
             displayLink.isPaused = !newValue
         } get {
             return !displayLink.isPaused
+        }
+    }
+
+    init(image: LoopImage,
+         playBackSpeedRate: Double,
+         viewLoopMode: LoopImage.LoopMode?,
+         displayCallback: @escaping (Int?, CGImage?) -> Void) {
+        self.image = image
+        self.playBackSpeedRate = playBackSpeedRate
+        self.viewLoopMode = viewLoopMode
+        self.displayCallback = displayCallback
+
+        updateFrameRate()
+    }
+
+    func clearCache() {
+        renderQueue.async { [weak self] in
+            self?.cache.clear()
+        }
+    }
+
+    func preheatCache(completion: (() -> Void)? = nil) {
+        let upperBoundIndex = image.frameCount - 1
+        let lowerBoundIndex = image.areFramesIndependent ? .zero : upperBoundIndex
+        renderQueue.async { [weak self] in
+            for index in lowerBoundIndex...upperBoundIndex {
+                _ = self?.renderFrame(at: index)
+            }
+            completion?()
         }
     }
 
@@ -91,152 +98,195 @@ final class LoopRenderer {
     }
 
     @discardableResult func stop() -> Bool {
-        guard frameIndex != nil || isIteratingOverFrames else {
-            return false
-        }
-
         isIteratingOverFrames = false
         reset()
         delegateCallback?(.didStopPlaying)
         return true
     }
 
-    init(image: LoopImage,
-         useCache: Bool,
-         playBackSpeedRate: Double,
-         viewLoopMode: LoopImage.LoopMode?,
-         displayCallback: @escaping (CGImage?) -> Void) {
-        self.image = image
-        self.playBackSpeedRate = playBackSpeedRate
-        self.viewLoopMode = viewLoopMode
-        self.displayCallback = displayCallback
-        safeUseCache = useCache
+    func seek(progress: Double, shouldResumePlaying: Bool) {
+        pause()
 
-        updateFrameRate()
-    }
+        let frameIndex = moveToNextFrameToDisplay(progress: progress)
 
-    func clearCache() {
-        renderQueue.async(flags: .barrier) { [weak self] in
-            self?.cache.clear()
+        displayFrame(at: frameIndex)
+
+        if shouldResumePlaying {
+            start()
         }
     }
 }
 
-extension LoopRenderer {
+private extension LoopRenderer {
 
-    private func updateFrameRate() {
-        displayLink.preferredFramesPerSecond = Int(ceil(Double(image.preferredFramesPerSecond) * playBackSpeedRate))
+    func updateFrameRate() {
+        displayLink.preferredFramesPerSecond = Int(ceil(Double(image.preferredFramesPerSecond) * abs(playBackSpeedRate)))
     }
 
-    private func checkForCompletion() -> Bool {
-        guard let frameIndex = frameIndex else {
-            return false
+    func moveToNextFrameToDisplay(progress: Double) -> Int {
+        let progress = min(max(progress, 0), 1)
+        let lastFrameIndex = image.frameCount - 1
+        let index = Int(Double(lastFrameIndex) * progress)
+
+        if playBackSpeedRate < 0 {
+            elapsedTimeRelativeToPlaybackSpeed = image.cumulativeFramesDuration[index] * -1
+            return lastFrameIndex - index
+        } else {
+            elapsedTimeRelativeToPlaybackSpeed = image.cumulativeFramesDuration[index]
+            return index
+        }
+    }
+
+    private func hasAnimationReachedCompletion() -> Bool {
+        guard image.isAnimation, image.duration > .zero else {
+            return true
         }
 
-        let loopAmount = loopMode.amount
-        let loopedAmount = (frameIndex + 1) / image.frameCount
+        let loopAmount = Double(loopMode.amount)
+        let loopedAmount = abs(elapsedTimeRelativeToPlaybackSpeed) / image.duration
 
-        if (loopAmount != 0 || !image.isAnimation), loopedAmount >= loopAmount {
+        if loopAmount != .zero, loopedAmount >= loopAmount {
             return true
         }
 
         return false
     }
 
-    private func frameIndexToRender(elapsedTime: TimeInterval) -> Int? {
-        // Check if we should be iterating over frames
-        guard isIteratingOverFrames, playBackSpeedRate > 0 else {
+    private func moveToNextFrameToDisplay(elapsedTime: TimeInterval) -> (Int, Bool)? {
+        guard isIteratingOverFrames, playBackSpeedRate != .zero else {
             return nil
         }
 
-        // Stop iterating if needed
-        guard !checkForCompletion() else {
-            delegateCallback?(.didCompletePlaying(loopMode))
-            return nil
+        guard image.isAnimation, image.duration > .zero else {
+            return (.zero, true)
         }
 
-        waitTime += elapsedTime
+        elapsedTimeRelativeToPlaybackSpeed += elapsedTime * playBackSpeedRate
 
-        if image.isAnimation, let frameIndex = frameIndex, frameIndex != 0 {
-            let frameDuration = image.framesDuration[frameIndex % image.frameCount] / playBackSpeedRate
+        var playbackTimeRelativeToAnimationDuration = abs(elapsedTimeRelativeToPlaybackSpeed.truncatingRemainder(dividingBy: image.duration))
 
-            // Check if we can move to the next frame
-            guard waitTime >= frameDuration else {
-                return nil
-            }
+        if elapsedTimeRelativeToPlaybackSpeed < 0 {
+            playbackTimeRelativeToAnimationDuration = image.duration - playbackTimeRelativeToAnimationDuration
+        }
 
-            waitTime -= frameDuration
+        let frameIndex: Int
+        let isComplete = hasAnimationReachedCompletion()
+
+        if isComplete {
+            let lastFrameIndex = image.frameCount - 1
+            frameIndex = elapsedTimeRelativeToPlaybackSpeed > 0 ? lastFrameIndex : .zero
         } else {
-            waitTime = .zero
+            frameIndex = image.cumulativeFramesDuration
+                .firstIndex(
+                    where: {
+                        $0 > playbackTimeRelativeToAnimationDuration
+                    }
+                ) ?? .zero
         }
 
-        // Move to the next frame
-        frameIndex = frameIndex?.advanced(by: 1) ?? 0
-
-        return frameIndex
+        return (frameIndex, isComplete)
     }
 
-    // Fetch and render the new frame
-    private func renderFrame(at index: Int) {
-        guard let frame = try? image.frame(at: index) else {
+    private func renderFrame(at index: Int) -> CGImage? {
+        // Based on what kind of image we're rendering and on what is in cache,
+        // figure out from which frame we need to start rendering.
+        var fromIntermediaryFrameIndex = index
+
+        if !image.areFramesIndependent, index != .zero {
+            fromIntermediaryFrameIndex = (0...index)
+                .reversed()
+                .first(where: {
+                    guard let frame = try? image.frame(at: $0) else {
+                        return false
+                    }
+
+                    return cache.frame(forKey: frame.cacheKey) != nil
+                })
+                ?? .zero
+        }
+
+        // Render the frame and any intermediary ones necessary.
+        var renderedFrame: Frame?
+        var renderedImage: CGImage?
+        var canvasContext: CGContext?
+
+        for frameIndex in fromIntermediaryFrameIndex...index {
+            renderedImage = nil
+
+            guard let frame = try? image.frame(at: frameIndex) else {
+                break
+            }
+
+            let key = frame.cacheKey
+            let didUseCache: Bool
+
+            if let cachedImage = cache.frame(forKey: key) {
+                didUseCache = true
+                canvasContext = image.createCanvasContext(from: cachedImage)
+                renderedImage = cachedImage
+                renderedFrame = frame
+            } else {
+                didUseCache = false
+                if canvasContext == nil {
+                    canvasContext = image.createCanvasContext()
+                }
+
+                guard let canvasContext = canvasContext else {
+                    return nil
+                }
+
+                renderedImage = image.render(frame: frame, in: canvasContext, withPreviousFrame: renderedFrame)
+                renderedFrame = frame
+
+                if let renderedImage = renderedImage {
+                    cache.set(frame: renderedImage, forKey: key)
+                }
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                self?.delegateCallback?(.didRenderFrame(frame.index, didUseCache))
+            }
+        }
+
+        return renderedImage
+    }
+
+    func displayFrame(at index: Int) {
+        guard lastFrameIndexDisplayed != index else {
             return
         }
 
-        let key = frame.cacheKey
-        let didUseCache: Bool
-        var cgImage: CGImage?
-
-        if safeUseCache, let canvasImage = cache.frame(forKey: key) {
-            didUseCache = true
-            cgImage = canvasImage
-            canvasContext = image.createCanvasContext(from: canvasImage)
-        } else {
-            didUseCache = false
-            if canvasContext == nil {
-                canvasContext = image.createCanvasContext()
-            }
-
-            guard let canvasContext = canvasContext else {
+        lastFrameIndexDisplayed = index
+        renderQueue.async { [weak self] in
+            guard let image = self?.renderFrame(at: index) else {
                 return
             }
 
-            cgImage = image.render(frame: frame, in: canvasContext, withPreviousFrame: frameRendered)
-
-            if safeUseCache, let imageRendered = cgImage {
-                cache.set(frame: imageRendered, forKey: key)
+            DispatchQueue.main.async { [weak self] in
+                self?.displayCallback(index, image)
             }
-        }
-
-        imageRendered = cgImage
-        frameRendered = frame
-
-        DispatchQueue.main.async { [weak self] in
-            self?.delegateCallback?(.didRenderFrame(index, didUseCache))
-            self?.displayCallback(cgImage)
         }
     }
 
-    func renderFrameIfNeeded(elapsedTime: TimeInterval) {
-        guard let frameIndex = frameIndexToRender(elapsedTime: elapsedTime) else {
+    func displayFrameIfNeeded(elapsedTime: TimeInterval) {
+        guard let (frameIndex, isComplete) = moveToNextFrameToDisplay(elapsedTime: elapsedTime) else {
             return
         }
 
-        renderQueue.async(flags: .barrier) { [weak self] in
-            self?.renderFrame(at: frameIndex)
+        displayFrame(at: frameIndex)
+
+        if isComplete {
+            delegateCallback?(.didCompletePlaying(loopMode))
         }
     }
 
     func reset() {
-        frameIndex = nil
-        waitTime = .zero
+        elapsedTimeRelativeToPlaybackSpeed = .zero
+        lastFrameIndexDisplayed = nil
 
-        renderQueue.async(flags: .barrier) { [weak self] in
-            self?.canvasContext = nil
-            self?.frameRendered = nil
-            self?.imageRendered = nil
-
+        renderQueue.async { [weak self] in
             DispatchQueue.main.async {
-                self?.displayCallback(nil)
+                self?.displayCallback(nil, nil)
             }
         }
     }

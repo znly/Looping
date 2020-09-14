@@ -33,7 +33,7 @@ public struct Loop<Placeholder: View>: View {
         /// - Parameter image: The image to display in the view.
         init(image: LoopImage) {
             self.image = image
-            loopRenderer = LoopRenderer(image: image, useCache: true, playBackSpeedRate: 1.0, viewLoopMode: nil) { [weak self] image in
+            loopRenderer = LoopRenderer(image: image, playBackSpeedRate: 1.0, viewLoopMode: nil) { [weak self] (_, image) in
                 DispatchQueue.main.async {
                     self?.renderedImage = image
                 }
@@ -211,15 +211,6 @@ extension Loop {
         return self
     }
 
-    /// Sets the flag to determine if the frames generated should be cached.
-    /// - Parameter useCache: the flag.
-    /// - Returns: the view configured with the provided information.
-    @discardableResult
-    public func useCache(_ useCache: Bool = true) -> Self {
-        renderer.useCache(useCache)
-        return self
-    }
-
     /// Sets the speed factor at which the animation should be played (limited by the display refresh rate).
     /// - Important: Non-negative.
     /// - Parameter playBackSpeedRate: the desired speed.
@@ -236,15 +227,6 @@ extension Loop {
     @discardableResult
     public func loopMode(_ loopMode: LoopImage.LoopMode?) -> Self {
         renderer.loopMode(loopMode)
-        return self
-    }
-
-    /// Sets the flag to determine if the frames generated should be cached.
-    /// - Parameter useCache: the flag.
-    /// - Returns: the view configured with the provided information.
-    @discardableResult
-    public func onRender(_ useCache: Bool = true) -> Self {
-        renderer.useCache(useCache)
         return self
     }
 
@@ -303,10 +285,6 @@ private extension Loop.Renderer {
 
     func pause() {
         loopRenderer.pause()
-    }
-
-    func useCache(_ useCache: Bool) {
-        loopRenderer.useCache = useCache
     }
 
     func playBackSpeedRate(_ playBackSpeedRate: Double) {

@@ -70,6 +70,9 @@ public struct LoopImage {
         return codec.framesDuration
     }
 
+    /// The cumulative duration at each frame.
+    public let cumulativeFramesDuration: [TimeInterval]
+
     var preferredFramesPerSecond: Int {
         guard let shortestDelayTime = framesDuration.min(), shortestDelayTime != .zero else {
             return 0
@@ -101,6 +104,11 @@ public struct LoopImage {
         return codec.colorspace
     }
 
+    /// Flag specifying if frames are built incrementally from the previous ones or idependently.
+    var areFramesIndependent: Bool {
+        return codec.areFramesIndependent
+    }
+
     /// Returns an image initialized with the specified image data.
     /// - Parameters:
     ///   - data: The data of from an image.
@@ -114,11 +122,21 @@ public struct LoopImage {
         let scale = scale > 0 ? scale : 1
 
         uuid = UUID().uuidString
-        codec = try codecType.init(data: data)
+        let codec = try codecType.init(data: data)
+
+        if codec.frameCount != codec.framesDuration.count {
+            assert(false, "invalid frame count")
+            throw LoopImageError.invalidAsset
+        }
+
+        self.codec = codec
         self.scale = scale
         size = CGSize(width: CGFloat(codec.canvasWidth) / scale, height: CGFloat(codec.canvasHeight) / scale)
         canvasSize = CGSize(width: codec.canvasWidth, height: codec.canvasHeight)
         loopMode = LoopMode(amount: codec.loopCount)
+        cumulativeFramesDuration = codec.framesDuration.reduce([TimeInterval]()) {
+            $0 + [($0.last ?? 0) + $1]
+        }
     }
 
     /// Returns an image initialized with the specified image url.
@@ -209,6 +227,13 @@ public struct LoopImage {
         return images
     }
 
+    func boundedIndex(correspondingTo index: Int) -> Int {
+        let remainder = index % frameCount
+        while remainder < 0 {
+            return remainder + frameCount
+        }
+        return remainder
+    }
 
     func frame(at index: Int) throws -> Frame {
         return try codec.frame(at: index)
