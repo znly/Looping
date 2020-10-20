@@ -6,7 +6,7 @@ BASE_URL="/Looping/"
 
 brew list swift-doc &>/dev/null || brew install swiftdocorg/formulae/swift-doc
 
-rm -fr "$DOCUMENTATION_PATHs"
+rm -fr "$DOCUMENTATION_PATH"
 swift-doc generate $SOURCE_PATH --module-name Looping --base-url "$BASE_URL" --output "$DOCUMENTATION_PATH" --format "html"
 swift-doc coverage $SOURCE_PATH --output "$DOCUMENTATION_PATH/coverage.json"
 

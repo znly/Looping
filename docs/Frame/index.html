@@ -37,7 +37,9 @@
     <code class="name">Frame</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Frame</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Frame</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Immutable representation of a frame from a loop image.</p>
 
@@ -67,11 +69,8 @@
 <!-- CustomDebugStringConvertible -->
 <g id="node2" class="node unknown">
 <title>CustomDebugStringConvertible</title>
-<g id="a_node2"><a xlink:href="/Looping/CustomDebugStringConvertible" xlink:title="CustomDebugStringConvertible">
 <path fill="none" stroke="black" d="M544,-36C544,-36 320,-36 320,-36 314,-36 308,-30 308,-24 308,-24 308,-12 308,-12 308,-6 314,0 320,0 320,0 544,0 544,0 550,0 556,-6 556,-12 556,-12 556,-24 556,-24 556,-30 550,-36 544,-36"/>
 <text text-anchor="middle" x="432" y="-14.3" font-family="Menlo" font-size="14.00">CustomDebugStringConvertible</text>
-</a>
-</g>
 </g>
 <!-- Frame&#45;&gt;CustomDebugStringConvertible -->
 <g id="edge1" class="edge conformsTo">
@@ -97,7 +96,19 @@
     <h3>
         <code>init(index:​offset​X:​offset​Y:​duration:​width:​height:​has​Alpha:​dispose​ToBackground​Color:​blend​With​Previous​Frame:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">index</span>: <span class="type">Int</span>, <span class="variable">offsetX</span>: <span class="type">Int</span>, <span class="variable">offsetY</span>: <span class="type">Int</span>, <span class="variable">duration</span>: <span class="type">TimeInterval</span>, <span class="variable">width</span>: <span class="type">Int</span>, <span class="variable">height</span>: <span class="type">Int</span>, <span class="variable">hasAlpha</span>: <span class="type">Bool</span>, <span class="variable">disposeToBackgroundColor</span>: <span class="type">Bool</span>, <span class="variable">blendWithPreviousFrame</span>: <span class="type">Bool</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(
+        <span class="variable">index</span>: <span class="type">Int</span>,
+        <span class="variable">offsetX</span>: <span class="type">Int</span>,
+        <span class="variable">offsetY</span>: <span class="type">Int</span>,
+        <span class="variable">duration</span>: <span class="type">TimeInterval</span>,
+        <span class="variable">width</span>: <span class="type">Int</span>,
+        <span class="variable">height</span>: <span class="type">Int</span>,
+        <span class="variable">hasAlpha</span>: <span class="type">Bool</span>,
+        <span class="variable">disposeToBackgroundColor</span>: <span class="type">Bool</span>,
+        <span class="variable">blendWithPreviousFrame</span>: <span class="type">Bool</span>
+    ) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Returns an image initialized with the specified image data.</p>
 
@@ -178,7 +189,9 @@
     <h3>
         <code>debug​Description</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">debugDescription</span>: <span class="type">String</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">debugDescription</span>: <span class="type">String</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>A textual representation of this instance, suitable for debugging.</p>
 
@@ -188,7 +201,9 @@
     <h3>
         <code>index</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">index</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">index</span>: <span class="type">Int</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Index of the frame (starts at 0).</p>
 
@@ -198,7 +213,9 @@
     <h3>
         <code>offset​X</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">offsetX</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">offsetX</span>: <span class="type">Int</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Horizontal offset within the canvas.</p>
 
@@ -208,7 +225,9 @@
     <h3>
         <code>offset​Y</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">offsetY</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">offsetY</span>: <span class="type">Int</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Vertical offset within the canvas.</p>
 
@@ -218,7 +237,9 @@
     <h3>
         <code>duration</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">duration</span>: <span class="type">TimeInterval</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">duration</span>: <span class="type">TimeInterval</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Duration of the frame.</p>
 
@@ -228,7 +249,9 @@
     <h3>
         <code>width</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">width</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">width</span>: <span class="type">Int</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Drawing width of the frame.</p>
 
@@ -238,7 +261,9 @@
     <h3>
         <code>height</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">height</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">height</span>: <span class="type">Int</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Drawing height of the frame.</p>
 
@@ -248,7 +273,9 @@
     <h3>
         <code>has​Alpha</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">hasAlpha</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">hasAlpha</span>: <span class="type">Bool</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Flag to determine if the frame contains an alpha component.</p>
 
@@ -258,7 +285,9 @@
     <h3>
         <code>dispose​ToBackground​Color</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">disposeToBackgroundColor</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">disposeToBackgroundColor</span>: <span class="type">Bool</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Flag to determine if we should dispose of the background before drawing.</p>
 
@@ -268,7 +297,9 @@
     <h3>
         <code>blend​With​Previous​Frame</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">blendWithPreviousFrame</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">blendWithPreviousFrame</span>: <span class="type">Bool</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Flag to determine if the frame blends into the previous one.</p>
 
@@ -283,7 +314,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-09T11:18:52+0200">September 9, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-10-20T12:55:29+0200">October 20, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>

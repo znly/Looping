@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#loopview.completioncallback">Completion​Callback</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#loopview.init(loopimage:placeholderimage:)">init(loop​Image:​placeholder​Image:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#loopview.delegate">delegate</a></li><li class="variable"><a href="#loopview.activitydelegate">activity​Delegate</a></li><li class="variable"><a href="#loopview.loopimage">loop​Image</a></li><li class="variable"><a href="#loopview.placeholderimage">placeholder​Image</a></li><li class="variable"><a href="#loopview.autoplay">auto​Play</a></li><li class="variable"><a href="#loopview.usecache">use​Cache</a></li><li class="variable"><a href="#loopview.playbackspeedrate">play​Back​Speed​Rate</a></li><li class="variable"><a href="#loopview.loopmode">loop​Mode</a></li><li class="variable"><a href="#loopview.completionbehavior">completion​Behavior</a></li><li class="variable"><a href="#loopview.isplaying">is​Playing</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#loopview.play(loopmode:usecache:completion:)">play(loop​Mode:​use​Cache:​completion:​)</a></li><li class="function"><a href="#loopview.playonce(completion:)">play​Once(completion:​)</a></li><li class="function"><a href="#loopview.playrepeat(amount:completion:)">play​Repeat(amount:​completion:​)</a></li><li class="function"><a href="#loopview.playindefinitely(completion:)">play​Indefinitely(completion:​)</a></li><li class="function"><a href="#loopview.pause()">pause()</a></li><li class="function"><a href="#loopview.stop()">stop()</a></li><li class="function"><a href="#loopview.didmovetowindow()">did​Move​ToWindow()</a></li><li class="function"><a href="#loopview.didmovetosuperview()">did​Move​ToSuperview()</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#loopview.completioncallback">Completion​Callback</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#loopview.init(loopimage:placeholderimage:)">init(loop​Image:​placeholder​Image:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#loopview.delegate">delegate</a></li><li class="variable"><a href="#loopview.activitydelegate">activity​Delegate</a></li><li class="variable"><a href="#loopview.loopimage">loop​Image</a></li><li class="variable"><a href="#loopview.placeholderimage">placeholder​Image</a></li><li class="variable"><a href="#loopview.autoplay">auto​Play</a></li><li class="variable"><a href="#loopview.playbackspeedrate">play​Back​Speed​Rate</a></li><li class="variable"><a href="#loopview.loopmode">loop​Mode</a></li><li class="variable"><a href="#loopview.completionbehavior">completion​Behavior</a></li><li class="variable"><a href="#loopview.isplaying">is​Playing</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#loopview.play(loopmode:completion:)">play(loop​Mode:​completion:​)</a></li><li class="function"><a href="#loopview.seek(progress:shouldresumeplaying:)">seek(progress:​should​Resume​Playing:​)</a></li><li class="function"><a href="#loopview.playonce(completion:)">play​Once(completion:​)</a></li><li class="function"><a href="#loopview.playrepeat(amount:completion:)">play​Repeat(amount:​completion:​)</a></li><li class="function"><a href="#loopview.playindefinitely(completion:)">play​Indefinitely(completion:​)</a></li><li class="function"><a href="#loopview.pause()">pause()</a></li><li class="function"><a href="#loopview.stop()">stop()</a></li><li class="function"><a href="#loopview.clearcache()">clear​Cache()</a></li><li class="function"><a href="#loopview.preheatcache(completion:)">preheat​Cache(completion:​)</a></li><li class="function"><a href="#loopview.didmovetowindow()">did​Move​ToWindow()</a></li><li class="function"><a href="#loopview.didmovetosuperview()">did​Move​ToSuperview()</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -37,7 +37,9 @@
     <code class="name">Loop​View</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">IBDesignable</span> <span class="attribute">open</span> <span class="keyword">class</span> <span class="type">LoopView</span>: <span class="type">UIImageView</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">IBDesignable</span> <span class="attribute">open</span> <span class="keyword">class</span> <span class="type">LoopView</span>: <span class="type">UIImageView</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>An object that displays a static or an animated image in your interface.</p>
 
@@ -67,11 +69,8 @@
 <!-- UIImageView -->
 <g id="node2" class="node unknown">
 <title>UIImageView</title>
-<g id="a_node2"><a xlink:href="/Looping/UIImageView" xlink:title="UIImageView">
 <path fill="none" stroke="black" d="M528,-36C528,-36 336,-36 336,-36 330,-36 324,-30 324,-24 324,-24 324,-12 324,-12 324,-6 330,0 336,0 336,0 528,0 528,0 534,0 540,-6 540,-12 540,-12 540,-24 540,-24 540,-30 534,-36 528,-36"/>
 <text text-anchor="middle" x="432" y="-14.3" font-family="Menlo" font-size="14.00">UIImageView</text>
-</a>
-</g>
 </g>
 <!-- LoopView&#45;&gt;UIImageView -->
 <g id="edge1" class="edge conformsTo">
@@ -103,7 +102,9 @@
     <h3>
         <code>Completion​Callback</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">CompletionCallback</span> = (<span class="type">Bool</span>) -&gt; <span class="type">Void</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">CompletionCallback</span> = (<span class="type">Bool</span>) -&gt; <span class="type">Void</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>A callback handler called at the completion play cycle.</p>
 
@@ -117,7 +118,9 @@
     <h3>
         <code>init(loop​Image:​placeholder​Image:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>(<span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?, <span class="variable">placeholderImage</span>: <span class="type">UIImage</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>(<span class="variable">loopImage</span>: <span class="type">LoopImage</span>?, <span class="variable">placeholderImage</span>: <span class="type">UIImage</span>? = <span class="keyword">nil</span>) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Returns an loop view initialized with the specified image.</p>
 
@@ -156,7 +159,9 @@
     <h3>
         <code>delegate</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">delegate</span>: <a href="/Looping/LoopViewDelegate"><span class="type">LoopViewDelegate</span></a>?</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="attribute">weak</span> <span class="keyword">var</span> <span class="variable">delegate</span>: <span class="type">LoopViewDelegate</span>?</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The delegate of the loop view object.</p>
 
@@ -166,7 +171,9 @@
     <h3>
         <code>activity​Delegate</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">activityDelegate</span>: <a href="/Looping/LoopViewActivityDelegate"><span class="type">LoopViewActivityDelegate</span></a>?</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="attribute">weak</span> <span class="keyword">var</span> <span class="variable">activityDelegate</span>: <span class="type">LoopViewActivityDelegate</span>?</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The activity delegate of the loop view object.</p>
 
@@ -176,7 +183,9 @@
     <h3>
         <code>loop​Image</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopImage</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>?</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">loopImage</span>: <span class="type">LoopImage</span>? </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The webp image being displayed.</p>
 
@@ -186,7 +195,9 @@
     <h3>
         <code>placeholder​Image</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">placeholderImage</span>: <span class="type">UIImage</span>?</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">placeholderImage</span>: <span class="type">UIImage</span>? </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The placeholder image displayed when the animation is stopped.</p>
 
@@ -196,7 +207,9 @@
     <h3>
         <code>auto​Play</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">autoPlay</span> = <span class="keyword">true</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">IBInspectable</span> <span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">autoPlay</span> = <span class="keyword">true</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>A flag to determine if the view should start playing images automatically.</p>
 
@@ -206,21 +219,13 @@
 
 </div>
 </div>
-<div role="article" class="variable" id="loopview.usecache">
-    <h3>
-        <code>use​Cache</code>
-    </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">useCache</span>: <span class="type">Bool</span> = <span class="keyword">true</span></code></pre></body></html>
-<div class="summary" role="doc-abstract">
-    <p>A flag to determine if the frames generated should be cached.</p>
-
-</div>
-</div>
 <div role="article" class="variable" id="loopview.playbackspeedrate">
     <h3>
         <code>play​Back​Speed​Rate</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">playBackSpeedRate</span>: <span class="type">Double</span> = <span class="number literal">1</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">IBInspectable</span> <span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">playBackSpeedRate</span>: <span class="type">Double</span> = <span class="number literal">1</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The speed factor at which the animation should be played (limited by the display refresh rate).</p>
 
@@ -236,7 +241,9 @@
     <h3>
         <code>loop​Mode</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopMode</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>.<span class="type">LoopMode</span>?</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">loopMode</span>: <span class="type">LoopImage</span>.<span class="type">LoopMode</span>? </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The amount of time the animation should play, overriding the amount set in the image.</p>
 
@@ -246,7 +253,9 @@
     <h3>
         <code>completion​Behavior</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">completionBehavior</span>: <span class="type">CompletionBehavior</span> = .<span class="variable">stop</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">completionBehavior</span>: <span class="type">CompletionBehavior</span> = .<span class="variable">stop</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>The behavior following the completion of the play cycle.</p>
 
@@ -256,7 +265,9 @@
     <h3>
         <code>is​Playing</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">isPlaying</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">var</span> <span class="variable">isPlaying</span>: <span class="type">Bool</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Returns true if the image animation is playing.</p>
 
@@ -266,11 +277,13 @@
     <section id="methods">
         <h2>Methods</h2>
 
-        <div role="article" class="function" id="loopview.play(loopmode:usecache:completion:)">
+        <div role="article" class="function" id="loopview.play(loopmode:completion:)">
     <h3>
-        <code>play(loop​Mode:​use​Cache:​completion:​)</code>
+        <code>play(loop​Mode:​completion:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">play</span>(<span class="variable">loopMode</span>: <a href="/Looping/LoopImage"><span class="type">LoopImage</span></a>.<span class="type">LoopMode</span>? = <span class="keyword">nil</span>, <span class="variable">useCache</span>: <span class="type">Bool</span>? = <span class="keyword">nil</span>, <span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">play</span>(<span class="variable">loopMode</span>: <span class="type">LoopImage</span>.<span class="type">LoopMode</span>? = <span class="keyword">nil</span>, <span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Plays the animation of the image.</p>
 
@@ -294,7 +307,7 @@
 </tr>
 <tr>
     <th>use​Cache</th>
-    <td><code class="type">Bool?</code></td>
+    <td></td>
     <td><p>A flag to determine if the frames generated should be cached or left to nil to keep current behavior.</p>
 </td>
 </tr>
@@ -307,11 +320,50 @@
   </tbody>
 </table>
 </div>
+<div role="article" class="function" id="loopview.seek(progress:shouldresumeplaying:)">
+    <h3>
+        <code>seek(progress:​should​Resume​Playing:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">seek</span>(<span class="variable">progress</span>: <span class="type">Double</span>, <span class="variable">shouldResumePlaying</span>: <span class="type">Bool</span>) </code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Seeks to a position in the animation.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>progress</th>
+    <td><code class="type">Double</code></td>
+    <td><p>The progress at which we want to seek into the animation.</p>
+</td>
+</tr>
+<tr>
+    <th>should​Resume​Playing</th>
+    <td><code class="type">Bool</code></td>
+    <td><p>A flag to indicate if we want to resume playing the animation after seeking.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
 <div role="article" class="function" id="loopview.playonce(completion:)">
     <h3>
         <code>play​Once(completion:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">playOnce</span>(<span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">playOnce</span>(<span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Plays the animation of the image.</p>
 
@@ -340,7 +392,9 @@
     <h3>
         <code>play​Repeat(amount:​completion:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">playRepeat</span>(<span class="variable">amount</span>: <span class="type">Int</span>, <span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">playRepeat</span>(<span class="variable">amount</span>: <span class="type">Int</span>, <span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Plays the animation of the image.</p>
 
@@ -375,7 +429,9 @@
     <h3>
         <code>play​Indefinitely(completion:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">playIndefinitely</span>(<span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">playIndefinitely</span>(<span class="variable">completion</span>: <span class="type">CompletionCallback</span>? = <span class="keyword">nil</span>) </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Plays the animation of the image.</p>
 
@@ -404,7 +460,9 @@
     <h3>
         <code>pause()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">pause</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">pause</span>() </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Pauses the animation of the image.</p>
 
@@ -414,9 +472,35 @@
     <h3>
         <code>stop()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">stop</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">stop</span>() </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Stops the animation of the image.</p>
+
+</div>
+</div>
+<div role="article" class="function" id="loopview.clearcache()">
+    <h3>
+        <code>clear​Cache()</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">clearCache</span>() </code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Clears the cache from rendered animation frames.</p>
+
+</div>
+</div>
+<div role="article" class="function" id="loopview.preheatcache(completion:)">
+    <h3>
+        <code>preheat​Cache(completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">open</span> <span class="keyword">func</span> <span class="function">preheatCache</span>(<span class="variable">completion</span>: (() -&gt; <span class="type">Void</span>)? = <span class="keyword">nil</span>) </code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Preheats the cache for each animation frame.</p>
 
 </div>
 </div>
@@ -424,7 +508,9 @@
     <h3>
         <code>did​Move​ToWindow()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">override</span> <span class="attribute">open</span> <span class="keyword">func</span> <span class="function">didMoveToWindow</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">override</span> <span class="attribute">open</span> <span class="keyword">func</span> <span class="function">didMoveToWindow</span>() </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Tells the view that its window object changed.</p>
 
@@ -434,7 +520,9 @@
     <h3>
         <code>did​Move​ToSuperview()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="attribute">override</span> <span class="attribute">open</span> <span class="keyword">func</span> <span class="function">didMoveToSuperview</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="attribute">override</span> <span class="attribute">open</span> <span class="keyword">func</span> <span class="function">didMoveToSuperview</span>() </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Tells the view that its superview changed.</p>
 
@@ -449,7 +537,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-09T11:18:51+0200">September 9, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-10-20T12:55:29+0200">October 20, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>

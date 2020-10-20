@@ -8,4 +8,7 @@ public enum LoopImageError: Error {
 
     /// Asset cannot be found.
     case missingAsset
+
+    /// Asset is invalid.
+    case invalidAsset
 }

@@ -37,7 +37,9 @@
     <code class="name">Codec</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">Codec</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">Codec</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Defines what information a Codec needs to expose and what actions it should handle.</p>
 
@@ -53,7 +55,9 @@
     <h3>
         <code>is​Animation</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">isAnimation</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">isAnimation</span>: <span class="type">Bool</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Flag to determine if the image is animated (more than 1 frame).</p>
 
@@ -63,7 +67,9 @@
     <h3>
         <code>has​Alpha</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">hasAlpha</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">hasAlpha</span>: <span class="type">Bool</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Flag to determine if the image contains an alpha component.</p>
 
@@ -73,7 +79,9 @@
     <h3>
         <code>canvas​Width</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">canvasWidth</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">canvasWidth</span>: <span class="type">Int</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Drawing width of the image.</p>
 
@@ -83,7 +91,9 @@
     <h3>
         <code>canvas​Height</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">canvasHeight</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">canvasHeight</span>: <span class="type">Int</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Drawing height of the image.</p>
 
@@ -93,7 +103,9 @@
     <h3>
         <code>loop​Count</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopCount</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">loopCount</span>: <span class="type">Int</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Number of times the animation should loop.</p>
 
@@ -103,7 +115,9 @@
     <h3>
         <code>frame​Count</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">frameCount</span>: <span class="type">Int</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">frameCount</span>: <span class="type">Int</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Total number of frames in the image.</p>
 
@@ -113,7 +127,9 @@
     <h3>
         <code>frames​Duration</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">framesDuration</span>: [<span class="type">TimeInterval</span>]</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">framesDuration</span>: [<span class="type">TimeInterval</span>] </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Duration of each frames.</p>
 
@@ -123,7 +139,9 @@
     <h3>
         <code>animation​Duration</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">animationDuration</span>: <span class="type">TimeInterval</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">animationDuration</span>: <span class="type">TimeInterval</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Total duration of the animation.</p>
 
@@ -133,7 +151,9 @@
     <h3>
         <code>colorspace</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">colorspace</span>: <span class="type">CGColorSpace</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">colorspace</span>: <span class="type">CGColorSpace</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Colorspace used to draw the image frames.</p>
 
@@ -143,7 +163,9 @@
     <h3>
         <code>are​Frames​Independent</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">areFramesIndependent</span>: <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">var</span> <span class="variable">areFramesIndependent</span>: <span class="type">Bool</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Flags specifying if frames are built incrementally from the previous ones or idenpendently.</p>
 
@@ -153,7 +175,9 @@
     <h3>
         <code>register()</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">static</span> <span class="keyword">func</span> <span class="function">register</span>()</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">static</span> <span class="keyword">func</span> <span class="function">register</span>()</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Registers the codec.</p>
 
@@ -163,7 +187,9 @@
     <h3>
         <code>can​Decode(data:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">static</span> <span class="keyword">func</span> <span class="function">canDecode</span>(<span class="variable">data</span>: <span class="type">Data</span>) -&gt; <span class="type">Bool</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">static</span> <span class="keyword">func</span> <span class="function">canDecode</span>(<span class="variable">data</span>: <span class="type">Data</span>) -&gt; <span class="type">Bool</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Determines if the data can be decoded by the codec.</p>
 
@@ -192,7 +218,9 @@
     <h3>
         <code>frame(at:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">frame</span>(<span class="variable">at</span> <span class="variable">index</span>: <span class="type">Int</span>) <span class="keyword">throws</span> -&gt; <a href="/Looping/Frame"><span class="type">Frame</span></a></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">func</span> <span class="function">frame</span>(<span class="variable">at</span> <span class="variable">index</span>: <span class="type">Int</span>) <span class="keyword">throws</span> -&gt; <span class="type">Frame</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Extracts the information of the frame at a given index.</p>
 
@@ -221,7 +249,9 @@
     <h3>
         <code>decode(at:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">decode</span>(<span class="variable">at</span> <span class="variable">index</span>: <span class="type">Int</span>) <span class="keyword">throws</span> -&gt; <span class="type">CGImage</span>?</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">func</span> <span class="function">decode</span>(<span class="variable">at</span> <span class="variable">index</span>: <span class="type">Int</span>) <span class="keyword">throws</span> -&gt; <span class="type">CGImage</span>?</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Decodes a frame at a given index.</p>
 
@@ -252,7 +282,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-09T11:18:51+0200">September 9, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-10-20T12:55:29+0200">October 20, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>

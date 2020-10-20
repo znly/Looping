@@ -12,9 +12,7 @@ final class OptionsViewController: UIViewController {
     private lazy var stackView = UIStackView(
         arrangedSubviews: [
             loopStackView,
-            playBackSpeedRateStackView,
-            autoPlayStackView,
-            useCacheStackView
+            autoPlayStackView
         ]
         )..{
             $0.axis = .vertical
@@ -55,34 +53,12 @@ final class OptionsViewController: UIViewController {
 
     }
 
-    private lazy var playBackSpeedRateStackView = UIStackView(
-        arrangedSubviews: [playBackSpeedRateLabel, playBackSpeedRateSelection]
-        )..{
-            $0.axis = .horizontal
-            $0.distribution = .fillEqually
-    }
-    private let playBackSpeedRateLabel = UILabel()
-
-    private lazy var playBackSpeedRateSelection = UISlider()..{
-        $0.minimumValue = .zero
-        $0.maximumValue = 10
-        $0.value = Float(loopView.playBackSpeedRate)
-    }
-
     private lazy var autoPlayStackView = UIStackView(arrangedSubviews: [autoPlayLabel, autoPlaySwitch])
     private let autoPlayLabel = UILabel()..{
         $0.text = "AUTOPLAY"
     }
     private lazy var autoPlaySwitch = UISwitch()..{
         $0.isOn = loopView.autoPlay
-    }
-
-    private lazy var useCacheStackView = UIStackView(arrangedSubviews: [useCacheLabel, useCacheSwitch])
-    private let useCacheLabel = UILabel()..{
-        $0.text = "USE CACHE"
-    }
-    private lazy var useCacheSwitch = UISwitch()..{
-        $0.isOn = loopView.useCache
     }
 
     init(loopView: LoopView) {
@@ -113,28 +89,14 @@ final class OptionsViewController: UIViewController {
         )
 
         loopSelection.addTarget(self, action: #selector(loopChanged), for: .valueChanged)
-        playBackSpeedRateSelection.addTarget(self, action: #selector(playBackSpeedRateChanged), for: .valueChanged)
         autoPlaySwitch.addTarget(self, action: #selector(autoPlayChanged), for: .valueChanged)
-        useCacheSwitch.addTarget(self, action: #selector(useCacheChanged), for: .valueChanged)
-
-        playBackSpeedRateChanged()
     }
 
     @objc func loopChanged() {
         loopView.loopMode = loops[loopSelection.selectedSegmentIndex].value
     }
 
-    @objc func playBackSpeedRateChanged() {
-        let value = playBackSpeedRateSelection.value.rounded(nearest: 0.1)
-        playBackSpeedRateLabel.text = "PLAYBACK SPEED \(value)"
-        loopView.playBackSpeedRate = Double(value)
-    }
-
     @objc func autoPlayChanged() {
         loopView.autoPlay = autoPlaySwitch.isOn
-    }
-
-    @objc func useCacheChanged() {
-        loopView.useCache = useCacheSwitch.isOn
     }
 }
