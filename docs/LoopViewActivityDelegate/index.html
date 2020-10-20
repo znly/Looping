@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#loopviewactivitydelegate.loopview(_:didrenderframeatindex:fromcache:)">loop​View(_:​did​Render​Frame​AtIndex:​from​Cache:​)</a></li><li class="function"><a href="#loopviewactivitydelegate.loopview(_:diddisplay:)">loop​View(_:​did​Display:​)</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#loopviewactivitydelegate.loopview(_:didrenderframeatindex:fromcache:)">loop​View(_:​did​Render​Frame​AtIndex:​from​Cache:​)</a></li><li class="function"><a href="#loopviewactivitydelegate.loopview(_:diddisplayimage:forframeatindex:)">loop​View(_:​did​Display​Image:​for​Frame​AtIndex:​)</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -37,7 +37,9 @@
     <code class="name">Loop​View​Activity​Delegate</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">LoopViewActivityDelegate</span>: <span class="keyword">class</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">LoopViewActivityDelegate</span>: <span class="keyword">class</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Respond to messages from the LoopView class to operations related to display and render.</p>
 
@@ -67,11 +69,8 @@
 <!-- class -->
 <g id="node2" class="node unknown">
 <title>class</title>
-<g id="a_node2"><a xlink:href="/Looping/class" xlink:title="class">
 <path fill="none" stroke="black" d="M528,-36C528,-36 336,-36 336,-36 330,-36 324,-30 324,-24 324,-24 324,-12 324,-12 324,-6 330,0 336,0 336,0 528,0 528,0 534,0 540,-6 540,-12 540,-12 540,-24 540,-24 540,-30 534,-36 528,-36"/>
 <text text-anchor="middle" x="432" y="-14.3" font-family="Menlo" font-size="14.00">class</text>
-</a>
-</g>
 </g>
 <!-- LoopViewActivityDelegate&#45;&gt;class -->
 <g id="edge1" class="edge conformsTo">
@@ -100,7 +99,9 @@
     <h3>
         <code>loop​View(_:​did​Render​Frame​AtIndex:​from​Cache:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">loopView</span>(<span class="keyword">_</span> <span class="variable">loopView</span>: <a href="/Looping/LoopView"><span class="type">LoopView</span></a>, <span class="variable">didRenderFrameAtIndex</span> <span class="variable">index</span>: <span class="type">Int</span>, <span class="variable">fromCache</span> <span class="variable">didUseCache</span>: <span class="type">Bool</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">func</span> <span class="function">loopView</span>(<span class="keyword">_</span> <span class="variable">loopView</span>: <span class="type">LoopView</span>, <span class="variable">didRenderFrameAtIndex</span> <span class="variable">index</span>: <span class="type">Int</span>, <span class="variable">fromCache</span> <span class="variable">didUseCache</span>: <span class="type">Bool</span>)</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Called by the loop view when it renders a frame.</p>
 
@@ -137,11 +138,13 @@
   </tbody>
 </table>
 </div>
-<div role="article" class="function" id="loopviewactivitydelegate.loopview(_:diddisplay:)">
+<div role="article" class="function" id="loopviewactivitydelegate.loopview(_:diddisplayimage:forframeatindex:)">
     <h3>
-        <code>loop​View(_:​did​Display:​)</code>
+        <code>loop​View(_:​did​Display​Image:​for​Frame​AtIndex:​)</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">func</span> <span class="function">loopView</span>(<span class="keyword">_</span> <span class="variable">loopView</span>: <a href="/Looping/LoopView"><span class="type">LoopView</span></a>, <span class="variable">didDisplay</span> <span class="variable">image</span>: <span class="type">UIImage</span>?)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">func</span> <span class="function">loopView</span>(<span class="keyword">_</span> <span class="variable">loopView</span>: <span class="type">LoopView</span>, <span class="variable">didDisplayImage</span> <span class="variable">image</span>: <span class="type">UIImage</span>?, <span class="variable">forFrameAtIndex</span> <span class="variable">index</span>: <span class="type">Int</span>?)</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Called by the loop view when it displays a frame.</p>
 
@@ -169,6 +172,12 @@
     <td><p>The (thumbnail) image of the canvas.</p>
 </td>
 </tr>
+<tr>
+    <th>index</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The index of the frame.</p>
+</td>
+</tr>
   </tbody>
 </table>
 </div>
@@ -178,7 +187,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-09T11:18:51+0200">September 9, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-10-20T12:55:30+0200">October 20, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>

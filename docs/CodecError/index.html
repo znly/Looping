@@ -37,7 +37,9 @@
     <code class="name">Codec​Error</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">CodecError</span></code></pre></body></html>
+<div class="declaration">
+<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">CodecError</span>: <span class="type">Error</span> </code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Errors thrown when decoding a loop image.</p>
 
@@ -67,11 +69,8 @@
 <!-- Error -->
 <g id="node2" class="node unknown">
 <title>Error</title>
-<g id="a_node2"><a xlink:href="/Looping/Error" xlink:title="Error">
 <path fill="none" stroke="black" d="M528,-36C528,-36 336,-36 336,-36 330,-36 324,-30 324,-24 324,-24 324,-12 324,-12 324,-6 330,0 336,0 336,0 528,0 528,0 534,0 540,-6 540,-12 540,-12 540,-24 540,-24 540,-30 534,-36 528,-36"/>
 <text text-anchor="middle" x="432" y="-14.3" font-family="Menlo" font-size="14.00">Error</text>
-</a>
-</g>
 </g>
 <!-- CodecError&#45;&gt;Error -->
 <g id="edge1" class="edge conformsTo">
@@ -97,7 +96,9 @@
     <h3>
         <code>invalid​Data</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidData</span></code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">case</span> <span class="variable">invalidData</span></code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Failed to decode the provided data.</p>
 
@@ -107,7 +108,9 @@
     <h3>
         <code>frame​Index​Out​OfBounds</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">frameIndexOutOfBounds</span>(: <span class="type">Int</span>)</code></pre></body></html>
+    <div class="declaration">
+<pre class="highlight"><code><span class="keyword">case</span> <span class="variable">frameIndexOutOfBounds</span>(<span class="type">Int</span>)</code></pre>
+</div>
 <div class="summary" role="doc-abstract">
     <p>Accessing a frame that does not exists.</p>
 
@@ -122,7 +125,7 @@
 
     <footer>
         <p>
-    Generated on <time datetime="2020-09-09T11:18:51+0200">September 9, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.3</span>.
+    Generated on <time datetime="2020-10-20T12:55:29+0200">October 20, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
 </p>
     </footer>
 </body>
