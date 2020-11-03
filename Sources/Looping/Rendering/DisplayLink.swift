@@ -25,7 +25,7 @@ final class DisplayLink {
 
     private lazy var displayLink: CADisplayLink = {
         let displayLink = CADisplayLink(target: WeakTargetProxy(target: self), selector: #selector(WeakTargetProxy.proxy))
-        displayLink.add(to: .main, forMode: .default)
+        displayLink.add(to: .main, forMode: .common)
         displayLink.isPaused = true
         displayLink.preferredFramesPerSecond = preferredFramesPerSecond
         isInitiated = true
