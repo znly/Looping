@@ -5,11 +5,14 @@ final class CodecRegistry {
 
     private(set) var registeredCodecs: [Codec.Type] = {
         var codecs: [Codec.Type] = [
-            GIFCodec.self,
-            APNGCodec.self
+            GIFImageIOCodec.self,
+            APNGImageIOCodec.self
         ]
         if #available(iOS 13, *) {
-            codecs.append(HEICCodec.self)
+            codecs.append(HEICImageIOCodec.self)
+        }
+        if #available(iOS 14, *) {
+            codecs.append(WebPImageIOCodec.self)
         }
         return codecs
     }()

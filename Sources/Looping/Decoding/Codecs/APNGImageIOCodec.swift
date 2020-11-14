@@ -2,9 +2,9 @@ import Foundation
 
 import ImageIO
 
-typealias APNGCodec = ImageIOCodec<APNGCodecProperties>
+typealias APNGImageIOCodec = ImageIOCodec<APNGImageIOCodecProperties>
 
-enum APNGCodecProperties: ImageIOCodecProperties {
+enum APNGImageIOCodecProperties: ImageIOCodecProperties {
     static var dictionaryKey = kCGImagePropertyPNGDictionary
     static var loopCountKey = kCGImagePropertyAPNGLoopCount
     static var unclampedDelayTimeKey = kCGImagePropertyAPNGUnclampedDelayTime
