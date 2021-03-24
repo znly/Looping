@@ -233,6 +233,17 @@ private extension WebPCodec {
                     defer { WebPDemuxReleaseChunkIterator(&chunkIterator) }
 
                     // Copy the ICC data (really cheap, less than 10KB)
+                    #if compiler(>=5.3.2)
+                    if let profileData = CFDataCreate(kCFAllocatorDefault, chunkIterator.chunk.bytes, chunkIterator.chunk.size),
+                       let iccColorspace = CGColorSpace(iccData: profileData) {
+
+
+                        // Filter out non RGB color models
+                        if iccColorspace.model == .rgb {
+                            colorspace = iccColorspace
+                        }
+                    }
+                    #else
                     if let profileData = CFDataCreate(kCFAllocatorDefault, chunkIterator.chunk.bytes, chunkIterator.chunk.size) {
                         let iccColorspace = CGColorSpace(iccData: profileData)
 
@@ -241,6 +252,7 @@ private extension WebPCodec {
                             colorspace = iccColorspace
                         }
                     }
+                    #endif
                 }
             }
         }
