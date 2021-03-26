@@ -10,9 +10,13 @@ A simple and lightweight framework to display looping images using native UIKit 
 
 ### Supported formats
 
-Out of the box, Looping supports 3 formats of __animated__ and __still__ images: **GIF**, **APNG** and **HEIC**.
+Out of the box, Looping supports natively 4 formats of __animated__ and __still__ images:
+- **GIF**
+- **APNG**
+- **HEIC** starting at _iOS 13_
+- **WebP** starting at _iOS 14_
 
-To add WebP support, include the framework **LoopingWebP**, and enable it once:
+However, you can easily add unrestricted WebP support by including and enabling the complementary **LoopingWebP** framework:
 
 ```swift
 import Looping
@@ -54,7 +58,7 @@ From Xcode 11 onward, SwiftPM is natively integrated with Xcode. In `File -> Swi
 If you're a framework author, you can add following the dependency to your `Package.swift`:
 ```swift
 dependencies: [
-    .package(url: "https://github.com/znly/Looping.git", .from("0.1.0"))
+    .package(url: "https://github.com/znly/Looping.git", .from("1.3.0"))
 ]
 ```
 
@@ -64,7 +68,7 @@ dependencies: [
 
 To integrate Looping into your Xcode project using Carthage, specify it in your Cartfile:
 ```
-github "znly/Looping" ~> 0.1.0
+github "znly/Looping" ~> 1.3.0
 ```
 
 ## Usage

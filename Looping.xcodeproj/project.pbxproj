@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		772046762452018A0087D616 /* Loop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772046752452018A0087D616 /* Loop.swift */; };
+		77244253255FC57900C08665 /* WebPImageIOCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77244252255FC57900C08665 /* WebPImageIOCodec.swift */; };
 		772563A9246C6D4300517DC0 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D7DC26246C6291006EA16B /* WebP.framework */; };
 		772563AA246C6D4300517DC0 /* WebP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77D7DC26246C6291006EA16B /* WebP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		772563AE246C6D5200517DC0 /* LoopingWebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D7DCEB246C699F006EA16B /* LoopingWebP.framework */; };
@@ -87,8 +88,8 @@
 		77B92D8824504CE9005CE16C /* Looping.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7E1412438CB4D000E7528 /* Looping.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77CB968B2443CC9800EC0B40 /* FrameCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CB968A2443CC9800EC0B40 /* FrameCache.swift */; };
 		77D7D91C24682E25006EA16B /* Data+Codec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D91B24682E25006EA16B /* Data+Codec.swift */; };
-		77D7D9242468363E006EA16B /* APNGCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D91F24683294006EA16B /* APNGCodec.swift */; };
-		77D7D92524683642006EA16B /* GIFCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D92124683486006EA16B /* GIFCodec.swift */; };
+		77D7D9242468363E006EA16B /* APNGImageIOCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D91F24683294006EA16B /* APNGImageIOCodec.swift */; };
+		77D7D92524683642006EA16B /* GIFImageIOCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D92124683486006EA16B /* GIFImageIOCodec.swift */; };
 		77D7D92D24689F46006EA16B /* Frame+DrawRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D92C24689F46006EA16B /* Frame+DrawRect.swift */; };
 		77D7D9322468AD6E006EA16B /* elephant.gif in Resources */ = {isa = PBXBuildFile; fileRef = 77D7D9312468AD6E006EA16B /* elephant.gif */; };
 		77D7D9332468AD6E006EA16B /* elephant.gif in Resources */ = {isa = PBXBuildFile; fileRef = 77D7D9312468AD6E006EA16B /* elephant.gif */; };
@@ -141,7 +142,7 @@
 		77D7D997246BC626006EA16B /* starfield.gif in Resources */ = {isa = PBXBuildFile; fileRef = 77D7D994246BC626006EA16B /* starfield.gif */; };
 		77D7D998246BC626006EA16B /* candle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 77D7D995246BC626006EA16B /* candle.gif */; };
 		77D7D999246BC626006EA16B /* candle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 77D7D995246BC626006EA16B /* candle.gif */; };
-		77D7D99B246BC7DC006EA16B /* HEICCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D99A246BC7DC006EA16B /* HEICCodec.swift */; };
+		77D7D99B246BC7DC006EA16B /* HEICImageIOCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7D99A246BC7DC006EA16B /* HEICImageIOCodec.swift */; };
 		77D7DC33246C62D6006EA16B /* alpha_dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 77D7DAA3246C5E0E006EA16B /* alpha_dec.c */; };
 		77D7DC34246C62D6006EA16B /* buffer_dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 77D7DAA6246C5E0E006EA16B /* buffer_dec.c */; };
 		77D7DC35246C62D6006EA16B /* frame_dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 77D7DA9F246C5E0E006EA16B /* frame_dec.c */; };
@@ -400,6 +401,7 @@
 
 /* Begin PBXFileReference section */
 		772046752452018A0087D616 /* Loop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loop.swift; sourceTree = "<group>"; };
+		77244252255FC57900C08665 /* WebPImageIOCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPImageIOCodec.swift; sourceTree = "<group>"; };
 		7726EED82439115E0030026B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		7726EF14243918CA0030026B /* DisplayLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		773A1AA624710061005B03F6 /* LoopImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopImageError.swift; sourceTree = "<group>"; };
@@ -453,8 +455,8 @@
 		77B92D6C24504BAE005CE16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CB968A2443CC9800EC0B40 /* FrameCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameCache.swift; sourceTree = "<group>"; };
 		77D7D91B24682E25006EA16B /* Data+Codec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Codec.swift"; sourceTree = "<group>"; };
-		77D7D91F24683294006EA16B /* APNGCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNGCodec.swift; sourceTree = "<group>"; };
-		77D7D92124683486006EA16B /* GIFCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFCodec.swift; sourceTree = "<group>"; };
+		77D7D91F24683294006EA16B /* APNGImageIOCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNGImageIOCodec.swift; sourceTree = "<group>"; };
+		77D7D92124683486006EA16B /* GIFImageIOCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageIOCodec.swift; sourceTree = "<group>"; };
 		77D7D92C24689F46006EA16B /* Frame+DrawRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Frame+DrawRect.swift"; sourceTree = "<group>"; };
 		77D7D9312468AD6E006EA16B /* elephant.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = elephant.gif; sourceTree = "<group>"; };
 		77D7D9352468AD7D006EA16B /* elephant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elephant.png; sourceTree = "<group>"; };
@@ -483,7 +485,7 @@
 		77D7D983246BC576006EA16B /* nature@3x.heic */ = {isa = PBXFileReference; lastKnownFileType = file; path = "nature@3x.heic"; sourceTree = "<group>"; };
 		77D7D994246BC626006EA16B /* starfield.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = starfield.gif; sourceTree = "<group>"; };
 		77D7D995246BC626006EA16B /* candle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = candle.gif; sourceTree = "<group>"; };
-		77D7D99A246BC7DC006EA16B /* HEICCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEICCodec.swift; sourceTree = "<group>"; };
+		77D7D99A246BC7DC006EA16B /* HEICImageIOCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEICImageIOCodec.swift; sourceTree = "<group>"; };
 		77D7DA47246C5E0E006EA16B /* muxread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = muxread.c; sourceTree = "<group>"; };
 		77D7DA48246C5E0E006EA16B /* muxinternal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = muxinternal.c; sourceTree = "<group>"; };
 		77D7DA49246C5E0E006EA16B /* libwebpmux.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libwebpmux.rc; sourceTree = "<group>"; };
@@ -988,10 +990,11 @@
 		77D7D99C246BE784006EA16B /* Codecs */ = {
 			isa = PBXGroup;
 			children = (
-				77D7D91F24683294006EA16B /* APNGCodec.swift */,
-				77D7D92124683486006EA16B /* GIFCodec.swift */,
-				77D7D99A246BC7DC006EA16B /* HEICCodec.swift */,
+				77D7D91F24683294006EA16B /* APNGImageIOCodec.swift */,
+				77D7D92124683486006EA16B /* GIFImageIOCodec.swift */,
+				77D7D99A246BC7DC006EA16B /* HEICImageIOCodec.swift */,
 				77D7D93F2469336A006EA16B /* ImageIOCodec.swift */,
+				77244252255FC57900C08665 /* WebPImageIOCodec.swift */,
 			);
 			path = Codecs;
 			sourceTree = "<group>";
@@ -1849,16 +1852,17 @@
 				77E7E15F2438D828000E7528 /* CodecError.swift in Sources */,
 				7759E143243D2F7A00EBE477 /* LoopImage+String.swift in Sources */,
 				77D7D92D24689F46006EA16B /* Frame+DrawRect.swift in Sources */,
+				77244253255FC57900C08665 /* WebPImageIOCodec.swift in Sources */,
 				7759E14A243D3A1100EBE477 /* UIImage+LoopImage.swift in Sources */,
 				77CB968B2443CC9800EC0B40 /* FrameCache.swift in Sources */,
-				77D7D9242468363E006EA16B /* APNGCodec.swift in Sources */,
+				77D7D9242468363E006EA16B /* APNGImageIOCodec.swift in Sources */,
 				779AE1B42442F22600702C06 /* LoopRenderer.swift in Sources */,
-				77D7D99B246BC7DC006EA16B /* HEICCodec.swift in Sources */,
+				77D7D99B246BC7DC006EA16B /* HEICImageIOCodec.swift in Sources */,
 				773A1AA724710061005B03F6 /* LoopImageError.swift in Sources */,
 				77E7E1662438D866000E7528 /* LoopImage.swift in Sources */,
 				77E7E1602438D828000E7528 /* Frame.swift in Sources */,
 				7780074D2467F46700FFBF32 /* Codec.swift in Sources */,
-				77D7D92524683642006EA16B /* GIFCodec.swift in Sources */,
+				77D7D92524683642006EA16B /* GIFImageIOCodec.swift in Sources */,
 				77E7E1622438D828000E7528 /* LoopView.swift in Sources */,
 				77D7D9402469336A006EA16B /* ImageIOCodec.swift in Sources */,
 				7759E141243D2F5100EBE477 /* LoopImage+UIImage.swift in Sources */,

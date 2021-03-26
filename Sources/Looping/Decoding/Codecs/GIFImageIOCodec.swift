@@ -2,9 +2,9 @@ import Foundation
 
 import ImageIO
 
-typealias GIFCodec = ImageIOCodec<GIFCodecProperties>
+typealias GIFImageIOCodec = ImageIOCodec<GIFImageIOCodecProperties>
 
-enum GIFCodecProperties: ImageIOCodecProperties {
+enum GIFImageIOCodecProperties: ImageIOCodecProperties {
     static var dictionaryKey = kCGImagePropertyGIFDictionary
     static var loopCountKey = kCGImagePropertyGIFLoopCount
     static var unclampedDelayTimeKey = kCGImagePropertyGIFUnclampedDelayTime

@@ -3,10 +3,10 @@ import Foundation
 import ImageIO
 
 @available(iOS 13, *)
-typealias HEICCodec = ImageIOCodec<HEICCodecProperties>
+typealias HEICImageIOCodec = ImageIOCodec<HEICImageIOCodecProperties>
 
 @available(iOS 13, *)
-enum HEICCodecProperties: ImageIOCodecProperties {
+enum HEICImageIOCodecProperties: ImageIOCodecProperties {
     private enum DataHeader {
         static let length = 12
         static let flags = Set(["mif1", "msf1", "heic", "heix", "hevc", "hevx"])
